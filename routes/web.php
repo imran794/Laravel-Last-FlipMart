@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 Use App\Http\Controllers\Admin\AdminController;
 Use App\Http\Controllers\Admin\RoleController;
+Use App\Http\Controllers\Admin\BrandController;
 Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
 
@@ -28,8 +29,19 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::group(['prefix'=>'admin','middleware' =>['admin','auth'],'namespace'=>'admin'], function(){
+Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
     Route::get('dashboard',[AdminController::class,'index'])->name('admin.dashboard');
+
+     // profile
+    Route::get('edit/profile', [ProfileController::class, 'EditProfile'])->name('edit.profile');
+    Route::post('profile/update/ad', [ProfileController::class, 'UdateProfilead'])->name('profile.update.ad');
+    Route::get('image/ad', [ProfileController::class, 'Imagead'])->name('image.ad');
+    Route::post('image/update/ad', [ProfileController::class, 'ImageUpdatead'])->name('image.update.ad');
+    Route::get('change/password/ad', [ProfileController::class, 'ChangePasswordad'])->name('change.password.ad');
+    Route::post('password/store/ad', [ProfileController::class, 'PasswordStoread'])->name('password.store.ad');
+
+
+    // role management
     Route::get('role/index',[RoleController::class,'RoleIndex'])->name('role.index');
     Route::post('role/store',[RoleController::class,'RoleStore'])->name('role.store');
     Route::post('role/assign',[RoleController::class,'RoleAssign'])->name('role.assign');
@@ -38,6 +50,12 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth'],'namespace'=>'ad
     Route::get('add/user',[AdminController::class,'AddUser'])->name('add.user');
     Route::post('user/store',[AdminController::class,'UserStore'])->name('user.store');
     Route::get('user/delete/{id}',[AdminController::class,'UserDelete'])->name('user.delete');
+
+
+    // brand
+    Route::resource('brand', BrandController::class);
+    Route::get('brabdinactive/{id}',[BrandController::class, 'brabdinactive']);
+    Route::get('brabdactive/{id}',[BrandController::class, 'brabdactive']);
 
 
 

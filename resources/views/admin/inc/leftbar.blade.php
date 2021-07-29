@@ -17,12 +17,19 @@
         @can('edit product')
          <a href="{{ route('role.index') }}" class="sl-menu-link @yield('Role Management')">
           <div class="sl-menu-item">
-            <i class="menu-item-icon icon ion-ios-photos-outline tx-20"></i>
+            <i class="icon ion-arrow-right-a"></i>
             <span class="menu-item-label">Role Management</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         @else
         @endcan
+
+          <a href="{{ route('brand.index') }}" class="sl-menu-link @yield('Add-Brand')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Add-Brand</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
        
         <a href="#" class="sl-menu-link">
           <div class="sl-menu-item">

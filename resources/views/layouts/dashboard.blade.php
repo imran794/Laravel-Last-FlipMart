@@ -62,11 +62,11 @@
           <div class="dropdown">
             <a href="" class="nav-link nav-link-profile" data-toggle="dropdown">
               <span class="logged-name">{{ Auth::user()->name }}<span class="hidden-md-down"></span></span>
-              <img src="../img/img3.jpg" class="wd-32 rounded-circle" alt="">
+              <img src="{{ asset(Auth::user()->image) }}" class="wd-32 rounded-circle" alt="">
             </a>
             <div class="dropdown-menu dropdown-menu-header wd-200">
               <ul class="list-unstyled user-profile-nav">
-                <li><a href=""><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
+                <li><a href="{{ route('edit.profile') }}"><i class="icon ion-ios-person-outline"></i> Edit Profile</a></li>
                 @can('See category')
                    <li><a href="{{ route('add.user') }}"><i class="icon ion-ios-person-outline"></i>Add User</a></li>
                 @else
@@ -282,6 +282,8 @@
     <script src="{{ asset('dashboard_assets') }}/lib/Flot/jquery.flot.pie.js"></script>
     <script src="{{ asset('dashboard_assets') }}/lib/Flot/jquery.flot.resize.js"></script>
     <script src="{{ asset('dashboard_assets') }}/lib/flot-spline/jquery.flot.spline.js"></script>
+    <script src="{{ asset('backend') }}/lib/datatables-responsive/dataTables.responsive.js"></script>
+    <script src="{{ asset('backend') }}/lib/datatables/jquery.dataTables.js"></script>
     <script type="text/javascript" src="{{ asset('backend') }}/js/dropify.min.js"></script>
        <script>
       $(function(){
@@ -300,6 +302,7 @@
     </script>
       <script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
     <script>
+         $('.dropify').dropify();
       @if(Session::has('message'))
         var type ="{{Session::get('alert-type','info')}}"
         switch(type){
