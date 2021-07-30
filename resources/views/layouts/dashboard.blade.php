@@ -8,6 +8,7 @@
     <!-- Twitter -->
     <meta name="twitter:site" content="@themepixels">
     <meta name="twitter:creator" content="@themepixels">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Starlight">
     <meta name="twitter:description" content="Premium Quality and Responsive UI for Dashboard.">
@@ -302,6 +303,7 @@
     </script>
       <script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
     <script>
+
          $('.dropify').dropify();
       @if(Session::has('message'))
         var type ="{{Session::get('alert-type','info')}}"

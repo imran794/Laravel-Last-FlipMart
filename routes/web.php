@@ -5,6 +5,9 @@ use App\Http\Controllers\Admin\UserController;
 Use App\Http\Controllers\Admin\AdminController;
 Use App\Http\Controllers\Admin\RoleController;
 Use App\Http\Controllers\Admin\BrandController;
+Use App\Http\Controllers\Admin\CategoryController;
+Use App\Http\Controllers\Admin\SubCategoryController;
+Use App\Http\Controllers\Admin\SubSubCategoryController;
 Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
 
@@ -55,7 +58,22 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
     // brand
     Route::resource('brand', BrandController::class);
     Route::get('brabdinactive/{id}',[BrandController::class, 'brabdinactive']);
-    Route::get('brabdactive/{id}',[BrandController::class, 'brabdactive']);
+    Route::get('brabdactive/{id}',[BrandController::class, 'brabdactive']); 
+
+
+     // category
+    Route::resource('category', CategoryController::class);
+    Route::get('categoryinactive/{id}',[CategoryController::class, 'categoryinactive']);
+    Route::get('categoryactive/{id}',[CategoryController::class, 'categoryactive']);
+
+         // sub category
+    Route::resource('subcategory', SubCategoryController::class);
+    Route::get('subinactive/{id}',[SubCategoryController::class, 'subinactive']);
+    Route::get('subactive/{id}',[SubCategoryController::class, 'subactive']);      
+
+     // sub sub category
+    Route::resource('subsubcategory', SubSubCategoryController::class);
+    Route::get('subcategory/ajax/{cat_id}',[SubSubCategoryController::class,'getSubCat']);
 
 
 
