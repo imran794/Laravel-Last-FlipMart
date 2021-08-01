@@ -38,6 +38,10 @@
     <link href="{{ asset('backend') }}/lib/select2/css/select2.min.css" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{asset('backend')}}/lib/toastr/toastr.css">
     <link rel="stylesheet" href="{{ asset('backend') }}/css/dropify.min.css">
+      <link href="{{ asset('backend') }}/lib/medium-editor/medium-editor.css" rel="stylesheet">
+    <link href="{{ asset('backend') }}/lib/medium-editor/default.css" rel="stylesheet">
+    <link href="{{ asset('backend') }}/lib/summernote/summernote-bs4.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('backend')}}/lib/bootstrap-tagsinput.css" crossorigin="anonymous">
     <link href="{{ asset('dashboard_assets') }}/lib/perfect-scrollbar/css/perfect-scrollbar.css" rel="stylesheet">
     <link href="{{ asset('dashboard_assets') }}/lib/rickshaw/rickshaw.min.css" rel="stylesheet">
 
@@ -301,6 +305,22 @@
 
       });
     </script>
+      <script src="{{ asset('backend') }}/lib/summernote/summernote-bs4.min.js"></script>
+    <script>
+      $(function(){
+        'use strict';
+        // Summernote editor
+        $('#summernote').summernote({
+          height: 150,
+          tooltip: false
+        })
+
+        $('#summernote2').summernote({
+          height: 150,
+          tooltip: false
+        })
+      });
+    </script>
       <script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
     <script>
 
@@ -327,6 +347,7 @@
     @endif
     </script>
     <script src="{{ asset('backend') }}/lib/sweetalert/sweetalert.min.js"></script>
+       <script src="{{asset('backend')}}/lib/bootstrap-tagsinput.min.js" crossorigin="anonymous"></script>
     <script src="{{ asset('backend') }}/lib/sweetalert/code.js"></script>
     <script src="{{ asset('dashboard_assets') }}/js/starlight.js"></script>
     <script src="{{ asset('dashboard_assets') }}/js/ResizeSensor.js"></script>
