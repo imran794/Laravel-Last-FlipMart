@@ -24,6 +24,14 @@
         @else
         @endcan
 
+
+          <a href="{{ route('banner.index') }}" class="sl-menu-link @yield('Add-Banner')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Add-Banner</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+
           <a href="{{ route('brand.index') }}" class="sl-menu-link @yield('Add-Brand')">
           <div class="sl-menu-item">
             <i class="icon ion-arrow-right-a"></i>
@@ -54,7 +62,23 @@
           <li class="nav-item"><a href="{{ route('product.index') }}" class="nav-link @yield('All Peoducts')">All Peoducts</a></li>
           <li class="nav-item"><a href="{{ route('product.create') }}" class="nav-link @yield('Add Products')">Add Products</a></li>
         </ul>
-       
+
+           <a href="{{ route('testimonial.index') }}" class="sl-menu-link @yield('Add-Testimonial')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Add-Testimonial</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->  
+
+
+         <a href="{{ route('blog.index') }}" class="sl-menu-link @yield('Add-Blog')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Add-Blog</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+
+                 
       </div><!-- sl-sideleft-menu -->
 
       <br>

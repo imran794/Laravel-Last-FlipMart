@@ -1,8 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('Products')
-active show-sub
-@endsection
+@section('title') Update Products @endsection
+
+@section('Manage Products') active show-sub @endsection
 
 
 @section('breadcrumb')
@@ -10,6 +10,7 @@ active show-sub
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ route('admin.dashboard') }}">Home</a></li>
         <li class="breadcrumb-item"><a href="{{ route('product.create') }}">Add Product</a></li>
+        <li class="breadcrumb-item"><a href="{{ route('product.show',$edit_data->id) }}">View Product</a></li>
         <li class="breadcrumb-item active" aria-current="page">Edit Product</li>
     </ol>
 </nav>
@@ -96,8 +97,8 @@ active show-sub
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label">Product Price: <span class="tx-danger">*</span></label>
-                                <input class="form-control" type="text" name="price" value="{{ $edit_data->selling_price }}">
-                                @error('price')
+                                <input class="form-control" type="text" name="selling_price" value="{{ $edit_data->selling_price }}">
+                                @error('selling_price')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -132,8 +133,8 @@ active show-sub
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label">Product Tag: <span class="tx-danger">*</span></label>
-                                <input class="form-control" type="text" disabled name="product_tag"  value="{{ $edit_data->product_tags }}" data-role="tagsinput">
-                                @error('product_tag')
+                                <input class="form-control" type="text" name="product_tags"  value="{{ $edit_data->product_tags }}" data-role="tagsinput">
+                                @error('product_tags')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
@@ -141,12 +142,21 @@ active show-sub
                         <div class="col-lg-4">
                             <div class="form-group">
                                 <label class="form-control-label">Product Size: <span class="tx-danger">*</span></label>
-                                <input class="form-control" type="text" disabled name="product_size" value="{{ $edit_data->product_size }}" data-role="tagsinput">
+                                <input class="form-control" type="text" name="product_size" value="{{ $edit_data->product_size }}" data-role="tagsinput">
                                 @error('product_size')
                                 <span class="text-danger">{{ $message }}</span>
                                 @enderror
                             </div>
                         </div><!-- col-4 -->
+                         <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-control-label">Product Color: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" name="product_color" value="{{ $edit_data->product_color }}" placeholder="Enter Product Color" data-role="tagsinput">
+                        @error('product_color')
+                        <span class="text-danger">{{ $message }}</span>
+                      @enderror
+                      </div>
+                  </div>
                      
                         <div class="col-md-6">
                             <div class="form-group">
@@ -189,7 +199,7 @@ active show-sub
 
                     </div><!-- row -->
                     <div class="form-layout-footer">
-                        <button style="cursor: pointer;" class="btn btn-info mg-r-5">Edit Product</button>
+                        <button style="cursor: pointer;" class="btn btn-info mg-r-5">Update Product</button>
                         <button class="btn btn-secondary">Cancel</button>
                     </div>
                 </form>
@@ -199,19 +209,19 @@ active show-sub
 </div>
 
 
- {{--  <form action="{{ route('thumpnil.image.update') }}" method="POST" enctype="multipart/form-data">
+  <form action="{{ route('thumpnil.image.update') }}" method="POST" enctype="multipart/form-data">
      @csrf
-      <input type="hidden" name="old_image" value="{{ $edit_data->thumbnail_image }}">
+      <input type="hidden" name="old_image" value="{{ $edit_data->product_thambnail }}">
       <input type="hidden" name="id" value="{{ $edit_data->id }}">
     <div class="row row-sm" style="margin-top: 50px;">
       <div class="col-md-4">
         <div class="card">
-          <img width="100" class="card-img-top"  src="{{ asset($edit_data->thumbnail_image) }}" alt="thumbnail_image">
+          <img width="80" class="card-img-top"  src="{{ asset($edit_data->product_thambnail) }}" alt="product_thambnail">
           <div class="card-body">
             <p class="card-text">
               <div class="form-group">
                 <label for="exampleInputPassword1">Update Image</label>
-                <input type="file" class="dropify form-control" name="thumbnail_image" id="exampleInputPassword1">
+                <input type="file" class="dropify form-control" name="product_thambnail" id="exampleInputPassword1">
               </div>
             </p>
           </div>
@@ -221,21 +231,21 @@ active show-sub
       <div class="form-layout-footer pt-3">
         <button type="submit" style="cursor: pointer" class="btn btn-info mg-r-5">Update Image</button>
       </div>
-    </form> --}}
+    </form>
 
 
     
-      {{--  <form action="{{ route('update.product.image') }}" method="POST" enctype="multipart/form-data">
+       <form action="{{ route('update.multiple.image') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <br>
             <br>
             <h4>Update Product Multiple Image</h4>
-            <div class="row row-sm" style="margin-top:50px;">
+            <div class="row row-sm" style="margin-top:10px;">
 
               @foreach ($multiple_images as $img)
                   <div class="col-md-3">
-                    <div class="card" >
-                      <img class="card-img-top" src="{{ asset($img->multi_img) }}" alt="Card image cap" style="height: 150px; width:150px;">
+                    <div class="card m-auto" >
+                      <img width="80" class="card-img-top" src="{{ asset($img->mulitple_images) }}" alt="mulitple_images">
                       <div class="card-body">
                         <h5 class="card-title">
                           <a href="{{ url('admin/product/multi/delete/'.$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
@@ -243,7 +253,7 @@ active show-sub
                         <p class="card-text">
                           <div class="form-group">
                             <label class="form-control-label">Change Image<span class="tx-danger">*</span></label>
-                            <input class="dropify form-control" type="file" name="multiimg[{{ $img->id }}]">
+                            <input class="dropify form-control" type="file" name="mulitple_images[{{ $img->id }}]">
                           </div>
                         </p>
                       </div>
@@ -255,7 +265,7 @@ active show-sub
             <div class="form-layout-footer pt-3">
               <button type="submit" style="cursor: pointer"; class="btn btn-info">Update Image</button>
             </div><!-- form-layout-footer -->
-          </form> --}}
+          </form>
 
 
 

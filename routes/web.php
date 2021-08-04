@@ -3,14 +3,18 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\UserController;
 Use App\Http\Controllers\Admin\AdminController;
+Use App\Http\Controllers\Admin\BlogController;
 Use App\Http\Controllers\Admin\RoleController;
+Use App\Http\Controllers\Admin\BannerController;
 Use App\Http\Controllers\Admin\BrandController;
+Use App\Http\Controllers\Admin\TestimonialController;
 Use App\Http\Controllers\Admin\CategoryController;
 Use App\Http\Controllers\Admin\SubCategoryController;
 Use App\Http\Controllers\Admin\SubSubCategoryController;
 Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
+Use App\Http\Controllers\Frontend\LanguageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,6 +30,9 @@ Use App\Http\Controllers\Frontend\ProfileController;
 
 
 Route::get('/', [IndexController::class, 'Index']);
+Route::get('product/details/{slug}',[IndexController::class, 'productdetails'])->name('product.details');
+Route::get('blog/page',[IndexController::class, 'blogpage'])->name('blog.page');
+Route::get('blog/details/{slug}',[IndexController::class, 'blogdetails'])->name('blog.details');
 
 
 
@@ -82,8 +89,27 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
     Route::get('proinactive/{id}',[ProductController::class, 'proinactive']);
     Route::get('proactive/{id}',[ProductController::class, 'proactive']);
     Route::get('sub/subcategory/ajax/{subcat_id}',[ProductController::class,'getsubSubCat']);  
+    Route::post('thumpnil/image/update',[ProductController::class,'imageupdate'])->name('thumpnil.image.update');  
+    Route::post('update/multiple/image',[ProductController::class,'updatemultiple'])->name('update.multiple.image');  
+    Route::get('product/multi/delete/{id}',[ProductController::class,'multiImageDelete']);  
    
 
+       // Banner
+    Route::resource('banner', BannerController::class);
+    Route::get('baninactive/{id}',[BannerController::class, 'baninactive']);
+    Route::get('banactive/{id}',[BannerController::class, 'banactive']);    
+
+
+       // testimonial
+    Route::resource('testimonial', TestimonialController::class);
+    Route::get('testinactive/{id}',[TestimonialController::class, 'testinactive']);
+    Route::get('testactive/{id}',[TestimonialController::class, 'testactive']);  
+
+
+       // blog
+    Route::resource('blog', BlogController::class);
+    Route::get('bloginactive/{id}',[BlogController::class, 'bloginactive']);
+    Route::get('blogactive/{id}',[BlogController::class, 'blogactive']);  
 
 
  
@@ -102,3 +128,7 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth'],'namespace'=>'user
     Route::get('change/password', [ProfileController::class, 'ChangePassword'])->name('change.password');
     Route::post('password/store', [ProfileController::class, 'PasswordStore'])->name('password.store');
 });
+
+
+Route::get('english/language',[LanguageController::class, 'enalish'])->name('english.language');
+Route::get('bangla/language',[LanguageController::class, 'bangla'])->name('bangla.language');

@@ -166,6 +166,8 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
+
+
          $request->validate([
             'brand_id'                  => 'required',
             'category_id'               => 'required',
@@ -178,7 +180,6 @@ class ProductController extends Controller
             'selling_price'             => 'required',
             'short_des'                 => 'required',
             'long_des'                  => 'required',
-            'product_thambnail'         => 'required|mimes:jpeg,jpg,png,gif,webp,max:10000',
         ]);
 
             Product::findOrFail($id)->update([
@@ -207,7 +208,7 @@ class ProductController extends Controller
             'message'=>'Product Update successfully',
             'alert-type'=>'success'
         );
-        return Redirect()->back()->with($notification);
+        return Redirect()->route('product.index')->with($notification);
     }
 
     /**
@@ -218,12 +219,129 @@ class ProductController extends Controller
      */
     public function destroy($id)
     {
-        //
+         $product = Product::findOrFail($id);
+         unlink($product->product_thambnail);
+         Product::findOrFail($id)->delete();
+         $images = MulitpleImage::where('product_id',$id)->get();
+         foreach ($images as $img) {
+            unlink($img->mulitple_images);
+            MulitpleImage::where('product_id',$id)->delete();
+         }
+
+         $notification=array(
+            'message'=>'Product Deleted Successfully',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+
     }
 
     public function getsubSubCat($subcat_id)
     {
         $subsubcat = SubSubCategory::where('subcategory_id',$subcat_id)->orderBy('sub_sub_category_name','asc')->get();
         return json_encode($subsubcat);
+    }
+
+    public function imageupdate(Request $request)
+    {
+        $id            = $request->id;
+        $old_image        = $request->old_image;
+      $productImage = Product::where('id',$id)->value('product_thambnail');
+
+        if ($productImage) {
+             unlink($old_image);
+                 $image = $request->file('product_thambnail');
+                $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                Image::make($image)->resize(917,1000)->save('uploads/products/mulitpleimages/'.$name_gen);
+                $save_urlup = 'uploads/products/mulitpleimages/'.$name_gen;
+
+                Product::findOrFail($id)->update([
+                'product_thambnail' => $save_urlup,
+                'updated_at' => Carbon::now(),
+
+            ]);
+            $notification=array(
+            'message'=>'Product Thambnail update Successfully',
+            'alert-type'=>'success'
+             );
+           return Redirect()->route('product.index')->with($notification);
+             }
+
+        
+        else{
+             $image = $request->file('product_thambnail');
+                $name_gen=hexdec(uniqid()).'.'.$image->getClientOriginalExtension();
+                Image::make($image)->resize(917,1000)->save('uploads/products/mulitpleimages/'.$name_gen);
+                $save_urlup = 'uploads/products/mulitpleimages/'.$name_gen;
+
+                Product::findOrFail($id)->update([
+                    'product_thambnail' => $save_urlup,
+                    'updated_at' => Carbon::now(),
+
+            ]);
+                   $notification=array(
+            'message'=>'Product Thambnail update Successfully',
+            'alert-type'=>'success'
+        );
+        return Redirect()->route('product.index')->with($notification);
+        }
+    }
+
+    public function updatemultiple(Request $request)
+    {
+          $imgs = $request->mulitple_images;
+
+        foreach ($imgs as $id => $img) {
+            $imgDel = MulitpleImage::findOrFail($id);
+            unlink($imgDel->mulitple_images);
+            $make_name=hexdec(uniqid()).'.'.$img->getClientOriginalExtension();
+            Image::make($img)->resize(917,1000)->save('uploads/products/mulitpleimages/'.$make_name);
+            $uplodPath = 'uploads/products/mulitpleimages/'.$make_name;
+
+           MulitpleImage::where('id',$id)->update([
+            'mulitple_images' => $uplodPath,
+            'updated_at' => Carbon::now(),
+           ]);
+
+        }
+
+        $notification=array(
+            'message'=>'MulitpleImage Update Successfully',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+    public function multiImageDelete($id){
+            $oldimg = MulitpleImage::findOrFail($id);
+            unlink($oldimg->mulitple_images);
+        MulitpleImage::findOrFail($id)->delete();
+
+        $notification=array(
+            'message'=>'Mulitple Image Dlete Successfully',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+
+
+    public function proinactive($id){
+        Product::findOrFail($id)->update(['status' => 0]);
+        $notification=array(
+            'message'=>'Product Inactive Successfully',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
+
+    public function proactive($id){
+        Product::findOrFail($id)->update(['status' => 1]);
+        $notification=array(
+            'message'=>'Product Activate Successfully',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+
     }
 }

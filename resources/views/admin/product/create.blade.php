@@ -170,7 +170,7 @@
                   <div class="col-md-4">
                     <div class="form-group">
                         <label class="form-control-label">Multiple Image: <span class="tx-danger">*</span></label>
-                        <input class="form-control dropify" type="file" name="mulitple_images[]" value="{{ old('mulitple_images') }} multiple">
+                        <input class="form-control dropify" type="file" name="mulitple_images[]" value="{{ old('mulitple_images') }}" multiple>
                         @error('mulitple_images')
                         <span class="text-danger">{{ $message }}</span>
                       @enderror

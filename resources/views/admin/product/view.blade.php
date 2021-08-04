@@ -60,8 +60,8 @@
                             <div class="form-group">
                                 <label class="form-control-label">Sub Category Name: <span class="tx-danger">*</span></label>
                                 <select class="form-control select2" placeholder="Category Name" name="subcategory_id">
-                                    <option label="Choose country"></option>
-                                    <option value="USA">United States of America</option>
+                                    <option label="Choose SubCategory"></option>
+                           
 
                                 </select>
                                 @error('subcategory_id')
@@ -74,8 +74,8 @@
                             <div class="form-group">
                                 <label class="form-control-label">Sub Sub Category Name: <span class="tx-danger">*</span></label>
                                 <select class="form-control select2" placeholder="Sub Sub Category Name" name="subsubcategory_id">
-                                    <option label="Choose country"></option>
-                                    <option value="USA">United States of America</option>
+                                    <option label="Choose Sub Sub Category"></option>
+                          
 
                                 </select>
                                 @error('subsubcategory_id')
@@ -147,6 +147,15 @@
                                 @enderror
                             </div>
                         </div><!-- col-4 -->
+                         <div class="col-md-4">
+                    <div class="form-group">
+                        <label class="form-control-label">Product Color: <span class="tx-danger">*</span></label>
+                        <input class="form-control" type="text" name="product_color" value="{{ $edit_data->product_color }}" placeholder="Enter Product Color" data-role="tagsinput">
+                        @error('product_color')
+                        <span class="text-danger">{{ $message }}</span>
+                      @enderror
+                      </div>
+                  </div>
                      
                         <div class="col-md-6">
                             <div class="form-group">
@@ -197,11 +206,15 @@
 </div>
 </div><!-- d-flex -->
 
-<input type="hidden" name="image_id" value="{{ $edit_data->thumpnil_image }}">
+    
+  <form action="{{ route('thumpnil.image.update') }}" method="POST" enctype="multipart/form-data">
+     @csrf
+      <input type="hidden" name="old_image" value="{{ $edit_data->product_thambnail }}">
+      <input type="hidden" name="id" value="{{ $edit_data->id }}">
     <div class="row row-sm" style="margin-top: 50px;">
-      <div class="col-md-3"><h5 class="text-center">Thumbnail Image</h5>
+      <div class="col-md-4">
         <div class="card">
-          <img width="100" class="card-img-top"  src="{{ asset($edit_data->product_thambnail) }}" alt="product_thambnail">
+          <img width="80" class="card-img-top"  src="{{ asset($edit_data->product_thambnail) }}" alt="product_thambnail">
           <div class="card-body">
             <p class="card-text">
               <div class="form-group">
@@ -211,76 +224,104 @@
         </div>
       </div>
       </div>
+ 
+    </form>
 
 
     
-    <div class="row row-sm" style="margin-top: 50px;">
-      @foreach ($multiple_images as $multiple_image)
-      <div class="col-md-3"><h5 class="text-center">Multiple Image</h5>
-        <div class="card">
-          <img width="100" class="card-img-top"  src="{{ asset($multiple_image->mulitple_images) }}" alt="Card image cap">
-          <div class="card-body">
-            <p class="card-text">
-              <div class="form-group">
-                <label for="exampleInputPassword1"></label>
-              
-              </div>
-            </p>
-          </div>
-        </div>
-      </div>
-        @endforeach
-        
-      </div>
-    </form>
-    </div>
-  </div>
+       <form action="{{ route('update.multiple.image') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <br>
+            <br>
+            <h4>Product Multiple Image</h4>
+            <div class="row row-sm" style="margin-top:10px;">
 
+              @foreach ($multiple_images as $img)
+                  <div class="col-md-3">
+                    <div class="card m-auto" >
+                      <img width="80" class="card-img-top" src="{{ asset($img->mulitple_images) }}" alt="mulitple_images">
+                      <div class="card-body">
+                        <h5 class="card-title">
+                          <a href="{{ url('admin/product/multi/delete/'.$img->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
+                        </h5>
+                        <p class="card-text">
+                        
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                    @endforeach
+            </div>
+
+            <div class="form-layout-footer pt-3">
+          
+          </form>
 
 
 
 <script src="{{asset('backend')}}/lib/jquery-2.2.4.min.js"></script>
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select[name="category_id"]').on('change', function() {
-            var category_id = $(this).val();
-            if (category_id) {
-                $.ajax({
-                    url: "{{  url('/admin/subcategory/ajax') }}/" + category_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        var d = $('select[name="subcategory_id"]').empty();
-                        $.each(data, function(key, value) {
-                            $('select[name="subcategory_id"]').append('<option value="' + value.id + '">' + value.subcategory_name + '</option>');
-                        });
-                    },
-                });
-            } else {
-                alert('danger');
-            }
-        });
-    });
-    $(document).ready(function() {
-        $('select[name="subcategory_id"]').on('change', function() {
-            var subcategory_id = $(this).val();
-            if (subcategory_id) {
-                $.ajax({
-                    url: "{{  url('/admin/subsubcategory/ajax') }}/" + subcategory_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        var d = $('select[name="subsubcategory_id"]').empty();
-                        $.each(data, function(key, value) {
-                            $('select[name="subsubcategory_id"]').append('<option value="' + value.id + '">' + value.subsubcategory_name + '</option>');
-                        });
-                    },
-                });
-            } else {
-                alert('danger');
-            }
-        });
+     <script type="text/javascript">
+         $.ajaxSetup({
+        headers:{
+            'X-CSRF-TOKEN':$('meta[name="csrf-token"]').attr('content')
+        }
     });
 
-</script>
+
+      $(document).ready(function() {
+        $('select[name="category_id"]').on('change', function(){
+            var category_id = $(this).val();
+            if(category_id) {
+                $.ajax({
+                    url: "{{  url('/admin/subcategory/ajax') }}/"+category_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data) {
+                       var d =$('select[name="subcategory_id"]').empty();
+                          $.each(data, function(key, value){
+
+                              $('select[name="subcategory_id"]').append('<option value="'+ value.id +'">' + value.sub_category_name + '</option>');
+
+                          });
+
+                    },
+
+                });
+            } else {
+                alert('danger');
+            }
+
+        });
+
+    }
+
+    );
+
+
+         $('select[name="subcategory_id"]').on('change', function(){
+            var subcategory_id = $(this).val();
+            if(subcategory_id) {
+                $.ajax({
+                    url: "{{  url('/admin/sub/subcategory/ajax') }}/"+subcategory_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data) {
+                       var d =$('select[name="subsubcategory_id"]').empty();
+                          $.each(data, function(key, value){
+
+                              $('select[name="subsubcategory_id"]').append('<option value="'+ value.id +'">' + value.sub_sub_category_name + '</option>');
+
+                          });
+
+                    },
+
+                });
+            } else {
+                alert('danger');
+            }
+
+        });
+
+
+    </script>
 @endsection

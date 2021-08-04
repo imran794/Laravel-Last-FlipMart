@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-12">
            <div class="card">
-               <div class="card-body">List-Products</div>
+               <div class="card-body">List-Products  <a style="float: right;" href="{{ route('product.create') }}" title="">Add Product</a> </div>
                <div class="card-header">
                 <div class="card pd-20 pd-sm-40">
                     <div class="table-wrapper">
@@ -36,7 +36,7 @@
                             <th class="wd-15p">Category</th>
                             <th class="wd-15p">Subcategory</th>
                             <th class="wd-15p">Subsubategory</th>
-                            <th class="wd-15p">S.Price</th>
+                            <th class="wd-15p">Status</th>
                             <th class="wd-15p">Action</th>
                           </tr>
                         </thead>
@@ -47,9 +47,9 @@
                                <img width="100" src="{{ asset($item->product_thambnail) }}" alt="product_thambnail">
                              </td>
                              <td>{{ $item->product_name }}</td>
-                             <td>{{ $item->category_id }}</td>
-                             <td>{{ $item->subcategory_id }}</td>
-                            <td>{{ $item->subsubcategory_id }}</td>
+                             <td>{{ $item->category->category_name }}</td>
+                             <td>{{ $item->subcategory->sub_category_name }}</td>
+                            <td>{{ $item->subsubcategory->sub_sub_category_name }}</td>
                             <td>
                               @if ($item->status == 1)
                                <span class="badge badge-pill badge-success">Active</span>
@@ -66,13 +66,13 @@
                                   <form action="{{ route('product.destroy',$item->id) }}" method="POST">
                                     @csrf
                                     @method('delete')
-                                  <button class="btn btn-sm btn-danger" style="cursor: pointer;"  title="delete data"><i class="fa fa-trash"></i></button>
+                                  <button class="btn btn-sm btn-danger" id="delete" style="cursor: pointer;"  title="delete data"><i class="fa fa-trash"></i></button>
                                 </form>
                            
                                 @if ($item->status == 1)
-                                 <a href="{{ url('admin/categoryinactive') }}/{{ $item->id }}"  type="button" class="btn btn-danger btn-sm" title="Inactive"><i class="fa fa-arrow-down"></i></a>
+                                 <a href="{{ url('admin/proinactive') }}/{{ $item->id }}"  type="button" class="btn btn-danger btn-sm" title="Inactive"><i class="fa fa-arrow-down"></i></a>
                                  @else  
-                                  <a href="{{ url('admin/categoryactive') }}/{{ $item->id }}"  type="button" class="btn btn-info btn-sm" title="Active"><i class="fa fa-arrow-up"></i></a>
+                                  <a href="{{ url('admin/proactive') }}/{{ $item->id }}"  type="button" class="btn btn-info btn-sm" title="Active"><i class="fa fa-arrow-up"></i></a>
                                    @endif 
                               </div>
                             </td>
