@@ -28,33 +28,33 @@ Index
                             <li class="dropdown menu-item">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="{{ $category->category_icon }}" aria-hidden="true"></i>{{ $category->category_name }}</a>
                                 <ul class="dropdown-menu mega-menu">
-                                 <div class="yamm-content">
-                                                    <div class="row">
-                                                        @php
-                                                        $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderby('sub_category_name','ASC')->get();
-                                                        @endphp
-                                                        @foreach ($subcategories as $subcategory)
+                                    <div class="yamm-content">
+                                        <div class="row">
+                                            @php
+                                            $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderby('sub_category_name','ASC')->get();
+                                            @endphp
+                                            @foreach ($subcategories as $subcategory)
 
-                                                        <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
-                                                            <h2 class="title">{{ $subcategory->sub_category_name }}</h2>
-                                                            <ul class="links">
-                                                                @php
-                                                                $subsucategories = App\Models\Subsubcategory::where('subcategory_id',$subcategory->id)->orderBy('sub_sub_category_name','ASC')->get();
-                                                                @endphp
-                                                                @foreach ($subsucategories as $subsucategory)
+                                            <div class="col-xs-12 col-sm-6 col-md-2 col-menu">
+                                                <h2 class="title">{{ $subcategory->sub_category_name }}</h2>
+                                                <ul class="links">
+                                                    @php
+                                                    $subsucategories = App\Models\Subsubcategory::where('subcategory_id',$subcategory->id)->orderBy('sub_sub_category_name','ASC')->get();
+                                                    @endphp
+                                                    @foreach ($subsucategories as $subsucategory)
 
-                                                                <li><a href="#">{{ $subsucategory->sub_sub_category_name }}</a></li>
-                                                                @endforeach
+                                                    <li><a href="#">{{ $subsucategory->sub_sub_category_name }}</a></li>
+                                                    @endforeach
 
-                                                            </ul>
-                                                        </div><!-- /.col -->
-                                                        @endforeach
-                                                        <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image">
-                                                            <img class="img-responsive" src="assets/images/banners/top-menu-banner.jpg" alt="">
+                                                </ul>
+                                            </div><!-- /.col -->
+                                            @endforeach
+                                            <div class="col-xs-12 col-sm-6 col-md-4 col-menu banner-image">
+                                                <img class="img-responsive" src="assets/images/banners/top-menu-banner.jpg" alt="">
 
-                                                        </div><!-- /.yamm-content -->
-                                                    </div>
-                                                </div>
+                                            </div><!-- /.yamm-content -->
+                                        </div>
+                                    </div>
                                 </ul><!-- /.dropdown-menu -->
                             </li><!-- /.menu-item -->
                             @endforeach
@@ -64,25 +64,25 @@ Index
                 </div><!-- /.side-menu -->
 
 
-             
-                    @include('frontend/inc/hotdeals')
-          
-                   @include('frontend/inc/special')
-      
+
+                @include('frontend/inc/hotdeals')
+
+                @include('frontend/inc/special')
+
                 @include('frontend/inc/tags')
-         
+
 
                 @include('frontend/inc/deals')
-    
-                  @include('frontend/inc/new')
-             
+
+                @include('frontend/inc/new')
+
                 @include('frontend/inc/test')
 
-             
 
-                 <div style="padding-top:30px ;" class="home-banner outer-top-n">
-                            <img src="{{ asset('frontend_assets') }}/assets/images/banners/LHS-banner.jpg" alt="Image">
-                        </div>
+
+                <div style="padding-top:30px ;" class="home-banner outer-top-n">
+                    <img src="{{ asset('frontend_assets') }}/assets/images/banners/LHS-banner.jpg" alt="Image">
+                </div>
 
 
 
@@ -93,7 +93,7 @@ Index
             <div class="col-xs-12 col-sm-12 col-md-9 homebanner-holder">
                 <!-- ========================================== SECTION – HERO ========================================= -->
 
-             @include('frontend/inc/header')
+                @include('frontend/inc/header')
 
                 <!-- ========================================= SECTION – HERO : END ========================================= -->
 
@@ -148,7 +148,7 @@ Index
                         <ul class="nav nav-tabs nav-tab-line pull-right" id="new-products-1">
                             <li class="active"><a data-transition-type="backSlide" href="#all" data-toggle="tab">All</a></li>
                             @foreach ($categories as $category)
-                            <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name }}</a></li> 
+                            <li><a data-transition-type="backSlide" href="#category{{ $category->id }}" data-toggle="tab">{{ $category->category_name }}</a></li>
                             @endforeach
                         </ul><!-- /.nav-tabs -->
                     </div>
@@ -167,18 +167,18 @@ Index
                                                     <div class="image">
                                                         <a href="{{ route('product.details',$product->product_slug) }}"><img src="{{ asset($product->product_thambnail) }}" alt="product_thambnail"></a>
                                                     </div><!-- /.image -->
-                                                     @php
+                                                    @php
                                                     $amount = $product->selling_price - $product->discount_price;
-                                                    $discount =  ( $amount/$product->selling_price) * 100;
+                                                    $discount = ( $amount/$product->selling_price) * 100;
                                                     @endphp
 
                                                     <div class="tag new">
                                                         @if ($product->discount_price == NULL)
-                                                             <span>new</span>
+                                                        <span>new</span>
                                                         @else
-                                                             <span>{{ round($discount) }}%</span>
+                                                        <span>{{ round($discount) }}%</span>
                                                         @endif
-                                                       
+
                                                     </div>
                                                 </div><!-- /.product-image -->
 
@@ -189,9 +189,9 @@ Index
                                                     <div class="description"></div>
 
                                                     <div class="product-price">
-                                                    @if($product->discount_price == NULL)
-                                                    <span class="price">${{ $product->selling_price }}</span>
-                                                   
+                                                        @if($product->discount_price == NULL)
+                                                        <span class="price">${{ $product->selling_price }}</span>
+
                                                         @else
                                                         <span class="price-before-discount">${{ $product->discount_price }}</span>
                                                         @endif
@@ -228,21 +228,21 @@ Index
                                         </div><!-- /.products -->
                                     </div><!-- /.item -->
                                     @endforeach
-                                 
+
                                 </div><!-- /.home-owl-carousel -->
                             </div><!-- /.product-slider -->
                         </div><!-- /.tab-pane -->
-                 @foreach ($categories as $category)
-                         <div class="tab-pane" id="category{{ $category->id }}">
+                        @foreach ($categories as $category)
+                        <div class="tab-pane" id="category{{ $category->id }}">
                             <div class="product-slider">
                                 <div class="owl-carousel home-owl-carousel custom-carousel owl-theme">
-                      @php
-                    $catwiseProducts = App\Models\Product::where('category_id',$category->id)->orderBy('id','DESC')->get();
-                @endphp
+                                    @php
+                                    $catwiseProducts = App\Models\Product::where('category_id',$category->id)->orderBy('id','DESC')->get();
+                                    @endphp
 
-                @foreach ($catwiseProducts as $catwiseProduct)
-                    
-                
+                                    @foreach ($catwiseProducts as $catwiseProduct)
+
+
                                     <div class="item item-carousel">
                                         <div class="products">
 
@@ -262,9 +262,9 @@ Index
                                                     <div class="description"></div>
 
                                                     <div class="product-price">
-                                                    @if($catwiseProduct->discount_price == NULL)
-                                                    <span class="price">${{ $catwiseProduct->discount_price }}</span>
-                                                    <span class="price-before-discount">${{ $catwiseProduct->selling_price }}</span>
+                                                        @if($catwiseProduct->discount_price == NULL)
+                                                        <span class="price">${{ $catwiseProduct->discount_price }}</span>
+                                                        <span class="price-before-discount">${{ $catwiseProduct->selling_price }}</span>
                                                         @else
                                                         <span class="price">${{ $catwiseProduct->selling_price }}</span>
                                                         @endif
@@ -300,12 +300,12 @@ Index
 
                                         </div><!-- /.products -->
                                     </div><!-- /.item -->
-                                 @endforeach
-                                
+                                    @endforeach
+
                                 </div><!-- /.home-owl-carousel -->
                             </div><!-- /.product-slider -->
                         </div><!-- /.tab-pane -->
-                   @endforeach
+                        @endforeach
                     </div><!-- /.tab-content -->
                 </div><!-- /.scroll-tabs -->
                 <!-- ============================================== SCROLL TABS : END ============================================== -->
@@ -634,9 +634,9 @@ Index
 
 
 
-                   @include('frontend/inc/blog')
+                @include('frontend/inc/blog')
                 @include('frontend/inc/arrivals')
-    
+
 
 
             </div><!-- /.homebanner-holder -->

@@ -14,7 +14,7 @@
 
                                     <div class="blog-post-info text-left">
                                         <h3 class="name"><a href="#">{{ $blog->title }}</a></h3>
-                                        <span class="info">By Jone Doe &nbsp;|&nbsp; 21 March 2016 </span>
+                                        <span class="info">By {{ $blog->user->name }} &nbsp;|&nbsp; {{ $blog->created_at->format('M d Y') }} </span>
                                         <p class="text">{{ $blog->des }}</p>
                                         <a href="{{ route('blog.page') }}" class="lnk btn btn-primary">{{ $blog->btn }}</a>
                                     </div><!-- /.blog-post-info -->

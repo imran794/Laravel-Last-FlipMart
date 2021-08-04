@@ -43,7 +43,15 @@ class IndexController extends Controller
     {
        
         return view('frontend.blog',[
-            'blogs'     => Blog::latest()->get()
+            'blogs'     => Blog::latest()->get(),
+            'categories'    => Category::latest()->get(),
         ]);
+    }
+
+    public function blogdetails($slug)
+    {
+        $categories  =  Category::latest()->get();
+        $slug = Blog::where('slug',$slug)->first();
+        return view('frontend.blogdetails',compact('slug','categories'));
     }
 }
