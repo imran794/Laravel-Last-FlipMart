@@ -1,15 +1,15 @@
 @extends('layouts.dashboard')
 
-@section('title') Update Cayegory @endsection
+@section('title') Update Category @endsection
 
-@section('Add-Cayegory') active @endsection
+@section('Add-Category') active @endsection
 
 @section('breadcrumb')
   <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-      <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Add Cayegory</a></li>
-      <li class="breadcrumb-item active" aria-current="page">Update Cayegory</li>
+      <li class="breadcrumb-item"><a href="{{ route('category.index') }}">Add Category</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Update Category</li>
     </ol>
   </nav>
 @endsection
@@ -22,7 +22,7 @@
         <div class="col-md-6 m-auto">
             <div class="card">
                 <div class="card-header">
-                    Update Cayegory
+                    Update Category
                 </div> 
                 <div class="card-body">
                    <form action="{{ route('category.update',$edit_data->id) }}" method="POST">

@@ -297,15 +297,15 @@
                                                                 <li><a href="detail.html">Detail</a></li>
                                                                 <li><a href="shopping-cart.html">Shopping Cart Summary</a></li>
                                                                 <li><a href="checkout.html">Checkout</a></li>
-                                                                <li><a href="blog.html">Blog</a></li>
+                                                                <li><a href="{{ route('blog.page') }}">Blog</a></li>
                                                                 <li><a href="blog-details.html">Blog Detail</a></li>
-                                                                <li><a href="contact.html">Contact</a></li>
+                                                                <li><a href="{{ route('contact.us') }}">Contact</a></li>
                                                                 <li><a href="sign-in.html">Sign In</a></li>
                                                                 <li><a href="my-wishlist.html">Wishlist</a></li>
                                                                 <li><a href="terms-conditions.html">Terms and Condition</a></li>
                                                                 <li><a href="track-orders.html">Track Orders</a></li>
                                                                 <li><a href="product-comparison.html">Product-Comparison</a></li>
-                                                                <li><a href="faq.html">FAQ</a></li>
+                                                                <li><a href="{{ route('faq.page') }}">FAQ</a></li>
                                                                 <li><a href="404.html">404</a></li>
 
                                                             </ul>

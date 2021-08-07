@@ -6,7 +6,9 @@ Use App\Http\Controllers\Admin\AdminController;
 Use App\Http\Controllers\Admin\BlogController;
 Use App\Http\Controllers\Admin\RoleController;
 Use App\Http\Controllers\Admin\BannerController;
+Use App\Http\Controllers\Admin\CinformationController;
 Use App\Http\Controllers\Admin\BrandController;
+Use App\Http\Controllers\Admin\FaqController;
 Use App\Http\Controllers\Admin\TestimonialController;
 Use App\Http\Controllers\Admin\CategoryController;
 Use App\Http\Controllers\Admin\SubCategoryController;
@@ -33,6 +35,12 @@ Route::get('/', [IndexController::class, 'Index']);
 Route::get('product/details/{slug}',[IndexController::class, 'productdetails'])->name('product.details');
 Route::get('blog/page',[IndexController::class, 'blogpage'])->name('blog.page');
 Route::get('blog/details/{slug}',[IndexController::class, 'blogdetails'])->name('blog.details');
+Route::get('faq/page',[IndexController::class, 'faqpage'])->name('faq.page');
+Route::get('contact/us',[IndexController::class, 'contact'])->name('contact.us');
+Route::post('contact/store',[IndexController::class, 'contactstore'])->name('contact.store');
+Route::get('contact/index',[IndexController::class, 'contactindex'])->name('contact.index');
+Route::get('contact/show/{id}',[IndexController::class, 'contactshow'])->name('contact.show');
+Route::get('contact/delete/{id}',[IndexController::class, 'contactdelete'])->name('contact.delete');
 
 
 
@@ -110,6 +118,16 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
     Route::resource('blog', BlogController::class);
     Route::get('bloginactive/{id}',[BlogController::class, 'bloginactive']);
     Route::get('blogactive/{id}',[BlogController::class, 'blogactive']);  
+
+       // faq
+    Route::resource('faq', FaqController::class);
+    Route::get('faqinactive/{id}',[FaqController::class, 'faqinactive']);
+    Route::get('faqactive/{id}',[FaqController::class, 'faqactive']);
+
+        // CinformationController
+    Route::resource('cinformation', CinformationController::class);
+    Route::get('inforinactive/{id}',[CinformationController::class, 'inforinactive']);
+    Route::get('inforactive/{id}',[CinformationController::class, 'inforactive']);  
 
 
  

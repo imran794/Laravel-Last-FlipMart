@@ -76,6 +76,25 @@
             <i class="icon ion-arrow-right-a"></i>
             <span class="menu-item-label">Add-Blog</span>
           </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->  
+
+           <a href="{{ route('faq.index') }}" class="sl-menu-link @yield('Add-Faq')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Add-Faq</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link --> 
+        <a href="{{ route('contact.index') }}" class="sl-menu-link @yield('See-User-Message')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">See-User-Message</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link --> 
+        <a href="{{ route('cinformation.index') }}" class="sl-menu-link @yield('Contact-Information-Add')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Contact-Information-Add</span>
+          </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
 
                  

@@ -27,10 +27,11 @@
                                                         <div class="rating rateit-small"></div>
                                                         <div class="product-price">
                                                              @if($specialdeal->discount_price == NULL)
-                                                            <span class="price">${{ $specialdeal->discount_price }}</span>
-                                                            <span class="price-before-discount">${{ $specialdeal->selling_price }}</span>
+                                                            <span class="price">${{ $specialdeal->selling_price }}</span>
+                                                          
                                                         @else
                                                         <span class="price">${{ $specialdeal->selling_price }}</span>
+                                                          <span class="price-before-discount">${{ $specialdeal->discount_price }}</span>
                                                         @endif
 
                                                         </div><!-- /.product-price -->

@@ -172,11 +172,11 @@ Index
                                                     $discount = ( $amount/$product->selling_price) * 100;
                                                     @endphp
 
-                                                    <div class="tag new">
+                                                    <div class="">
                                                         @if ($product->discount_price == NULL)
-                                                        <span>new</span>
+                                                        <span class="tag sale">new</span>
                                                         @else
-                                                        <span>{{ round($discount) }}%</span>
+                                                        <span class="tag new">{{ round($discount) }}%</span>
                                                         @endif
 
                                                     </div>
@@ -193,7 +193,8 @@ Index
                                                         <span class="price">${{ $product->selling_price }}</span>
 
                                                         @else
-                                                        <span class="price-before-discount">${{ $product->discount_price }}</span>
+                                                        <span class="price">${{ $product->discount_price }}</span>
+                                                        <span class="price-before-discount">${{ $product->selling_price }}</span>
                                                         @endif
                                                     </div><!-- /.product-price -->
 
@@ -251,8 +252,18 @@ Index
                                                     <div class="image">
                                                         <a href="{{ route('product.details',$catwiseProduct->product_slug) }}"><img src="{{ asset($catwiseProduct->product_thambnail) }}" alt=""></a>
                                                     </div><!-- /.image -->
+                                                         @php
+                                                    $amount = $product->selling_price - $product->discount_price;
+                                                    $discount = ( $amount/$product->selling_price) * 100;
+                                                    @endphp
+                                                     <div class="">
+                                                        @if ($product->discount_price == NULL)
+                                                        <span class="tag sale">new</span>
+                                                        @else
+                                                        <span class="tag new">{{ round($discount) }}%</span>
+                                                        @endif
 
-                                                    <div class="tag sale"><span>sale</span></div>
+                                                    </div>
                                                 </div><!-- /.product-image -->
 
 
@@ -341,8 +352,8 @@ Index
 
                         <div class="col-md-12">
                             <div class="wide-banner cnt-strip">
-                                <div class="image">
                                     <img class="img-responsive" src="{{ asset('frontend_assets/assets/images/banners/home-banner.jpg') }}" alt="">
+                                <div class="image">
                                 </div>
                                 <div class="strip strip-text">
                                     <div class="strip-inner">
@@ -407,201 +418,6 @@ Index
                                                         <div class="image">
                                                             <a href="#">
                                                                 <img src="assets/images/products/p21.jpg" alt="">
-                                                            </a>
-                                                        </div><!-- /.image -->
-
-
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col2 col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                $450.99 </span>
-
-                                                        </div><!-- /.product-price -->
-
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="#">
-                                                                <img src="assets/images/products/p22.jpg" alt="">
-                                                            </a>
-                                                        </div><!-- /.image -->
-
-
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col2 col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                $450.99 </span>
-
-                                                        </div><!-- /.product-price -->
-
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="#">
-                                                                <img src="assets/images/products/p23.jpg" alt="">
-                                                            </a>
-                                                        </div><!-- /.image -->
-
-
-
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col2 col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                $450.99 </span>
-
-                                                        </div><!-- /.product-price -->
-
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="#">
-                                                                <img src="assets/images/products/p24.jpg" alt="">
-                                                            </a>
-                                                        </div><!-- /.image -->
-
-
-
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col2 col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                $450.99 </span>
-
-                                                        </div><!-- /.product-price -->
-
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="#">
-                                                                <img src="assets/images/products/p25.jpg" alt="">
-                                                            </a>
-                                                        </div><!-- /.image -->
-
-
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col2 col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                $450.99 </span>
-
-                                                        </div><!-- /.product-price -->
-
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="products best-product">
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="#">
-                                                                <img src="assets/images/products/p26.jpg" alt="">
-                                                            </a>
-                                                        </div><!-- /.image -->
-
-
-
-                                                    </div><!-- /.product-image -->
-                                                </div><!-- /.col -->
-                                                <div class="col2 col-xs-7">
-                                                    <div class="product-info">
-                                                        <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                        <div class="rating rateit-small"></div>
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                $450.99 </span>
-
-                                                        </div><!-- /.product-price -->
-
-                                                    </div>
-                                                </div><!-- /.col -->
-                                            </div><!-- /.product-micro-row -->
-                                        </div><!-- /.product-micro -->
-
-                                    </div>
-                                    <div class="product">
-                                        <div class="product-micro">
-                                            <div class="row product-micro-row">
-                                                <div class="col col-xs-5">
-                                                    <div class="product-image">
-                                                        <div class="image">
-                                                            <a href="#">
-                                                                <img src="assets/images/products/p27.jpg" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
 

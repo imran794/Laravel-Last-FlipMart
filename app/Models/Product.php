@@ -26,4 +26,8 @@ class Product extends Model
       public function subsubcategory(){
         return $this->belongsTo('App\Models\SubSubCategory','subsubcategory_id');
     }
+
+    function get_latest_multiple(){
+        return $this->hasMany('App\Models\MulitpleImage','product_id','id');
+    }
 }

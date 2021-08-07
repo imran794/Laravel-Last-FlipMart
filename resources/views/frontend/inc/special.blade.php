@@ -16,7 +16,7 @@
                                                 <div class="col col-xs-5">
                                                     <div class="product-image">
                                                         <div class="image">
-                                                            <a href="#">
+                                                            <a href="{{ route('product.details',$specialoffer->product_slug,) }}">
                                                                 <img src="{{ asset($specialoffer->product_thambnail) }}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
@@ -27,13 +27,17 @@
                                                 </div><!-- /.col -->
                                                 <div class="col col-xs-7">
                                                     <div class="product-info">
-                                                        <h3 class="name"><a href="#">{{ $specialoffer->product_name }}</a></h3>
+                                                        <h3 class="name"><a href="{{ route('product.details',$specialoffer->product_slug) }}">{{ $specialoffer->product_name }}</a></h3>
                                                         <div class="rating rateit-small"></div>
-                                                        <div class="product-price">
-                                                            <span class="price">
-                                                                $450.99 </span>
+                                                       <div class="product-price">
+                                                        @if($specialoffer->discount_price == NULL)
+                                                        <span class="price">${{ $specialoffer->selling_price }}</span>
 
-                                                        </div><!-- /.product-price -->
+                                                        @else
+                                                        <span class="price">${{ $specialoffer->discount_price }}</span>
+                                                        <span class="price-before-discount">${{ $specialoffer->selling_price }}</span>
+                                                        @endif
+                                                    </div><!-- /.product-price -->
 
                                                     </div>
                                                 </div><!-- /.col -->
