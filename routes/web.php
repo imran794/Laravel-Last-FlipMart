@@ -41,6 +41,7 @@ Route::post('contact/store',[IndexController::class, 'contactstore'])->name('con
 Route::get('contact/index',[IndexController::class, 'contactindex'])->name('contact.index');
 Route::get('contact/show/{id}',[IndexController::class, 'contactshow'])->name('contact.show');
 Route::get('contact/delete/{id}',[IndexController::class, 'contactdelete'])->name('contact.delete');
+Route::get('product/tag/{tags}',[IndexController::class, 'producttag'])->name('product.tag');
 
 
 

@@ -10,7 +10,18 @@
                                     <div class="image">
                                         <img src="{{ asset($hotdeals->product_thambnail) }}" alt="">
                                     </div>
-                                    <div class="sale-offer-tag"><span>49%<br>off</span></div>
+                                    @php
+                                    $amount = $hotdeals->selling_price - $hotdeals->discount_price;
+                                    $discount = ( $amount/$hotdeals->selling_price) * 100;
+                                    @endphp
+                                    <div class="">
+                                        @if ($hotdeals->discount_price == NULL)
+                                            <span class="tag sale">new</span>
+                                        @else
+                                            <span class="sale-offer-tag">{{ round($discount) }}%<br>off</span>
+                                        @endif
+                                      
+                                    </div>
                                     <div class="timing-wrapper">
                                         <div class="box-wrapper">
                                             <div class="date box">
@@ -25,7 +36,7 @@
                                                 <span class="value">HRS</span>
                                             </div>
                                         </div>
-
+                                            
                                         <div class="box-wrapper">
                                             <div class="minutes box">
                                                 <span class="key">36</span>
@@ -43,16 +54,18 @@
                                 </div><!-- /.hot-deal-wrapper -->
 
                                 <div class="product-info text-left m-t-20">
-                                    <h3 class="name"><a href="detail.html">Floral Print Buttoned</a></h3>
+                                    <h3 class="name"><a href="{{ route('product.details',$hotdeals->product_slug) }}">{{ $hotdeals->product_name }}</a></h3>
                                     <div class="rating rateit-small"></div>
 
                                     <div class="product-price">
-                                        <span class="price">
-                                            $600.00
-                                        </span>
+                                        @if ($hotdeals->discount_price == NULL)
+                                             <span class="price">{{ $hotdeals->selling_price }}</span>
+                                        @else
+                                            <span class="price">${{ $hotdeals->discount_price }}</span>
+                                             <span class="price-before-discount">${{ $hotdeals->selling_price }}</span>
 
-                                        <span class="price-before-discount">$800.00</span>
-
+                                        @endif
+                                    
                                     </div><!-- /.product-price -->
 
                                 </div><!-- /.product-info -->

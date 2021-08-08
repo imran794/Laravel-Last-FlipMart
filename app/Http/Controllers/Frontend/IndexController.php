@@ -20,16 +20,17 @@ class IndexController extends Controller
 {
     public function Index()
     {
-        return view('frontend.index',[
-            'products'      => Product::latest()->get(),
-            'categories'    => Category::latest()->get(),
-            'banners'       => Banner::latest()->get(),  
-            'special_deals' => Product::where('special_deals',1)->where('status',1)->orderBy('id','DESC')->get(),
-            'special_offer' => Product::where('special_offer',1)->where('status',1)->orderBy('id','DESC')->get(),
-            'hot_dealss'    => Product::where('hot_deals',1)->where('status',1)->orderBy('id','DESC')->get(),
-            'testimonials'  => Testimonial::where('status',1)->orderBy('id','DESC')->get(),
-            'blogs'         => Blog::where('status',1)->orderBy('id','DESC')->get(),
-        ]);
+            $products    =     Product::latest()->get();
+            $categories  =     Category::latest()->get();
+            $banners      =    Banner::latest()->get();
+            $special_deals =   Product::where('special_deals',1)->where('status',1)->orderBy('id','DESC')->get();
+            $special_offer =   Product::where('special_offer',1)->where('status',1)->orderBy('id','DESC')->get();
+            $hot_dealss   =    Product::where('hot_deals',1)->where('status',1)->where('discount_price','!=',Null)->orderBy('id','DESC')->get();
+            $testimonials =    Testimonial::where('status',1)->orderBy('id','DESC')->get();
+            $blogs   =         Blog::where('status',1)->orderBy('id','DESC')->get();
+            $skip_category_0 = Category::skip(1)->first();
+            $skip_product_0 =  Product::where('status',1)->where('category_id',$skip_category_0->id)->orderby('id','DESC')->get();
+            return view('frontend.index',compact('products','categories','banners','special_deals','special_offer','hot_dealss','testimonials','blogs','skip_category_0','skip_product_0'));
     }
 
     public function productdetails($slug)
@@ -39,10 +40,18 @@ class IndexController extends Controller
         $product = Product::where('product_slug',$slug)->first();
         $raleted_products =  Product::where('category_id',$product->category_id)->where('id','!=',$product->id)->get();
         $categories  =  Category::latest()->get();
-        $hot_dealss    = Product::where('hot_deals',1)->where('status',1)->orderBy('id','DESC')->get();
+        $hot_dealss    = Product::where('hot_deals',1)->where('status',1)->where('discount_price','!=',Null)->orderBy('id','DESC')->get();
         $testimonials = Testimonial::where('status',1)->orderBy('id','DESC')->get();
         return view('frontend.productdetails',compact('categories','product','subcategories','hot_dealss','testimonials','raleted_products'));
     } 
+
+    public function producttag($tag)
+    {
+        $testimonials = Testimonial::where('status',1)->latest()->get();
+        $categories = Category::latest()->get();
+        $products = Product::where('status',1)->where('product_tags',$tag)->get();
+        return view('frontend.producttag',compact('products','categories','testimonials'));
+    }
 
 
      public function blogpage()
