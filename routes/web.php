@@ -17,6 +17,7 @@ Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
 Use App\Http\Controllers\Frontend\LanguageController;
+Use App\Http\Controllers\Frontend\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,7 +33,7 @@ Use App\Http\Controllers\Frontend\LanguageController;
 
 
 Route::get('/', [IndexController::class, 'Index']);
-Route::get('product/details/{slug}',[IndexController::class, 'productdetails'])->name('product.details');
+Route::get('product/details/{id}/{slug}',[IndexController::class, 'productdetails']);
 Route::get('blog/page',[IndexController::class, 'blogpage'])->name('blog.page');
 Route::get('blog/details/{slug}',[IndexController::class, 'blogdetails'])->name('blog.details');
 Route::get('faq/page',[IndexController::class, 'faqpage'])->name('faq.page');
@@ -42,6 +43,12 @@ Route::get('contact/index',[IndexController::class, 'contactindex'])->name('cont
 Route::get('contact/show/{id}',[IndexController::class, 'contactshow'])->name('contact.show');
 Route::get('contact/delete/{id}',[IndexController::class, 'contactdelete'])->name('contact.delete');
 Route::get('product/tag/{tags}',[IndexController::class, 'producttag'])->name('product.tag');
+Route::get('subsubcategory/product/{id}/{slug}',[IndexController::class, 'subsubcategoryproduct']);
+
+Route::get('product/view/model/{id}', [IndexController::class, 'productviewmodelajax']);
+
+
+Route::post('cart/data/store/{id}', [CartController::class, 'cartdatastore']);
 
 
 

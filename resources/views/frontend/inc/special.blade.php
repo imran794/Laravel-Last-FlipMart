@@ -16,7 +16,7 @@
                                                 <div class="col col-xs-5">
                                                     <div class="product-image">
                                                         <div class="image">
-                                                            <a href="{{ route('product.details',$specialoffer->product_slug,) }}">
+                                                            <a href="{{ url('product.details'.$specialoffer->id.'/'.$specialoffer->product_slug) }}">
                                                                 <img src="{{ asset($specialoffer->product_thambnail) }}" alt="">
                                                             </a>
                                                         </div><!-- /.image -->
@@ -27,7 +27,7 @@
                                                 </div><!-- /.col -->
                                                 <div class="col col-xs-7">
                                                     <div class="product-info">
-                                                        <h3 class="name"><a href="{{ route('product.details',$specialoffer->product_slug) }}">{{ $specialoffer->product_name }}</a></h3>
+                                                        <h3 class="name"><a href="{{ url('product.details'.$specialoffer->id.'/'.$specialoffer->product_slug) }}">{{ $specialoffer->product_name }}</a></h3>
                                                         <div class="rating rateit-small"></div>
                                                        <div class="product-price">
                                                         @if($specialoffer->discount_price == NULL)

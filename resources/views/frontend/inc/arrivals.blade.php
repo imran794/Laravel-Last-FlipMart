@@ -10,7 +10,7 @@
                                             <div class="product">
                                                 <div class="product-image">
                                                     <div class="image">
-                                                        <a href="{{ route('product.details',$product->product_slug) }}"><img src="{{ asset($product->product_thambnail) }}" alt="product_thambnail"></a>
+                                                        <a href="" alt="product_thambnail"></a>
                                                     </div><!-- /.image -->
                                                     @php
                                                     $amount = $product->selling_price - $product->discount_price;
@@ -29,7 +29,7 @@
 
 
                                                 <div class="product-info text-left">
-                                                    <h3 class="name"><a href="{{ route('product.details',$product->product_slug) }}">{{ $product->product_name }}</a></h3>
+                                                    <h3 class="name"><a href=""</a></h3>
                                                     <div class="rating rateit-small"></div>
                                                     <div class="description"></div>
 

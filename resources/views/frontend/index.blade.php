@@ -120,7 +120,7 @@ Index
                                             <div class="product">
                                                 <div class="product-image">
                                                     <div class="image">
-                                                        <a href="{{ route('product.details',$product->product_slug) }}"><img src="{{ asset($product->product_thambnail) }}" alt="product_thambnail"></a>
+                                                        <a href="{{ url('product/details/'.$product->id.'/'.$product->product_slug) }}"><img src="{{ asset($product->product_thambnail) }}" alt="product_thambnail"></a>
                                                     </div><!-- /.image -->
                                                     @php
                                                     $amount = $product->selling_price - $product->discount_price;
@@ -139,7 +139,7 @@ Index
 
 
                                                 <div class="product-info text-left">
-                                                    <h3 class="name"><a href="{{ route('product.details',$product->product_slug) }}">{{ $product->product_name }}</a></h3>
+                                                    <h3 class="name"><a href="">{{ $product->product_name }}</a></h3>
                                                     <div class="rating rateit-small"></div>
                                                     <div class="description"></div>
 
@@ -158,7 +158,8 @@ Index
                                                     <div class="action">
                                                         <ul class="list-unstyled">
                                                             <li class="add-cart-button btn-group">
-                                                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
+                                                                <button class="btn btn-primary icon"  type="button" data-toggle="modal" data-target="#cartModal" id="{{ $product->id }}" onclick="productView(this.id)">
+                                                                    
                                                                     <i class="fa fa-shopping-cart"></i>
                                                                 </button>
                                                                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
@@ -205,7 +206,7 @@ Index
                                             <div class="product">
                                                 <div class="product-image">
                                                     <div class="image">
-                                                        <a href="{{ route('product.details',$catwiseProduct->product_slug) }}"><img src="{{ asset($catwiseProduct->product_thambnail) }}" alt=""></a>
+                                                        <a href=""><img src="{{ asset($catwiseProduct->product_thambnail) }}" alt=""></a>
                                                     </div><!-- /.image -->
                                                     
                                                          @php
@@ -224,7 +225,7 @@ Index
 
 
                                                 <div class="product-info text-left">
-                                                    <h3 class="name"><a href="{{ route('product.details',$catwiseProduct->product_slug) }}">{{ $catwiseProduct->product_name }}</a></h3>
+                                                    <h3 class="name"><a href="">{{ $catwiseProduct->product_name }}</a></h3>
                                                     <div class="rating rateit-small"></div>
                                                     <div class="description"></div>
                                                

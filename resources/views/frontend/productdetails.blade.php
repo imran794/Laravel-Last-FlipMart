@@ -61,7 +61,6 @@
                                             </a>
                                         </div><!-- /.single-product-gallery-item -->
                                          @endforeach
-
                                     </div><!-- /.single-product-slider -->
                                     <div class="single-product-gallery-thumbs gallery-thumbs">
 
@@ -73,10 +72,6 @@
                                                 </a>
                                             </div>
                                             @endforeach
-
-                                           
-                                         
-                                         
                                         </div><!-- /#owl-single-product-thumbnails -->
                                     </div><!-- /.gallery-thumbs -->
 
@@ -84,7 +79,7 @@
                             </div><!-- /.gallery-holder -->
                             <div class='col-sm-6 col-md-7 product-info-block'>
                                 <div class="product-info">
-                                    <h1 class="name">{{ $product->product_name }}</h1>
+                                    <h1 class="name" id="pname">{{ $product->product_name }}</h1>
 
                                     <div class="rating-reviews m-t-20">
                                         <div class="row">
@@ -129,7 +124,7 @@
                                                         <span class="price">${{ $product->selling_price }}</span>
                                                         @else
                                                         <span class="price">${{ $product->discount_price }}</span>
-                                                        <span class="price-before-discount">${{ $product->selling_price }}</span>
+                                                        <span class="price-strike">${{ $product->selling_price }}</span>
                                                         @endif
                                                   
                                                    
@@ -152,6 +147,41 @@
 
                                         </div><!-- /.row -->
                                     </div><!-- /.price-container -->
+                                    <div class="row mt-3">
+
+
+                                    <div class="col-sm-6">
+                                          @if ($product->product_color == null)
+                                        @else
+                                        <div class="form-group">
+                                            <label for="color">Select Color</label>
+                                            <select class="form-control" id="color">
+                                                <option value="">Chose Color</option>
+                                                @foreach ($product_color as $color)
+                                                <option value="{{ $color }}">{{ ucwords($color) }}</option>
+                                              @endforeach
+
+                                            </select>
+                                          </div>
+                                       @endif
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        @if ($product->product_size == null)
+                                        @else
+                                        <div class="form-group">
+                                            <label for="size">Select Size</label>
+                                            <select class="form-control" id="size">
+                                                 <option value="">Chose Size</option>
+                                                @foreach ($product_size as $size)
+                                                <option value="{{ $size }}">{{ ucwords($size) }}</option>
+                                              @endforeach
+                                            </select>
+                                          </div>
+                                          @endif
+                                    </div>
+
+                                </div><!-- /.row -->
 
                                     <div class="quantity-container info-container">
                                         <div class="row">
@@ -167,13 +197,15 @@
                                                             <div class="arrow plus gradient"><span class="ir"><i class="icon fa fa-sort-asc"></i></span></div>
                                                             <div class="arrow minus gradient"><span class="ir"><i class="icon fa fa-sort-desc"></i></span></div>
                                                         </div>
-                                                        <input type="text" value="1">
+                                                        <input type="text" value="1" min="1">
                                                     </div>
                                                 </div>
                                             </div>
 
+                                            <input type="hidden" id="product_id" value="{{ $product->id }}">
+
                                             <div class="col-sm-7">
-                                                <a href="#" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</a>
+                                                <button type="submit" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs" onclick="addToCart()"></i> ADD TO CART</button>
                                             </div>
                                         </div><!-- /.row -->
                                     </div><!-- /.quantity-container -->
@@ -363,11 +395,14 @@
 
                                             <div class="product-price">
                                                       @if($raletedproduct->discount_price == NULL)
+                                                        <span class="price">${{ $raletedproduct->selling_price }}</span>
+                                
+                                                        @else
                                                         <span class="price">${{ $raletedproduct->discount_price }}</span>
                                                         <span class="price-before-discount">${{ $raletedproduct->selling_price }}</span>
-                                                        @else
-                                                        <span class="price">${{ $raletedproduct->selling_price }}</span>
                                                         @endif
+
+                                                         
 
                                             </div><!-- /.product-price -->
 

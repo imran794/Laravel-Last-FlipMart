@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use App\Models\Category;
 use App\Models\SubCategory;
 use App\Models\SubSubCategory;
@@ -49,10 +50,13 @@ class SubSubCategoryController extends Controller
             'sub_sub_category_name'          => 'required',
         ]);
 
+          $slug = Str::slug($request->sub_sub_category_name.'-'.carbon::now()->timestamp);
+
         SubSubCategory::insert([
             'category_id'                   => $request->category_id,
             'subcategory_id'                => $request->subcategory_id,
             'sub_sub_category_name'         => $request->sub_sub_category_name,
+            'subsubcategory_slug'           => $slug,
             'created_at'                    => carbon::now()
         ]);
 
