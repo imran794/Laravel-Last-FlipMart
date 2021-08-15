@@ -14,6 +14,7 @@ Use App\Http\Controllers\Admin\CategoryController;
 Use App\Http\Controllers\Admin\SubCategoryController;
 Use App\Http\Controllers\Admin\SubSubCategoryController;
 Use App\Http\Controllers\Admin\ProductController;
+Use App\Http\Controllers\User\WishlistController;
 Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
 Use App\Http\Controllers\Frontend\LanguageController;
@@ -49,6 +50,16 @@ Route::get('product/view/model/{id}', [IndexController::class, 'productviewmodel
 
 
 Route::post('cart/data/store/{id}', [CartController::class, 'cartdatastore']);
+Route::get('mini/cart/add', [CartController::class, 'minicart']);
+Route::get('/minicart/remove/{id}', [CartController::class, 'minicartremove']);
+
+
+   // wishlist
+
+    Route::post('/add/to/wishlist/{id}', [CartController::class, 'addtowishlist']);
+
+ Route::get('wishlist', [WishlistController::class, 'create'])->name('wishlist');
+
 
 
 
@@ -144,7 +155,7 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
  
 });
 
-Route::group(['prefix'=>'user','middleware' =>['user','auth'],'namespace'=>'user'], function(){
+Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
     Route::get('dashboard',[UserController::class,'index'])->name('user.dashboard');
 
       // profile
@@ -153,8 +164,17 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth'],'namespace'=>'user
     Route::post('image/update', [ProfileController::class, 'ImageUpdate'])->name('image.update');
     Route::get('change/password', [ProfileController::class, 'ChangePassword'])->name('change.password');
     Route::post('password/store', [ProfileController::class, 'PasswordStore'])->name('password.store');
+
+
+
+  
+
+
+ 
 });
 
 
 Route::get('english/language',[LanguageController::class, 'enalish'])->name('english.language');
 Route::get('bangla/language',[LanguageController::class, 'bangla'])->name('bangla.language');
+
+   Route::get('get/wishlist/product', [WishlistController::class, 'showwishlist']);

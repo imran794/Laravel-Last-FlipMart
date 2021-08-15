@@ -166,18 +166,19 @@ Index
 
                                                             </li>
 
-                                                            <li class="lnk wishlist">
-                                                                <a class="add-to-cart" href="detail.html" title="Wishlist">
+                                                       
+                                                                 <button class="btn btn-primary icon"  type="button" data-toggle="modal" id="{{ $product->id }}" onclick="addtowishlist(this.id)">
+                                                                    
                                                                     <i class="icon fa fa-heart"></i>
-                                                                </a>
-                                                            </li>
+                                                                </button>
+                                                        
 
                                                             <li class="lnk">
                                                                 <a class="add-to-cart" href="detail.html" title="Compare">
                                                                     <i class="fa fa-signal" aria-hidden="true"></i>
                                                                 </a>
                                                             </li>
-                                                        </ul>
+                                                        </ul>  
                                                     </div><!-- /.action -->
                                                 </div><!-- /.cart -->
                                             </div><!-- /.product -->
