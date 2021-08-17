@@ -13,6 +13,8 @@ Use App\Http\Controllers\Admin\TestimonialController;
 Use App\Http\Controllers\Admin\CategoryController;
 Use App\Http\Controllers\Admin\SubCategoryController;
 Use App\Http\Controllers\Admin\SubSubCategoryController;
+Use App\Http\Controllers\Admin\CouponController;
+Use App\Http\Controllers\Admin\ShipingAreaController;
 Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\User\WishlistController;
 Use App\Http\Controllers\Frontend\IndexController;
@@ -48,17 +50,29 @@ Route::get('subsubcategory/product/{id}/{slug}',[IndexController::class, 'subsub
 
 Route::get('product/view/model/{id}', [IndexController::class, 'productviewmodelajax']);
 
-
 Route::post('cart/data/store/{id}', [CartController::class, 'cartdatastore']);
 Route::get('mini/cart/add', [CartController::class, 'minicart']);
 Route::get('/minicart/remove/{id}', [CartController::class, 'minicartremove']);
 
 
+Route::get('/Cart/decrement/{id}', [CartController::class, 'Cartdecrement']);
+Route::get('/cart/increment/{id}', [CartController::class, 'cartincrement']);
+
+
+   
+// cart page
+
+Route::get('cart',[CartController::class, 'create'])->name('cart');
+Route::get('/get/cart/product', [CartController::class, 'getcartproduct']);
+Route::get('/Cart/remove/{rowId}', [CartController::class, 'Cartremove']);
+
+
    // wishlist
 
-    Route::post('/add/to/wishlist/{id}', [CartController::class, 'addtowishlist']);
-
+ Route::post('/add/to/wishlist/{id}', [CartController::class, 'addtowishlist']);
  Route::get('wishlist', [WishlistController::class, 'create'])->name('wishlist');
+ Route::get('get/wishlist/product', [WishlistController::class, 'showwishlist']);
+ Route::get('wishlist/remove/{id}', [WishlistController::class, 'wishlistremove']);
 
 
 
@@ -146,7 +160,32 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
         // CinformationController
     Route::resource('cinformation', CinformationController::class);
     Route::get('inforinactive/{id}',[CinformationController::class, 'inforinactive']);
-    Route::get('inforactive/{id}',[CinformationController::class, 'inforactive']);  
+    Route::get('inforactive/{id}',[CinformationController::class, 'inforactive']);   
+
+
+      // coupon
+    Route::resource('coupon', CouponController::class);
+    Route::get('couponinactive/{id}',[CouponController::class, 'couponinactive']);
+    Route::get('couponactive/{id}',[CouponController::class, 'couponactive']);   
+
+
+     // shiping Area
+    Route::resource('shipingarea', ShipingAreaController::class); 
+
+   Route::get('shipdistrict/index',[ShipingAreaController::class, 'shipdistrictindex'])->name('shipdistrict.index'); 
+   Route::post('distinct/store',[ShipingAreaController::class, 'distinctstore'])->name('distinct.store'); 
+   Route::get('distinct/edit/{id}',[ShipingAreaController::class, 'distinctedit'])->name('distinct.edit'); 
+   Route::post('distinct/update/{id}',[ShipingAreaController::class, 'distinctupdate'])->name('distinct.update'); 
+   Route::get('distinct/destroy/{id}',[ShipingAreaController::class, 'distinctdestroy'])->name('distinct.destroy');
+
+
+
+   Route::get('state/index',[ShipingAreaController::class, 'stateindex'])->name('state.index'); 
+   Route::get('district-get/ajax/{division_id}',[ShipingAreaController::class, 'getajax']); 
+   Route::post('state/store',[ShipingAreaController::class, 'statestore'])->name('state.store'); 
+   Route::get('state/edit/{id}',[ShipingAreaController::class, 'stateedit'])->name('state.edit'); 
+   Route::post('state/update/{id}',[ShipingAreaController::class, 'stateupdate'])->name('state.update'); 
+   Route::get('state/destroy/{id}',[ShipingAreaController::class, 'statedestroy'])->name('state.destroy'); 
 
 
  
@@ -166,10 +205,6 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
     Route::post('password/store', [ProfileController::class, 'PasswordStore'])->name('password.store');
 
 
-
-  
-
-
  
 });
 
@@ -177,4 +212,3 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
 Route::get('english/language',[LanguageController::class, 'enalish'])->name('english.language');
 Route::get('bangla/language',[LanguageController::class, 'bangla'])->name('bangla.language');
 
-   Route::get('get/wishlist/product', [WishlistController::class, 'showwishlist']);

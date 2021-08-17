@@ -52,7 +52,7 @@
                         <ul class="list-unstyled">
                             <li><a href="#"><i class="icon fa fa-user"></i>My Account</a></li>
                             <li><a href="{{ route('wishlist') }}"><i class="icon fa fa-heart"></i>Wishlist</a></li>
-                            <li><a href="#"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
+                            <li><a href="{{ route('cart') }}"><i class="icon fa fa-shopping-cart"></i>My Cart</a></li>
                             <li><a href="#"><i class="icon fa fa-check"></i>Checkout</a></li>
                             <li>
                                 @auth
@@ -873,36 +873,188 @@
     }
     wishlist();
 
-    // function wishlistRemove(id){
-    //     $.ajax({
-    //         type:'GET',
-    //         url: "{{ url('/user/wishlist-remove/') }}/"+id,
-    //         dataType:'json',
-    //         success:function(data){
-    //             wishlist();
-    //             //  start message
-    //             const Toast = Swal.mixin({
-    //                     toast: true,
-    //                     position: 'top-end',
-    //                     showConfirmButton: false,
-    //                     timer: 3000
-    //                   })
+    function wishlistRemove(id){
+        $.ajax({
+            type:'GET',
+            url: "{{ url('/wishlist/remove/') }}/"+id,
+            dataType:'json',
+            success:function(data){
+                wishlist();
+                //  start message
+                const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                      })
 
-    //                  if($.isEmptyObject(data.error)){
-    //                       Toast.fire({
-    //                         type: 'success',
-    //                         title: data.success
-    //                       })
-    //                  }else{
-    //                        Toast.fire({
-    //                           type: 'error',
-    //                           title: data.error
-    //                       })
-    //                  }
-    //                 //  end message
-    //         }
-    //     });
-    // }
+                     if($.isEmptyObject(data.error)){
+                          Toast.fire({
+                            type: 'success',
+                            title: data.success
+                          })
+                     }else{
+                           Toast.fire({
+                              type: 'error',
+                              title: data.error
+                          })
+                     }
+                    //  end message
+            }
+        });
+    }
+</script> 
+<script>
+    function cart(){
+        $.ajax({
+            type:'GET',
+             url: "{{ url('/get/cart/product') }}",
+            dataType:'json',
+            success:function(response){
+                var rows = ""
+                $.each(response.carts, function(key,value){
+                   rows += `<tr>
+                                        <td class="romove-item"><button type="submit" id="${value.rowId}"   onclick="CartRemove(this.id)" class="icon"><i class="fa fa-trash-o"></i></button></td>
+                                        <td class="cart-image">
+                                            <a class="entry-thumbnail" href="detail.html">
+                                                <img src="/${ value.options.image }" alt="">
+                                            </a>
+                                        </td>
+                                        <td class="cart-product-name-info">
+                                            <h4 class='cart-product-description'><a href="detail.html">${value.name}</a></h4>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="rating rateit-small"></div>
+                                                </div>
+                                                <div class="col-sm-8">
+                                                   
+                                                </div>
+                                            </div><!-- /.row -->
+                                            <div class="cart-product-info">
+                                                <span class="product-color">COLOR:<span>${value.options.color}</span></span>
+                                            </div>
+                                        </td>
+                                   
+                                        <td class="cart-product-quantity">
+                                            ${value.qty > 1
+                        ? ` <button type="submit" class="btn btn-success btn-sm" id="${value.rowId}" onclick="cartDecrement(this.id)">-</button>`
+                        : ` <button type="submit" class="btn btn-success btn-sm">-</button>`
+                        }
+
+                        <input type="text" value="${value.qty}" min="1" max="100" style="width:25px;">
+                        <button type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)" class="btn btn-danger btn-sm">+</button>
+                                        </td>
+                                        <td class="cart-product-sub-total"><span class="cart-sub-total-price">$${value.subtotal}</span></td>
+
+                                    </tr>`
+
+               });
+
+               $('#cart').html(rows);
+
+            }
+        })
+    }
+    cart();
+
+    function CartRemove(id){
+        $.ajax({
+            type:'GET',
+            url: "{{ url('/Cart/remove/') }}/"+id,
+            dataType:'json',
+            success:function(data){
+                  cart();
+                   minicart();
+                //  start message
+                const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                      })
+
+                     if($.isEmptyObject(data.error)){
+                          Toast.fire({
+                            type: 'success',
+                            title: data.success
+                          })
+                     }else{
+                           Toast.fire({
+                              type: 'error',
+                              title: data.error
+                          })
+                     }
+                    //  end message
+            }
+        });
+    }
+    CartRemove();
+
+
+    function cartDecrement(id){
+        $.ajax({
+            type:'GET',
+            url: "{{ url('/Cart/decrement/') }}/"+id,
+            dataType:'json',
+            success:function(data){
+                  cart();
+                   minicart();
+                //  start message
+                const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                      })
+
+                     if($.isEmptyObject(data.error)){
+                          Toast.fire({
+                            type: 'success',
+                            title: data.success
+                          })
+                     }else{
+                           Toast.fire({
+                              type: 'error',
+                              title: data.error
+                          })
+                     }
+                    //  end message
+            }
+        });
+    }
+
+
+     function cartIncrement(id){
+        $.ajax({
+            type:'GET',
+            url: "{{ url('/cart/increment/') }}/"+id,
+            dataType:'json',
+            success:function(data){
+                  cart();
+                   minicart();
+                //  start message
+                const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                      })
+
+                     if($.isEmptyObject(data.error)){
+                          Toast.fire({
+                            type: 'success',
+                            title: data.success
+                          })
+                     }else{
+                           Toast.fire({
+                              type: 'error',
+                              title: data.error
+                          })
+                     }
+                    //  end message
+            }
+        });
+    }
 </script>
 
 

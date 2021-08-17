@@ -42,7 +42,7 @@
         <a href="" class="sl-menu-link @yield('Categories')">
           <div class="sl-menu-item">
             <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
-            <span class="menu-item-label">Magage Category</span>
+            <span class="menu-item-label">Manage Category</span>
             <i class="menu-item-arrow fa fa-angle-down"></i>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
@@ -96,6 +96,25 @@
             <span class="menu-item-label">Contact-Information-Add</span>
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
+         <a href="{{ route('coupon.index') }}" class="sl-menu-link @yield('Add-Coupon')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Add Coupon</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+          <a href="" class="sl-menu-link @yield('Shiping-Area')">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <span class="menu-item-label">Manage Shiping Area</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{ route('shipingarea.index') }}" class="nav-link @yield('Add-Division')">Add-Division</a></li>
+          <li class="nav-item"><a href="{{ route('shipdistrict.index') }}" class="nav-link @yield('Add-Shipdistrict')">Add-District</a></li>
+          <li class="nav-item"><a href="{{ route('state.index') }}" class="nav-link @yield('Add-State')">Add-State</a></li>
+        </ul>
+
 
                  
       </div><!-- sl-sideleft-menu -->
