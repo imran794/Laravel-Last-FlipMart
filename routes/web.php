@@ -17,6 +17,8 @@ Use App\Http\Controllers\Admin\CouponController;
 Use App\Http\Controllers\Admin\ShipingAreaController;
 Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\User\WishlistController;
+Use App\Http\Controllers\User\CheckoutController;
+Use App\Http\Controllers\User\StripeController;
 Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
 Use App\Http\Controllers\Frontend\LanguageController;
@@ -65,6 +67,15 @@ Route::get('/cart/increment/{id}', [CartController::class, 'cartincrement']);
 Route::get('cart',[CartController::class, 'create'])->name('cart');
 Route::get('/get/cart/product', [CartController::class, 'getcartproduct']);
 Route::get('/Cart/remove/{rowId}', [CartController::class, 'Cartremove']);
+
+// coupon 
+ Route::post('/coupon/apply', [CartController::class, 'couponapply']);
+ Route::get('/coupon/calculation', [CartController::class, 'couponcalculation']);
+ Route::get('/coupon/remove', [CartController::class, 'removeCoupon']);
+
+ // checkout
+
+ Route::get('checkout',[CartController::class, 'checkout'])->name('checkout');
 
 
    // wishlist
@@ -204,6 +215,14 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
     Route::get('change/password', [ProfileController::class, 'ChangePassword'])->name('change.password');
     Route::post('password/store', [ProfileController::class, 'PasswordStore'])->name('password.store');
 
+    // checkout 
+      Route::get('district-get/ajax/{division_id}',[CheckoutController::class, 'getajax']); 
+      Route::get('state-get/ajax/{district_id}',[CheckoutController::class, 'getajaxjstate']); 
+      Route::post('checkout/store',[CheckoutController::class, 'checkoutstore'])->name('checkout.store'); 
+
+    // stripe 
+
+    Route::post('stripe/store',[StripeController::class, 'store'])->name('stripe.store'); 
 
  
 });

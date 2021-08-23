@@ -14,7 +14,8 @@
         "laravel/framework": "^8.40",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.3",
-        "spatie/laravel-permission": "^4.2"
+        "spatie/laravel-permission": "^4.2",
+        "stripe/stripe-php": "^7.94"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

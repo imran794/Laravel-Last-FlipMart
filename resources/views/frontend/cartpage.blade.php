@@ -46,7 +46,6 @@ Cart Page
                                             <div class="shopping-cart-btn">
                                                 <span class="">
                                                     <a href="{{ url('/') }}" class="btn btn-upper btn-primary outer-left-xs">Continue Shopping</a>
-                                                    <a href="#" class="btn btn-upper btn-primary pull-right outer-right-xs">Update shopping cart</a>
                                                 </span>
                                             </div><!-- /.shopping-cart-btn -->
                                         </td>
@@ -58,13 +57,11 @@ Cart Page
                             </table><!-- /table -->
                         </div>
                     </div><!-- /.shopping-cart-table -->
-                    <div class="col-md-4 col-sm-12 estimate-ship-tax">
-                     
-                    </div><!-- /.estimate-ship-tax -->
+             
 
-                    <div class="col-md-4 col-sm-12 estimate-ship-tax">
-                        <table class="table">
-                            <thead>
+                    <div class="col-md-6 col-sm-12 estimate-ship-tax">
+                        <table class="table" id="couponField">
+                             <thead>
                                 <tr>
                                     <th>
                                         <span class="estimate-title">Discount Code</span>
@@ -76,10 +73,10 @@ Cart Page
                                 <tr>
                                     <td>
                                         <div class="form-group">
-                                            <input type="text" class="form-control unicase-form-control text-input" placeholder="You Coupon..">
+                                            <input type="text" id="coupon_name" class="form-control unicase-form-control text-input" placeholder="You Coupon..">
                                         </div>
                                         <div class="clearfix pull-right">
-                                            <button type="submit" class="btn-upper btn btn-primary">APPLY COUPON</button>
+                                            <button type="submit" class="btn-upper btn btn-primary" onclick="applycoupon()">APPLY COUPON</button>
                                         </div>
                                     </td>
                                 </tr>
@@ -87,26 +84,16 @@ Cart Page
                         </table><!-- /table -->
                     </div><!-- /.estimate-ship-tax -->
 
-                    <div class="col-md-4 col-sm-12 cart-shopping-total">
+                    <div class="col-md-6 col-sm-12 cart-shopping-total">
                         <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>
-                                        <div class="cart-sub-total">
-                                            Subtotal<span class="inner-left-md">$600.00</span>
-                                        </div>
-                                        <div class="cart-grand-total">
-                                            Grand Total<span class="inner-left-md">$600.00</span>
-                                        </div>
-                                    </th>
-                                </tr>
+                            <thead id="couponculfiled">
+                               
                             </thead><!-- /thead -->
                             <tbody>
                                 <tr>
                                     <td>
                                         <div class="cart-checkout-btn pull-right">
-                                            <button type="submit" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</button>
-                                            <span class="">Checkout with multiples address!</span>
+                                            <a href="{{ route('checkout') }}" class="btn btn-primary checkout-btn">PROCCED TO CHEKOUT</a>
                                         </div>
                                     </td>
                                 </tr>

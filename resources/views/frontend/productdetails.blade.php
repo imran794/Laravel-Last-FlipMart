@@ -139,7 +139,7 @@
                                                     <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="Add to Compare" href="#">
                                                         <i class="fa fa-signal"></i>
                                                     </a>
-                                                    <a class="btn btn-primary" data-toggle="tooltip" data-placement="right" title="E-mail" href="#">
+                                                    <a class="btn btn-primary" data-toggle="tooltip" data-placement="t" title="E-mail" href="#">
                                                         <i class="fa fa-envelope"></i>
                                                     </a>
                                                 </div>

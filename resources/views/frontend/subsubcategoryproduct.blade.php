@@ -59,9 +59,9 @@ Tages Wise Product
                                 </div><!-- /.accordion -->
                             </div><!-- /.sidebar-widget-body -->
                         </div><!-- /.sidebar-widget -->
-                        <!-- ============================================== SIDEBAR CATEGORY : END ============================================== -->
+                        <!-- ============================================== SIDEBAR CATEGORY : END ========================== -->
 
-                        <!-- ============================================== PRICE SILDER============================================== -->
+                        <!-- ============================================== PRICE SILDER============================= -->
                         <div class="sidebar-widget wow fadeInUp">
                             <div class="widget-header">
                                 <h4 class="widget-title">Price Slider</h4>
@@ -383,7 +383,7 @@ Tages Wise Product
                                                 <span class="tag new">{{ round($discount) }}%</span>
                                                 @endif
                                             </div>
-                                     </div><!-- /.product-list -->
+                                        </div><!-- /.product-list -->
                                     </div><!-- /.products -->
                                 </div><!-- /.category-product-inner -->
                                 @endforeach
@@ -396,7 +396,7 @@ Tages Wise Product
                             <div class="pagination-container">
                                 <ul class="list-inline list-unstyled">
                                     {{ $products->links() }}
-                                  
+
                                 </ul><!-- /.list-inline -->
                             </div><!-- /.pagination-container -->
                         </div><!-- /.text-right -->
