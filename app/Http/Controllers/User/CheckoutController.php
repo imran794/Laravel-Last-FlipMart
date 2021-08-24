@@ -8,6 +8,7 @@ use App\Models\ShipDivision;
 use App\Models\ship_district;
 use App\Models\Steate;
 use Cart;
+use Session;
 
 class CheckoutController extends Controller
 {
@@ -34,14 +35,20 @@ class CheckoutController extends Controller
             $data['division_id'] = $request->division_id;
             $data['district_id'] = $request->district_id;
             $data['state_id'] = $request->state_id;
-            $data['post_code'] = $request->post_code;
-             $cartstotal    =  Cart::total();
+            $cartstotal    =  Cart::total();
+            $carts        =  Cart::content();
+            $cartsqty      =  Cart::count();
+              if (Session::has('coupon')) {
+            $total_amount = Session::get('coupon')['total_amount'];
+        }else {
+            $total_amount = round(Cart::total());
+        }
 
             if ($request->payment_method == 'stripe') {
               return view('frontend.paymentmethod.stripe', compact('data','cartstotal'));
             }
-            elseif($request->payment_method == 'cart'){
-              return 'cart';
+            elseif($request->payment_method == 'sslHost'){
+              return view('frontend.paymentmethod.sslhost', compact('data','total_amount','carts','cartsqty'));
 
             }
             else{

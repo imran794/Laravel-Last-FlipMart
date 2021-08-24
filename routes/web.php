@@ -19,6 +19,7 @@ Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\User\WishlistController;
 Use App\Http\Controllers\User\CheckoutController;
 Use App\Http\Controllers\User\StripeController;
+Use App\Http\Controllers\SslCommerzPaymentController;
 Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
 Use App\Http\Controllers\Frontend\LanguageController;
@@ -230,4 +231,20 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
 
 Route::get('english/language',[LanguageController::class, 'enalish'])->name('english.language');
 Route::get('bangla/language',[LanguageController::class, 'bangla'])->name('bangla.language');
+
+
+
+// SSLCOMMERZ Start
+Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
+Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
+
+Route::post('/pay', [SslCommerzPaymentController::class, 'index']);
+Route::post('/pay-via-ajax', [SslCommerzPaymentController::class, 'payViaAjax']);
+
+Route::post('/success', [SslCommerzPaymentController::class, 'success']);
+Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
+Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
+
+Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+//SSLCOMMERZ END
 
