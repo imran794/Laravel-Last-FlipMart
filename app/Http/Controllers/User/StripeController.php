@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\Order;
+use App\Mail\orderMail;
 use App\Models\Orderitem;
 use Auth;
 use Cart;
@@ -58,6 +60,23 @@ class StripeController extends Controller
             'status'            => 'pedding',
             'created_at'        => carbon::now(),
         ]);
+
+// start send mail
+
+      $invoice = Order::findOrFail($orderid);
+
+      $data = [
+
+        'invoice_no'  => $invoice->invoice_no,
+        'amount'      => $total_amount,
+        'created_at'  => carbon::now(),
+
+      ];
+
+       Mail::to($request->email)->send(new OrderMail($data));
+
+// End send mail
+
 
         $carts = Cart::content();
 

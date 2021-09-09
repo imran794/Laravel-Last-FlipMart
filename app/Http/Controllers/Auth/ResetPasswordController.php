@@ -27,4 +27,12 @@ class ResetPasswordController extends Controller
      * @var string
      */
     protected $redirectTo = RouteServiceProvider::HOME;
+     protected function redirectTo(){
+            if (Auth()->user()->roled_id !=2 ) {
+                return route('admin.dashboard');
+
+            }elseif (Auth()->user()->roled_id ==2 ) {
+            return route('user.dashboard');
+            }
+        }
 }

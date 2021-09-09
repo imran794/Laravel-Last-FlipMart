@@ -11,6 +11,7 @@ Use App\Http\Controllers\Admin\BrandController;
 Use App\Http\Controllers\Admin\FaqController;
 Use App\Http\Controllers\Admin\TestimonialController;
 Use App\Http\Controllers\Admin\CategoryController;
+Use App\Http\Controllers\Admin\AllOrdersController;
 Use App\Http\Controllers\Admin\SubCategoryController;
 Use App\Http\Controllers\Admin\SubSubCategoryController;
 Use App\Http\Controllers\Admin\CouponController;
@@ -18,6 +19,7 @@ Use App\Http\Controllers\Admin\ShipingAreaController;
 Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\User\WishlistController;
 Use App\Http\Controllers\User\CheckoutController;
+Use App\Http\Controllers\User\OrderController;
 Use App\Http\Controllers\User\StripeController;
 Use App\Http\Controllers\SslCommerzPaymentController;
 Use App\Http\Controllers\Frontend\IndexController;
@@ -199,11 +201,11 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
    Route::post('state/update/{id}',[ShipingAreaController::class, 'stateupdate'])->name('state.update'); 
    Route::get('state/destroy/{id}',[ShipingAreaController::class, 'statedestroy'])->name('state.destroy'); 
 
+   // order
 
- 
+   Route::get('pendding/order',[AllOrdersController::class, 'penddingorder'])->name('pendding.order');
 
 
- 
 });
 
 Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
@@ -225,16 +227,19 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
 
     Route::post('stripe/store',[StripeController::class, 'store'])->name('stripe.store'); 
 
+
+    // order
+    Route::get('my/order',[OrderController::class, 'myorder'])->name('my-order'); 
+    Route::get('/order-view/{id}',[OrderController::class, 'orderview']); 
+    Route::get('/invoice-download/{id}',[OrderController::class, 'invoicedownload']); 
+
+
  
 });
 
 
-Route::get('english/language',[LanguageController::class, 'enalish'])->name('english.language');
-Route::get('bangla/language',[LanguageController::class, 'bangla'])->name('bangla.language');
-
-
-
 // SSLCOMMERZ Start
+Route::group(['middleware' =>['user','auth']], function(){
 Route::get('/example1', [SslCommerzPaymentController::class, 'exampleEasyCheckout']);
 Route::get('/example2', [SslCommerzPaymentController::class, 'exampleHostedCheckout']);
 
@@ -246,5 +251,14 @@ Route::post('/fail', [SslCommerzPaymentController::class, 'fail']);
 Route::post('/cancel', [SslCommerzPaymentController::class, 'cancel']);
 
 Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
+});
 //SSLCOMMERZ END
+
+
+Route::get('english/language',[LanguageController::class, 'enalish'])->name('english.language');
+Route::get('bangla/language',[LanguageController::class, 'bangla'])->name('bangla.language');
+
+
+
+
 

@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="{{ asset('frontend_assets') }}/assets/css/owl.transitions.css">
     <link rel="stylesheet" href="{{ asset('frontend_assets') }}/assets/css/animate.min.css">
     <link rel="stylesheet" href="{{ asset('frontend_assets') }}/assets/css/rateit.css">
-        <link rel="stylesheet" type="text/css" href="{{asset('backend')}}/lib/toastr/toastr.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('backend')}}/lib/toastr/toastr.css">
     <link rel="stylesheet" href="{{ asset('frontend_assets') }}/assets/css/bootstrap-select.min.css">
 
 
@@ -37,7 +37,7 @@
     <link href='http://fonts.googleapis.com/css?family=Roboto:300,400,500,700' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,600italic,700,700italic,800' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
-       <script src="https://js.stripe.com/v3/"></script>
+    <script src="https://js.stripe.com/v3/"></script>
 
 
 </head>
@@ -83,16 +83,16 @@
 
                             <li class="dropdown dropdown-small">
                                 <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
-                                   @if (session()->get('language') == 'bangla') ভাষা পরিবর্তন করুন @else Language @endif </span><b class="caret"></b></a>
+                                        @if (session()->get('language') == 'bangla') ভাষা পরিবর্তন করুন @else Language @endif </span><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     @if (Session::get('language') == 'bangla');
-                                     <li><a href="{{ route('english.language') }}">English</a></li>   
+                                    <li><a href="{{ route('english.language') }}">English</a></li>
                                     @else
-                                         <li><a href="{{ route('bangla.language') }}">Bangla</a></li>
+                                    <li><a href="{{ route('bangla.language') }}">Bangla</a></li>
                                     @endif
-                             
-                                   
-                         
+
+
+
                                 </ul>
                             </li>
                         </ul><!-- /.list-unstyled -->
@@ -175,7 +175,7 @@
                                 <li>
 
                                     <div id="minicart">
-                                        
+
                                     </div>
 
                                     <div class="clearfix cart-total">
@@ -331,9 +331,7 @@
 
 
     <!-- ================================================= FOOTER ===================================== -->
-    <footer id="footer" class="footer color-bg">
-
-
+    <footer id="footer" class="footer color-bg" style="margin-top: 60px;">
         <div class="footer-bottom">
             <div class="container">
                 <div class="row">
@@ -462,64 +460,64 @@
     <!-- ============================ FOOTER : END===================== -->
 
     <!-- Modal -->
-<!-- Modal -->
-<div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel"> <span id="pname"></span> </h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModel">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-         <div class="row">
-             
-        
-        <div class="col-md-4">
-              <div class="card" style="width:16rem;">
-                        <img src="" class="card-img-top" id="pimage" alt="" style="height: 200px;">
+    <!-- Modal -->
+    <div class="modal fade" id="cartModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel"> <span id="pname"></span> </h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" id="closeModel">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+
+
+                        <div class="col-md-4">
+                            <div class="card" style="width:16rem;">
+                                <img src="" class="card-img-top" id="pimage" alt="" style="height: 200px;">
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <ul class="list-group">
+                                <li class="list-group-item">Price: <strong class="text-danger">$<span id="pprice"></span> </strong>
+                                    <del id="oldprice"></del>
+                                </li>
+                                <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
+                                <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
+                                <li class="list-group-item">Brand: <strong id="pbrand"></strong> </li>
+                                <li class="list-group-item">Stock: <span class="badge badge-pill badge-success" id="aviable" style="background:green; color:white;"></span>
+                                    <span class="badge badge-pill badge-danger" id="stockout" style="background:red; color:white;"></span>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="form-group" id="colorArea">
+                                <label for="color">Select Color</label>
+                                <select class="form-control" id="color" name="color">
+                                </select>
+                            </div>
+                            <div class="form-group" id="sizeArea">
+                                <label for="size">Select Size</label>
+                                <select class="form-control" id="size" name="size">
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="qty">Quantity</label>
+                                <input type="number" class="form-control" id="qty" value="1" min="1">
+                            </div>
+                            <input type="hidden" id="product_id">
+                            <button type="submit" class="btn btn-danger" onclick="addToCart()">Add To Cart</button>
+                        </div>
                     </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+            </div>
         </div>
-         <div class="col-md-4">
-                    <ul class="list-group">
-                        <li class="list-group-item">Price: <strong class="text-danger">$<span id="pprice"></span> </strong>
-                            <del id="oldprice"></del>
-                        </li>
-                        <li class="list-group-item">Product Code: <strong id="pcode"></strong></li>
-                        <li class="list-group-item">Category: <strong id="pcategory"></strong></li>
-                        <li class="list-group-item">Brand: <strong id="pbrand"></strong> </li>
-                        <li class="list-group-item">Stock: <span class="badge badge-pill badge-success" id="aviable" style="background:green; color:white;"></span>
-                            <span class="badge badge-pill badge-danger" id="stockout" style="background:red; color:white;"></span>
-                        </li>
-                      </ul>
-                </div>
-         <div class="col-md-4">
-                    <div class="form-group" id="colorArea">
-                        <label for="color">Select Color</label>
-                        <select class="form-control" id="color" name="color">
-                        </select>
-                      </div>
-                      <div class="form-group" id="sizeArea">
-                        <label for="size">Select Size</label>
-                        <select class="form-control" id="size" name="size">
-                        </select>
-                      </div>
-                      <div class="form-group">
-                        <label for="qty">Quantity</label>
-                        <input type="number" class="form-control" id="qty" value="1" min="1">
-                      </div>
-                      <input type="hidden" id="product_id">
-                      <button type="submit" class="btn btn-danger" onclick="addToCart()">Add To Cart</button>
-                      </div>
-                </div>
-                 </div>
-      </div>
-      <div class="modal-footer">
-      </div>
     </div>
-  </div>
-</div>
+    </div>
 
 
 
@@ -545,15 +543,16 @@
     <script type="text/javascript" src="{{ asset('common') }}/jquery.form-validator.min.js"></script>
     <script>
         $.validate({
-          lang: 'en'
+            lang: 'en'
         });
-      </script>
+
+    </script>
     <script type="text/javascript" src="{{ asset('backend') }}/lib/toastr/toastr.min.js"></script>
 
     <script>
-      @if(Session::has('message'))
-        var type ="{{Session::get('alert-type','info')}}"
-        switch(type){
+        @if(Session::has('message'))
+        var type = "{{Session::get('alert-type','info')}}"
+        switch (type) {
             case 'info':
                 toastr.info(" {{Session::get('message')}} ");
                 break;
@@ -570,172 +569,170 @@
                 toastr.error(" {{Session::get('message')}} ");
                 break;
         }
-    @endif
+        @endif
+
     </script>
     <script src="{{ asset('frontend_assets') }}/assets/js/wow.min.js"></script>
     <script src="{{ asset('frontend_assets') }}/assets/js/scripts.js"></script>
 
 
     <script type="text/javascript">
-       $.ajaxSetup({
-        headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-       }
-         });
-
-       // product view with model start
-
-       function productView(id) {
-           $.ajax({
-            type:      'GET',
-            url:       '/product/view/model/'+id,
-            dataType:  'json',
-            success: function(data) {
-                $('#pname').text(data.product.product_name);
-                $('#pprice').text(data.product.selling_price);
-                $('#pcode').text(data.product.product_code);
-                $('#pcategory').text(data.product.category.category_name);
-                $('#pbrand').text(data.product.brand.brand_name);
-                $('#pimage').attr('src','/'+data.product.product_thambnail);
-                $('#product_id').val(id);
-                $('#qty').val(1);
-
-
-
-                // product color
-
-                 $('select[name="color"]').empty();
-                $.each(data.product_color,function(key,value) {
-                   $('select[name= "color"]').append('<option value="'+value+'">'+value+'</option>')
-
-                   if (data.product_color == "") {
-                     $('#colorArea').hide();
-
-                   }
-                   else{
-                       $('#colorArea').show();
-                   }
-                }); 
-
-                 // sizes
-                 $('select[name="size"]').empty();
-                $.each(data.product_size,function(key,value) {
-                   $('select[name= "size"]').append('<option value="'+value+'">'+value+'</option>')
-
-                   if (data.product_size == "") {
-                     $('#sizeArea').hide();
-
-                   }
-                   else{
-                        $('#sizeArea').show();
-
-                   }
-                });
-
-
-                // product price
-
-                if(data.product.discount_price == null){
-                    $('#pprice').text('');
-                     $('#oldprice').text('');
-                     $('#pprice').text(data.product.selling_price);
-                }
-
-                else{
-                     $('#pprice').text(data.product.discount_price);
-                     $('#oldprice').text(data.product.selling_price);
-
-                }
-
-                // stock
-
-                  if(data.product.product_qty > 0){
-                    $('#aviable').text('');
-                    $('#stockout').text('');
-                    $('#aviable').text('aviable');
-                }
-
-                else{
-                      $('#aviable').text('');
-                    $('#stockout').text('');
-                     $('#stockout').text('stockout');
-                  
-
-                }
-
-
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
+        });
 
-           });
-       }
-   // product view with model end
+        // product view with model start
+
+        function productView(id) {
+            $.ajax({
+                type: 'GET',
+                url: '/product/view/model/' + id,
+                dataType: 'json',
+                success: function(data) {
+                    $('#pname').text(data.product.product_name);
+                    $('#pprice').text(data.product.selling_price);
+                    $('#pcode').text(data.product.product_code);
+                    $('#pcategory').text(data.product.category.category_name);
+                    $('#pbrand').text(data.product.brand.brand_name);
+                    $('#pimage').attr('src', '/' + data.product.product_thambnail);
+                    $('#product_id').val(id);
+                    $('#qty').val(1);
 
 
-   // add to cart  start
 
-   function addToCart(){
-       var name          = $('#pname').text();
-       var id            = $('#product_id').val();
-       var color         = $('#color option:selected').text();
-       var size          = $('#size option:selected').text();
-       var qty           = $('#qty').val();
+                    // product color
 
-       $.ajax({
-         type           :'POST',
-         dataType       :'json',
-         data           : {name:name, color:color, size:size, qty:qty},
-         url            : '/cart/data/store/'+id,
-         success        :function(data) {
-            minicart();
-            $('#closeModel').click();
-             //  start message
-                 const Toast = Swal.mixin({
+                    $('select[name="color"]').empty();
+                    $.each(data.product_color, function(key, value) {
+                        $('select[name= "color"]').append('<option value="' + value + '">' + value + '</option>')
+
+                        if (data.product_color == "") {
+                            $('#colorArea').hide();
+
+                        } else {
+                            $('#colorArea').show();
+                        }
+                    });
+
+                    // sizes
+                    $('select[name="size"]').empty();
+                    $.each(data.product_size, function(key, value) {
+                        $('select[name= "size"]').append('<option value="' + value + '">' + value + '</option>')
+
+                        if (data.product_size == "") {
+                            $('#sizeArea').hide();
+
+                        } else {
+                            $('#sizeArea').show();
+
+                        }
+                    });
+
+
+                    // product price
+
+                    if (data.product.discount_price == null) {
+                        $('#pprice').text('');
+                        $('#oldprice').text('');
+                        $('#pprice').text(data.product.selling_price);
+                    } else {
+                        $('#pprice').text(data.product.discount_price);
+                        $('#oldprice').text(data.product.selling_price);
+
+                    }
+
+                    // stock
+
+                    if (data.product.product_qty > 0) {
+                        $('#aviable').text('');
+                        $('#stockout').text('');
+                        $('#aviable').text('aviable');
+                    } else {
+                        $('#aviable').text('');
+                        $('#stockout').text('');
+                        $('#stockout').text('stockout');
+
+
+                    }
+
+
+                }
+
+            });
+        }
+        // product view with model end
+
+
+        // add to cart  start
+
+        function addToCart() {
+            var name = $('#pname').text();
+            var id = $('#product_id').val();
+            var color = $('#color option:selected').text();
+            var size = $('#size option:selected').text();
+            var qty = $('#qty').val();
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    name: name,
+                    color: color,
+                    size: size,
+                    qty: qty
+                },
+                url: '/cart/data/store/' + id,
+                success: function(data) {
+                    minicart();
+                    $('#closeModel').click();
+                    //  start message
+                    const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000
-                      })
+                    })
 
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
                             type: 'success',
                             title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
                     //  end message
-             console.log(data);
-         }
+                    console.log(data);
+                }
 
-       });
+            });
 
-   }
-
-
+        }
 
 
-      // add to cart  end
+
+
+        // add to cart  end
 
     </script>
 
     <script>
-
-
-     function minicart(){
-      $.ajax({
-        type: 'GET',
-        datatype: 'json',
-        url: '/mini/cart/add',
-        success: function(response) {
-            $('span[id="cartsubtotal"]').text(response.cartstotal);
-            $('#cartcount').text(response.cartsqty);
-            var minicart = '';
-            $.each(response.carts,function(key, value) {
-                minicart += `<div class="cart-item product-summary">
+        function minicart() {
+            $.ajax({
+                type: 'GET',
+                datatype: 'json',
+                url: '/mini/cart/add',
+                success: function(response) {
+                    $('span[id="cartsubtotal"]').text(response.cartstotal);
+                    $('#cartcount').text(response.cartsqty);
+                    var minicart = '';
+                    $.each(response.carts, function(key, value) {
+                        minicart += `<div class="cart-item product-summary">
                                         <div class="row">
                                             <div class="col-xs-4">
                                                 <div class="image">
@@ -754,78 +751,77 @@
                                     </div><!-- /.cart-item -->
                                     <div class="clearfix"></div> <hr>`
 
-              
-            })
-              $('#minicart').html(minicart);
-        }
 
-      })
+                    })
+                    $('#minicart').html(minicart);
+                }
+
+            })
         }
         minicart();
 
 
         function minicartRemove(rowId) {
             $.ajax({
-                type        : 'GET',
-                dataType    : 'json',
-                url         : '/minicart/remove/'+rowId,
-                success     : function (data) {
-                      minicart();
+                type: 'GET',
+                dataType: 'json',
+                url: '/minicart/remove/' + rowId,
+                success: function(data) {
+                    minicart();
                     //  start message
-                 const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                      })
-
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
-                            type: 'success',
-                            title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
-                    //  end message
-                    console:log(data);
-                }
-
-            });
-        }
-          
-    </script>
-
-    <script>
-        
-        function addtowishlist(product_id) {
-            $.ajax({
-                type:      'POST',
-                dataType:  'json',
-                url: "{{ url('/add/to/wishlist/') }}/"+product_id,
-                success:  function(data) {
-                      //  start message
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000
-                      })
+                    })
 
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
                             type: 'success',
                             title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
+                    //  end message
+                    console: log(data);
+                }
+
+            });
+        }
+
+    </script>
+
+    <script>
+        function addtowishlist(product_id) {
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                url: "{{ url('/add/to/wishlist/') }}/" + product_id,
+                success: function(data) {
+                    //  start message
+                    const Toast = Swal.mixin({
+                        toast: true,
+                        position: 'top-end',
+                        showConfirmButton: false,
+                        timer: 3000
+                    })
+
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
+                            type: 'success',
+                            title: data.success
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
                     //  end message
                     console.log(data)
                 }
@@ -836,16 +832,16 @@
 
     </script>
 
-  <script>
-    function wishlist(){
-        $.ajax({
-            type:'GET',
-             url: "{{ url('/get/wishlist/product') }}",
-            dataType:'json',
-            success:function(response){
-                var rows = ""
-               $.each(response, function(key,value){
-                   rows += `<tr>
+    <script>
+        function wishlist() {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/get/wishlist/product') }}",
+                dataType: 'json',
+                success: function(response) {
+                    var rows = ""
+                    $.each(response, function(key, value) {
+                        rows += `<tr>
                     <td class="col-md-2"><img src="/${value.product.product_thambnail}" alt="imga"></td>
                     <td class="col-md-7">
                         <div class="product-name"><a href="#">${value.product.product_name}</a></div>
@@ -866,280 +862,291 @@
                     </td>
                 </tr>`
 
-               });
+                    });
 
-               $('#wishlist').html(rows);
+                    $('#wishlist').html(rows);
 
-            }
-        })
-    }
-    wishlist();
+                }
+            })
+        }
+        wishlist();
 
-    function wishlistRemove(id){
-        $.ajax({
-            type:'GET',
-            url: "{{ url('/wishlist/remove/') }}/"+id,
-            dataType:'json',
-            success:function(data){
-                wishlist();
-                //  start message
-                const Toast = Swal.mixin({
+        function wishlistRemove(id) {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/wishlist/remove/') }}/" + id,
+                dataType: 'json',
+                success: function(data) {
+                    wishlist();
+                    //  start message
+                    const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000
-                      })
+                    })
 
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
                             type: 'success',
                             title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
                     //  end message
-            }
-        });
-    }
-</script> 
+                }
+            });
+        }
+
+    </script>
 
 
-<script>
+    <script>
 
     {{-- cart page --}}
     function cart(){
-        $.ajax({
-            type:'GET',
-             url: "{{ url('/get/cart/product') }}",
-            dataType:'json',
-            success:function(response){
-                var rows = ""
-                $.each(response.carts, function(key,value){
-                   rows += `<tr>
-                                        <td class="romove-item"><button type="submit" id="${value.rowId}"   onclick="CartRemove(this.id)" class="icon"><i class="fa fa-trash-o"></i></button></td>
-                                        <td class="cart-image">
-                                            <a class="entry-thumbnail" href="detail.html">
-                                                <img src="/${ value.options.image }" alt="">
-                                            </a>
-                                        </td>
-                                        <td class="cart-product-name-info">
-                                            <h4 class='cart-product-description'><a href="detail.html">${value.name}</a></h4>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="rating rateit-small"></div>
-                                                </div>
-                                                <div class="col-sm-8">
-                                                   
-                                                </div>
-                                            </div><!-- /.row -->
-                                            <div class="cart-product-info">
-                                                <span class="product-color">COLOR:<span>${value.options.color}</span></span>
-                                            </div>
-                                        </td>
-                                   
-                                        <td class="cart-product-quantity">
-                                            ${value.qty > 1
-                        ? ` <button type="submit" class="btn btn-success btn-sm" id="${value.rowId}" onclick="cartDecrement(this.id)">-</button>`
-                        : ` <button type="submit" class="btn btn-success btn-sm">-</button>`
-                        }
+    $.ajax({
+    type:'GET',
+    url: "{{ url('/get/cart/product') }}",
+    dataType:'json',
+    success:function(response){
+    var rows = ""
+    $.each(response.carts, function(key,value){
+    rows += `<tr>
+        <td class="romove-item"><button type="submit" id="${value.rowId}" onclick="CartRemove(this.id)" class="icon"><i class="fa fa-trash-o"></i></button></td>
+        <td class="cart-image">
+            <a class="entry-thumbnail" href="detail.html">
+                <img src="/${ value.options.image }" alt="">
+            </a>
+        </td>
+        <td class="cart-product-name-info">
+            <h4 class='cart-product-description'><a href="detail.html">${value.name}</a></h4>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="rating rateit-small"></div>
+                </div>
+                <div class="col-sm-8">
 
-                        <input type="text" value="${value.qty}" min="1" max="100" style="width:25px;">
-                        <button type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)" class="btn btn-danger btn-sm">+</button>
-                                        </td>
-                                        <td class="cart-product-sub-total"><span class="cart-sub-total-price">$${value.subtotal}</span></td>
+                </div>
+            </div><!-- /.row -->
+            <div class="cart-product-info">
+                <span class="product-color">COLOR:<span>${value.options.color}</span></span>
+            </div>
+        </td>
 
-                                    </tr>`
-
-               });
-
-               $('#cart').html(rows);
-
+        <td class="cart-product-quantity">
+            ${value.qty > 1
+            ? ` <button type="submit" class="btn btn-success btn-sm" id="${value.rowId}" onclick="cartDecrement(this.id)">-</button>`
+            : ` <button type="submit" class="btn btn-success btn-sm">-</button>`
             }
-        })
+
+            <input type="text" value="${value.qty}" min="1" max="100" style="width:25px;">
+            <button type="submit" id="${value.rowId}" onclick="cartIncrement(this.id)" class="btn btn-danger btn-sm">+</button>
+        </td>
+        <td class="cart-product-sub-total"><span class="cart-sub-total-price">$${value.subtotal}</span></td>
+
+    </tr>`
+
+    });
+
+    $('#cart').html(rows);
+
+    }
+    })
     }
     cart();
 
-        {{-- cart page --}}
+    {{-- cart page --}}
 
 
-            {{-- cart remove --}}
+    {{-- cart remove --}}
 
     function CartRemove(id){
-        $.ajax({
-            type:'GET',
-            url: "{{ url('/Cart/remove/') }}/"+id,
-            dataType:'json',
-            success:function(data){
-                    couponcalculation();
-                  cart();
-                   minicart();
-                     $('#couponField').show()
-                    $('#coupon_name').val('')
-                //  start message
-                const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                      })
+    $.ajax({
+    type:'GET',
+    url: "{{ url('/Cart/remove/') }}/"+id,
+    dataType:'json',
+    success:function(data){
+    couponcalculation();
+    cart();
+    minicart();
+    $('#couponField').show()
+    $('#coupon_name').val('')
+    // start message
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+    })
 
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
-                            type: 'success',
-                            title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
-                    //  end message
-            }
-        });
+    if($.isEmptyObject(data.error)){
+    Toast.fire({
+    type: 'success',
+    title: data.success
+    })
+    }else{
+    Toast.fire({
+    type: 'error',
+    title: data.error
+    })
+    }
+    // end message
+    }
+    });
     }
     CartRemove();
 
-            {{-- cart remove --}}
+    {{-- cart remove --}}
 
 
-                    {{-- cart decrement --}}
+    {{-- cart decrement --}}
 
 
     function cartDecrement(id){
-        $.ajax({
-            type:'GET',
-            url: "{{ url('/Cart/decrement/') }}/"+id,
-            dataType:'json',
-            success:function(data){
-                couponcalculation();
-                  cart();
-                   minicart();
-              
-                //  start message
-                const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                      })
+    $.ajax({
+    type:'GET',
+    url: "{{ url('/Cart/decrement/') }}/"+id,
+    dataType:'json',
+    success:function(data){
+    couponcalculation();
+    cart();
+    minicart();
 
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
-                            type: 'success',
-                            title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
-                    //  end message
-            }
-        });
+    // start message
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+    })
+
+    if($.isEmptyObject(data.error)){
+    Toast.fire({
+    type: 'success',
+    title: data.success
+    })
+    }else{
+    Toast.fire({
+    type: 'error',
+    title: data.error
+    })
+    }
+    // end message
+    }
+    });
     }
 
-{{-- cart decrement end --}}
+    {{-- cart decrement end --}}
 
-{{-- cart increment --}}
-     function cartIncrement(id){
-        $.ajax({
-            type:'GET',
-            url: "{{ url('/cart/increment/') }}/"+id,
-            dataType:'json',
-            success:function(data){
-                couponcalculation();
-                  cart();
-                   minicart();
-                   
-                //  start message
-                const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        showConfirmButton: false,
-                        timer: 3000
-                      })
+    {{-- cart increment --}}
+    function cartIncrement(id){
+    $.ajax({
+    type:'GET',
+    url: "{{ url('/cart/increment/') }}/"+id,
+    dataType:'json',
+    success:function(data){
+    couponcalculation();
+    cart();
+    minicart();
 
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
-                            type: 'success',
-                            title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
-                    //  end message
-            }
-        });
+    // start message
+    const Toast = Swal.mixin({
+    toast: true,
+    position: 'top-end',
+    showConfirmButton: false,
+    timer: 3000
+    })
+
+    if($.isEmptyObject(data.error)){
+    Toast.fire({
+    type: 'success',
+    title: data.success
+    })
+    }else{
+    Toast.fire({
+    type: 'error',
+    title: data.error
+    })
+    }
+    // end message
+    }
+    });
     }
 
     {{-- cart increment end --}}
-</script>
+    </script>
 
-  {{--  coupon apply  --}}
+    {{-- coupon apply  --}}
 
-   <script type="text/javascript">
-       function applycoupon() {
-        var coupon_name = $('#coupon_name').val();
-           $.ajax({
-            type      : 'POST',
-            dataType  : 'json',
-            data      : {coupon_name:coupon_name},
-            url       : "{{ url('/coupon/apply') }}", 
-            success   : function(data){
-                     couponcalculation();
-                  if (data.validity == true) {
-                 $('#couponField').hide();
-                }
-                //  start message
-                const Toast = Swal.mixin({
+    <script type="text/javascript">
+        function applycoupon() {
+            var coupon_name = $('#coupon_name').val();
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    coupon_name: coupon_name
+                },
+                url: "{{ url('/coupon/apply') }}",
+                success: function(data) {
+                    couponcalculation();
+                    if (data.validity == true) {
+                        $('#couponField').hide();
+                    }
+                    //  start message
+                    const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000
-                      })
+                    })
 
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
                             type: 'success',
                             title: data.success
-                          })
-                     }else{
+                        })
+                    } else {
                         coupon_name = $('#coupon_name').val(' ')
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
                     //  end message
-                console.log(data)
-            } 
+                    console.log(data)
+                }
 
-           })
-       }
-  
+            })
+        }
 
 
-   {{--  coupon apply end --}}
 
-   {{-- coupon calculation start --}}
+        {
+            {
+                --coupon apply end--
+            }
+        }
 
-     function couponcalculation() {
-         $.ajax({
-            type      : 'GET',
-            dataType  : 'json',
-            url       : "{{ url('/coupon/calculation') }}", 
-            success   : function(data){
-               if(data.total){
-                $('#couponculfiled').html(`
+        {
+            {
+                --coupon calculation start--
+            }
+        }
+
+        function couponcalculation() {
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: "{{ url('/coupon/calculation') }}",
+                success: function(data) {
+                    if (data.total) {
+                        $('#couponculfiled').html(`
                  <tr>
                                     <th>
                                         <div class="cart-sub-total">
@@ -1152,8 +1159,8 @@
                                 </tr>
                                 `);
 
-               }else{
-                $('#couponculfiled').html(` 
+                    } else {
+                        $('#couponculfiled').html(` 
                     <tr>
                                     <th>
                                         <div class="cart-sub-total">
@@ -1174,55 +1181,108 @@
                                 </tr>
                                 `)
 
-               }
+                    }
+                }
+
+            })
+        }
+
+        couponcalculation();
+
+        {
+            {
+                --coupon calculation end--
             }
-
-         })
-     }
-
-couponcalculation();
-
-   {{-- coupon calculation end --}}
+        }
 
 
-    //remove coupon
-     function couponRemove(){
-        $.ajax({
-            type:'GET',
-            url: "{{ url('/coupon/remove') }}",
-            dataType:'json',
-            success:function(data){
-                couponcalculation();
-                $('#couponField').show();
-                $('#coupon_name').val('');
-                //  start message
-                const Toast = Swal.mixin({
+        //remove coupon
+        function couponRemove() {
+            $.ajax({
+                type: 'GET',
+                url: "{{ url('/coupon/remove') }}",
+                dataType: 'json',
+                success: function(data) {
+                    couponcalculation();
+                    $('#couponField').show();
+                    $('#coupon_name').val('');
+                    //  start message
+                    const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
                         showConfirmButton: false,
                         timer: 3000
-                      })
+                    })
 
-                     if($.isEmptyObject(data.error)){
-                          Toast.fire({
+                    if ($.isEmptyObject(data.error)) {
+                        Toast.fire({
                             type: 'success',
                             title: data.success
-                          })
-                     }else{
-                           Toast.fire({
-                              type: 'error',
-                              title: data.error
-                          })
-                     }
+                        })
+                    } else {
+                        Toast.fire({
+                            type: 'error',
+                            title: data.error
+                        })
+                    }
                     //  end message
-            }
-        });
-    }
+                }
+            });
+        }
 
+    </script>
+
+    <script>
+        var obj = {};
+        obj.cus_name = $('#customer_name').val();
+        obj.cus_phone = $('#mobile').val();
+        obj.cus_email = $('#email').val();
+        obj.cus_addr1 = $('#address').val();
+        obj.amount = $('#total_amount').val();
+        obj.post_code = $('#post_code').val();
+        obj.notes = $('#notes').val();
+        obj.division_id = $('#division_id').val();
+        obj.district_id = $('#district_id').val();
+        obj.state_id = $('#state_id').val();
+
+        $('#sslczPayBtn').prop('postdata', obj);
+
+        (function(window, document) {
+            var loader = function() {
+                var script = document.createElement("script"),
+                    tag = document.getElementsByTagName("script")[0];
+                // script.src = "https://seamless-epay.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7); // USE THIS FOR LIVE
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7); // USE THIS FOR SANDBOX
+                tag.parentNode.insertBefore(script, tag);
+            };
+
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+        })(window, document);
+
+    </script>
+
+
+
+
+
+
+    <script>
+        (function(window, document) {
+            var loader = function() {
+                var script = document.createElement("script"),
+                    tag = document.getElementsByTagName("script")[0];
+                script.src = "https://sandbox.sslcommerz.com/embed.min.js?" + Math.random().toString(36).substring(7);
+                tag.parentNode.insertBefore(script, tag);
+            };
+
+            window.addEventListener ? window.addEventListener("load", loader, false) : window.attachEvent("onload", loader);
+        })(window, document);
 
     </script>
 
 
 </body>
+
+
 
 </html>

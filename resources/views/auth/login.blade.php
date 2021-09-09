@@ -105,7 +105,7 @@
             <label class="info-title" for="exampleInputEmail1">Confirm Password <span>*</span></label>
             <input type="password" class="form-control unicase-form-control text-input" id="exampleInputEmail1" placeholder="Re-Type Password" name="password_confirmation">
         </div>
-        <button type="submit" class="btn-upper btn btn-primary ">Register</button>
+        <button style="margin-bottom: 20px;" type="submit" class="btn-upper btn btn-primary mt-5">Register</button>
     </form>
 
 

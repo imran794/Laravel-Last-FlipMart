@@ -114,6 +114,18 @@
           <li class="nav-item"><a href="{{ route('shipdistrict.index') }}" class="nav-link @yield('Add-Shipdistrict')">Add-District</a></li>
           <li class="nav-item"><a href="{{ route('state.index') }}" class="nav-link @yield('Add-State')">Add-State</a></li>
         </ul>
+         <a href="" class="sl-menu-link @yield('orders')">
+          <div class="sl-menu-item">
+            <i class="menu-item-icon ion-ios-pie-outline tx-20"></i>
+            <span class="menu-item-label">Orders</span>
+            <i class="menu-item-arrow fa fa-angle-down"></i>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+        <ul class="sl-menu-sub nav flex-column">
+          <li class="nav-item"><a href="{{ route('pendding.order') }}" class="nav-link @yield('Pendding Order')">Pendding Order</a></li>
+          <li class="nav-item"><a href="{{ route('shipdistrict.index') }}" class="nav-link @yield('Add-Shipdistrict')">Add-District</a></li>
+          <li class="nav-item"><a href="{{ route('state.index') }}" class="nav-link @yield('Add-State')">Add-State</a></li>
+        </ul>
 
 
                  

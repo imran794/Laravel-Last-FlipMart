@@ -49,6 +49,10 @@ class CheckoutController extends Controller
             }
             elseif($request->payment_method == 'sslHost'){
               return view('frontend.paymentmethod.sslhost', compact('data','total_amount','carts','cartsqty'));
+            }
+
+            elseif($request->payment_method == 'sslEasy'){
+              return view('frontend.paymentmethod.sslEasy', compact('data','total_amount','carts','cartsqty'));
 
             }
             else{
