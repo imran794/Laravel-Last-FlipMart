@@ -123,8 +123,12 @@
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
           <li class="nav-item"><a href="{{ route('pendding.order') }}" class="nav-link @yield('Pendding Order')">Pendding Order</a></li>
-          <li class="nav-item"><a href="{{ route('shipdistrict.index') }}" class="nav-link @yield('Add-Shipdistrict')">Add-District</a></li>
-          <li class="nav-item"><a href="{{ route('state.index') }}" class="nav-link @yield('Add-State')">Add-State</a></li>
+          <li class="nav-item"><a href="{{ route('confirm.order') }}" class="nav-link @yield('Confirm Order')">Confirm Order</a></li>
+          <li class="nav-item"><a href="{{ route('processing.order') }}" class="nav-link @yield('Processing Order')">Processing Order</a></li>
+          <li class="nav-item"><a href="{{ route('picked.order') }}" class="nav-link @yield('Picked Order')">Picked Order</a></li>
+          <li class="nav-item"><a href="{{ route('shipped.order') }}" class="nav-link @yield('Shipped Order')">Shipped Order</a></li>
+          <li class="nav-item"><a href="{{ route('delivered.order') }}" class="nav-link @yield('Delivered Order')">Delivered Order</a></li>
+          <li class="nav-item"><a href="{{ route('Cancel.order') }}" class="nav-link @yield('Cancel Order')">Cancel Order</a></li>
         </ul>
 
 

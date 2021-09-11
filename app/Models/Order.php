@@ -9,6 +9,8 @@ class Order extends Model
 {
     use HasFactory;
 
+     protected $guarded = [];
+
 
       public function division(){
         return $this->belongsTo('App\Models\ShipDivision','division_id');

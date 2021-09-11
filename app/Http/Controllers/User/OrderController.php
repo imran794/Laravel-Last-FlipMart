@@ -8,6 +8,7 @@ use App\Models\Order;
 use App\Models\Orderitem;
 use Auth;
 use PDF;
+use Carbon\Carbon;
 
 class OrderController extends Controller
 {
@@ -33,5 +34,20 @@ class OrderController extends Controller
             'chroot'  => public_path(),
          ]);
          return $pdf->download('invoice.pdf');
+    }
+
+    public function ReturnOrder(Request $request)
+    {
+         $id = $request->id;
+
+         Order::findOrFail($id)->update([
+             'return_date' => Carbon::now()->format('d F Y'),
+             'return_reason'  => $request->return_reason,
+         ]);
+           $notification=array(
+            'message'=>'Return Request Send Success',
+            'alert-type'=>'success'
+        );
+        return Redirect()->route('my-order')->with($notification);
     }
 }

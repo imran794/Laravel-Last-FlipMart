@@ -1,10 +1,10 @@
 @extends('layouts.dashboard')
 
-@section('title') Pendding-Order @endsection
+@section('title') Cancel Order @endsection
 
 @section('orders') active show-sub @endsection
 
-@section('Pendding Order') active @endsection
+@section('Cancel Order') active @endsection
 
 
 
@@ -12,7 +12,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Pendding Order</li>
+        <li class="breadcrumb-item active" aria-current="page">Cancel Order</li>
     </ol>
 </nav>
 @endsection
@@ -24,7 +24,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">Pendding Order</div>
+                <div class="card-body">Cancel Order</div>
                 <div class="card-header">
                     <div class="card pd-20 pd-sm-40">
                         <div class="table-wrapper">
@@ -49,7 +49,9 @@
                                         <td>{{ $item->transaction_id }}</td>
                                         <td><span class="badge badge-pill badge-primary">{{ $item->status }}</span></td>
                                          <td>
-                                          <a href="{{ url('admin/orders/view/'.$item->id) }}" class="btn btn-sm btn-primary" title="view data"> <i class="fa fa-eye"></i></a>
+                                    
+                                        <a href="{{ url('admin/orders/delete/'.$item->id) }}" class="btn btn-sm btn-danger" id="delete" title="delete data"><i class="fa fa-trash"></i></a>
+                                  
                                         </td>
                           
                                     </tr>

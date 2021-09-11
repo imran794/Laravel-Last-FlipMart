@@ -204,6 +204,28 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
    // order
 
    Route::get('pendding/order',[AllOrdersController::class, 'penddingorder'])->name('pendding.order');
+   Route::get('confirm/order',[AllOrdersController::class, 'ConfirmOrder'])->name('confirm.order');
+   Route::get('processing/order',[AllOrdersController::class, 'ProcessingOrder'])->name('processing.order');
+   Route::get('picked/order',[AllOrdersController::class, 'PickedOrder'])->name('picked.order');
+   Route::get('shipped/order',[AllOrdersController::class, 'ShippedOrder'])->name('shipped.order');
+   Route::get('delivered/order',[AllOrdersController::class, 'DeliveredOrder'])->name('delivered.order');
+   Route::get('Cancel/order',[AllOrdersController::class, 'CancelOrder'])->name('Cancel.order');
+   Route::get('/orders/view/{id}',[AllOrdersController::class, 'OrderView']);
+
+
+   // order status update
+
+   
+   Route::get('/penddingToconfirm/{id}',[AllOrdersController::class, 'PenddingToConfirm']);
+   Route::get('/confirmtoprocessing/{id}',[AllOrdersController::class, 'ConfirmToProcessing']);
+   Route::get('/processToPicked/{id}',[AllOrdersController::class, 'ProcessToPicked']);
+   Route::get('/PickedtoShipped/{id}',[AllOrdersController::class, 'PickedtoShipped']);
+   Route::get('/ShippedTodelivery/{id}',[AllOrdersController::class, 'ShippedToDelivery']);
+   Route::get('/pendingTocancel/{id}',[AllOrdersController::class, 'PendingToCancel']);
+   Route::get('/invoice-download/{id}',[AllOrdersController::class, 'invoicedownload']);
+   Route::get('/orders/delete/{id}',[AllOrdersController::class, 'OrdersDelete']);
+
+ 
 
 
 });
@@ -233,6 +255,9 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
     Route::get('/order-view/{id}',[OrderController::class, 'orderview']); 
     Route::get('/invoice-download/{id}',[OrderController::class, 'invoicedownload']); 
 
+  // retrun order
+
+   Route::post('return/order', [OrderController::class, 'ReturnOrder'])->name('return.order');
 
  
 });
