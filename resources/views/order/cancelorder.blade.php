@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-All Order
+Cancel Order
 @endsection
 
 
@@ -16,7 +16,7 @@ All Order
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
                 <li><a href="#">Home</a></li>
-                <li class='active'>All Order</li>
+                <li class='active'>Cancel Order</li>
             </ul>
         </div><!-- /.breadcrumb-inner -->
     </div><!-- /.container -->
@@ -32,7 +32,7 @@ All Order
 
 <div class="container" style="padding: 50px 0;">
     <div class="row">
-        <div class="col-md-4 ">
+        <div class="col-md-3">
             <div class="card" style="width: 18rem;">
                 <img class="card-img-top" style="border-radius: 50%;" src="{{ asset(Auth::user()->image) }}" height="100%;" width="100%;" alt="Card image cap">
                 <ul class="list-group list-group-flush">
@@ -42,7 +42,7 @@ All Order
                     <a href="{{ route('change.password') }}" class="btn btn-primary btn-sm btn-block">Change Password</a>
 
                     <a href="{{ route('my-order') }}" class="btn btn-primary btn-sm btn-block">My Order</a>
-                      <a href="{{ route('my-order') }}" class="btn btn-primary btn-sm btn-block">Return Order</a>
+                      <a href="{{ route('return-order-submit') }}" class="btn btn-primary btn-sm btn-block">Return Order</a>
                       <a href="{{ route('my-order') }}" class="btn btn-primary btn-sm btn-block">Cancel Order</a>
 
                     <a href="{{ route('logout') }}" class="btn btn-danger btn-sm btn-block" onclick="event.preventDefault();
@@ -98,10 +98,9 @@ All Order
                             <td class="col-md-2">
                                 <strong>{{ $order->invoice_no }}</strong>
                             </td>
-
-                            <td class="col-md-2">
-                                <span class="badge badge-pill badge-warning" style="background: #418DB9; text:white;">{{ ucwords($order->status) }}</span>
-                            </td>
+                              <td class="col-md-2">
+                                    <span class="badge badge-pill badge-warning" style="background: red; text:white;">{{ ucwords($order->status) }}</span> <br>
+                                </td>
 
                             <td class="col-md-1">
                                 <a href="{{ url('user/order-view/'.$order->id) }}" class="btn btn-sm btn-primary"><i class="fa fa-eye"></i> View</a>
@@ -116,7 +115,12 @@ All Order
             </div>
         </div>
     </div>
+
+
+ 
+
+
+
+
 </div>
-
-
 @endsection

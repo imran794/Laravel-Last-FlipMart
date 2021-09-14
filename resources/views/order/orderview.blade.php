@@ -42,8 +42,8 @@ Customer Order
                     <a href="{{ route('change.password') }}" class="btn btn-primary btn-sm btn-block">Change Password</a>
 
                     <a href="{{ route('my-order') }}" class="btn btn-primary btn-sm btn-block">My Order</a>
-                      <a href="{{ route('my-order') }}" class="btn btn-primary btn-sm btn-block">Return Order</a>
-                      <a href="{{ route('my-order') }}" class="btn btn-primary btn-sm btn-block">Cancel Order</a>
+                      <a href="{{ route('return-order-submit') }}" class="btn btn-primary btn-sm btn-block">Return Order</a>
+                      <a href="{{ route('cancel-order') }}" class="btn btn-primary btn-sm btn-block">Cancel Order</a>
 
                     <a href="{{ route('logout') }}" class="btn btn-danger btn-sm btn-block" onclick="event.preventDefault();
                     document.getElementById('logout-form').submit();"> Log Out</a>
@@ -125,12 +125,12 @@ Customer Order
                         </li>
 
                         <li class="list-group-item">
-                           {{--  @php
+                            @php
                             $order_r = App\Models\Order::where('id',$order->id)->where('return_reason','=',NULL)->first();
                             @endphp
                             @if (!$order_r)
                             <span class="badge badge-pill badge-warning" style="background: red; text:white;">You Have Send a Return Request</span>
-                            @endif --}}
+                            @endif
                         </li>
 
                     </ul>

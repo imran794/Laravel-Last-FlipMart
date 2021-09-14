@@ -1,10 +1,8 @@
 @extends('layouts.dashboard')
 
-@section('title') Cancel Order @endsection
+@section('title') Reports @endsection
 
-@section('orders') active show-sub @endsection
-
-@section('Cancel Order') active @endsection
+@section('Reports') active @endsection
 
 
 
@@ -12,7 +10,7 @@
 <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
         <li class="breadcrumb-item"><a href="{{ url('/') }}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Cancel Order</li>
+        <li class="breadcrumb-item active" aria-current="page">Reports</li>
     </ol>
 </nav>
 @endsection
@@ -24,14 +22,13 @@
     <div class="row">
         <div class="col-md-12">
             <div class="card">
-                <div class="card-body">Cancel Order</div>
+                <div class="card-body">Reports List</a> </div>
                 <div class="card-header">
                     <div class="card pd-20 pd-sm-40">
                         <div class="table-wrapper">
                             <table id="datatable1" class="table display responsive nowrap">
                                 <thead>
                                     <tr>
-
                                         <th class="wd-15p">Date</th>
                                         <th class="wd-15p">Invoice No</th>
                                         <th class="wd-15p">Amount</th>

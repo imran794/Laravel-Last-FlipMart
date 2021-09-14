@@ -50,4 +50,16 @@ class OrderController extends Controller
         );
         return Redirect()->route('my-order')->with($notification);
     }
+
+    public function ReturnOrderSubmit()
+    {
+        $orders = Order::where('user_id',Auth::id())->where('return_reason','!=',NULL)->latest()->get();
+        return view('order.return',compact('orders'));
+    }
+
+    public function CancelOrder()
+    {
+        $orders = Order::where('status','Cancel')->orderBy('id','DESC')->get();
+        return view('order.cancelorder',compact('orders'));
+    }
 }

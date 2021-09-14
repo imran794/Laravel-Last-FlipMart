@@ -131,6 +131,13 @@
           <li class="nav-item"><a href="{{ route('Cancel.order') }}" class="nav-link @yield('Cancel Order')">Cancel Order</a></li>
         </ul>
 
+           <a href="{{ route('reports') }}" class="sl-menu-link @yield('Reports')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Reports</span>
+          </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->  
+
 
                  
       </div><!-- sl-sideleft-menu -->

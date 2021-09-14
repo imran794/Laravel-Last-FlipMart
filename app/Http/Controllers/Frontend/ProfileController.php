@@ -256,6 +256,14 @@ class ProfileController extends Controller
     }
 
 
+    // all user
+
+    public function AllUser()
+    {
+        $users = User::where('roled_id',2)->latest()->get();
+        return view('admin.alluser.index',compact('users'));
+    }
+
 
 
 

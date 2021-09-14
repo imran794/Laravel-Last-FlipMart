@@ -63,6 +63,10 @@
             <div class="navicon-left hidden-md-down"><a id="btnLeftMenu" href=""><i class="icon ion-navicon-round"></i></a></div>
             <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
         </div><!-- sl-header-left -->
+
+       <li><a style="color: white;" href="{{ route('all.user') }}"><i class="icon ion-ios-person-outline"></i>All User</a></li>
+
+
         <div class="sl-header-right">
             <nav class="nav">
                 <div class="dropdown">

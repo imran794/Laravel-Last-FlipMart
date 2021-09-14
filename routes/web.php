@@ -17,6 +17,7 @@ Use App\Http\Controllers\Admin\SubSubCategoryController;
 Use App\Http\Controllers\Admin\CouponController;
 Use App\Http\Controllers\Admin\ShipingAreaController;
 Use App\Http\Controllers\Admin\ProductController;
+Use App\Http\Controllers\Admin\ReportController;
 Use App\Http\Controllers\User\WishlistController;
 Use App\Http\Controllers\User\CheckoutController;
 Use App\Http\Controllers\User\OrderController;
@@ -105,6 +106,11 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
     Route::post('image/update/ad', [ProfileController::class, 'ImageUpdatead'])->name('image.update.ad');
     Route::get('change/password/ad', [ProfileController::class, 'ChangePasswordad'])->name('change.password.ad');
     Route::post('password/store/ad', [ProfileController::class, 'PasswordStoread'])->name('password.store.ad');
+
+
+    // all user
+
+    Route::get('all/user', [ProfileController::class, 'AllUser'])->name('all.user');
 
 
     // role management
@@ -225,6 +231,14 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
    Route::get('/invoice-download/{id}',[AllOrdersController::class, 'invoicedownload']);
    Route::get('/orders/delete/{id}',[AllOrdersController::class, 'OrdersDelete']);
 
+   // reports
+
+  Route::get('reports',[ReportController::class, 'Index'])->name('reports');
+  Route::post('search/by/date',[ReportController::class, 'SearchByDate'])->name('search.by.date');
+  Route::post('search/by/month',[ReportController::class, 'SearchByMonth'])->name('search.by.month');
+  Route::post('search/by/year',[ReportController::class, 'SearchByYear'])->name('search.by.year');
+
+
  
 
 
@@ -257,7 +271,9 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
 
   // retrun order
 
-   Route::post('return/order', [OrderController::class, 'ReturnOrder'])->name('return.order');
+   Route::post('return/order', [OrderController::class, 'returnorder'])->name('return.order');
+   Route::get('return/order/submit', [OrderController::class, 'ReturnOrderSubmit'])->name('return-order-submit');
+   Route::get('cancel/order', [OrderController::class, 'CancelOrder'])->name('cancel-order');
 
  
 });
