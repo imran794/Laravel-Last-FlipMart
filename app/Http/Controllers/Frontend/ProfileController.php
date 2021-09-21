@@ -264,6 +264,33 @@ class ProfileController extends Controller
         return view('admin.alluser.index',compact('users'));
     }
 
+    // user banned
+
+    public function userbanned($id)
+    {
+        User::findOrFail($id)->update(['isban' => 1]);
+        $notification=array(
+            'message'=>'User Banned Successfully',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+
+    } 
+
+
+     // user unbanned
+
+    public function unbanned($id)
+    {
+        User::findOrFail($id)->update(['isban' => 0]);
+        $notification=array(
+            'message'=>'User Unbanned Successfully',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+
+    }
+
 
 
 

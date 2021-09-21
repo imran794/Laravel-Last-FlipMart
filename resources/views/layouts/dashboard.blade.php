@@ -30,6 +30,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
+
     <title>@yield('title')</title>
 
     <!-- vendor css -->
@@ -64,7 +65,7 @@
             <div class="navicon-left hidden-lg-up"><a id="btnLeftMenuMobile" href=""><i class="icon ion-navicon-round"></i></a></div>
         </div><!-- sl-header-left -->
 
-       <li><a style="color: white;" href="{{ route('all.user') }}"><i class="icon ion-ios-person-outline"></i>All User</a></li>
+       <li><a style="color: white;" href="{{ route('all.user') }}"> <i class="icon ion-ios-person-outline"></i> All User</a></li>
 
 
         <div class="sl-header-right">

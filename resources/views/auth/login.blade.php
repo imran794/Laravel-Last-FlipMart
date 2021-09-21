@@ -19,13 +19,13 @@
             <div class="row">
                 <!-- Sign-in -->
 <div class="col-md-6 col-sm-6 sign-in">
-  {{--   @error('banned')
+    @error('banned')
         <h3 class="text-danger">{{ $message }}</h3>
-    @enderror --}}
+    @enderror
     <h4 class="">Sign in</h4>
     <div class="social-sign-in outer-top-xs">
-        <a href="" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
-        <a href="" class="twitter-sign-in"><i class="fa fa-google"></i> Sign In with google</a>
+        <a href="{{ route('login.facebook') }}" class="facebook-sign-in"><i class="fa fa-facebook"></i> Sign In with Facebook</a>
+        <a href="{{ route('login.google') }}" class="twitter-sign-in"><i class="fa fa-google"></i> Sign In with google</a>
     </div>
     <form class="register-form outer-top-xs" role="form" method="POST" action="{{ route('login') }}">
         @csrf

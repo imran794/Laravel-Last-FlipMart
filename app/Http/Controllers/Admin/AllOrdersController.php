@@ -14,7 +14,7 @@ class AllOrdersController extends Controller
 {
     public function penddingorder()
     {
-        $orders = Order::where('status','pending')->orderBy('id','DESC')->get();
+        $orders = Order::where('status','pedding')->orderBy('id','DESC')->get();
         return view('order.pendding',compact('orders'));
     }
 
@@ -76,7 +76,7 @@ class AllOrdersController extends Controller
             'message'=>'Order Confirm Success',
             'alert-type'=>'success'
         );
-        return Redirect()->route('pendding.order')->with($notification);
+        return Redirect()->route('confirm.order')->with($notification);
     }
 
     public function ConfirmToProcessing($id)
@@ -90,7 +90,7 @@ class AllOrdersController extends Controller
             'message'=>'Order Confirm Success',
             'alert-type'=>'success'
         );
-        return Redirect()->route('confirm.order')->with($notification);
+        return Redirect()->route('processing.order')->with($notification);
     }
 
     public function ProcessToPicked($id)
@@ -104,7 +104,7 @@ class AllOrdersController extends Controller
             'message'=>'Order Confirm Success',
             'alert-type'=>'success'
         );
-        return Redirect()->route('processing.order')->with($notification);
+        return Redirect()->route('picked.order')->with($notification);
     }
     public function PickedtoShipped($id)
     {
@@ -117,7 +117,7 @@ class AllOrdersController extends Controller
             'message'=>'Order Confirm Success',
             'alert-type'=>'success'
         );
-        return Redirect()->route('picked.order')->with($notification);
+        return Redirect()->route('shipped.order')->with($notification);
     }  
      public function ShippedToDelivery($id)
     {
@@ -130,7 +130,7 @@ class AllOrdersController extends Controller
             'message'=>'Order Confirm Success',
             'alert-type'=>'success'
         );
-        return Redirect()->route('shipped.order')->with($notification);
+        return Redirect()->route('delivered.order')->with($notification);
     } 
 
      public function PendingToCancel($id)

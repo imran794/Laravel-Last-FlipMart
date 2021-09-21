@@ -64,12 +64,56 @@ $(document).on("click", "#processing", function(e){
     });
 });
 
-$(document).on("click", "#order", function(e){
+$(document).on("click", "#piked", function(e){
     e.preventDefault();
     var link = $(this).attr("href");
 
     swal({
-        title: "Are you sure To Confrm?",
+        title: "Are you sure To Piked?",
+        text:  "Once Confirm, you will not go Back Step Again!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            window.location.href = link;
+
+        } else {
+            swal("Not Confirm!");
+        }
+
+    });
+});
+
+$(document).on("click", "#shipped", function(e){
+    e.preventDefault();
+    var link = $(this).attr("href");
+
+    swal({
+        title: "Are you sure To Shipped?",
+        text:  "Once Confirm, you will not go Back Step Again!",
+        icon: "warning",
+        buttons: true,
+        dangerMode: true,
+        })
+        .then((willDelete) => {
+        if (willDelete) {
+            window.location.href = link;
+
+        } else {
+            swal("Not Confirm!");
+        }
+
+    });
+});
+
+$(document).on("click", "#delevery", function(e){
+    e.preventDefault();
+    var link = $(this).attr("href");
+
+    swal({
+        title: "Are you sure To Delevery?",
         text:  "Once Confirm, you will not go Back Step Again!",
         icon: "warning",
         buttons: true,

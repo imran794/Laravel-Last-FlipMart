@@ -23,6 +23,8 @@ Use App\Http\Controllers\User\CheckoutController;
 Use App\Http\Controllers\User\OrderController;
 Use App\Http\Controllers\User\StripeController;
 Use App\Http\Controllers\SslCommerzPaymentController;
+Use App\Http\Controllers\TrackController;
+use App\Http\Controllers\Auth\LoginController;
 Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
 Use App\Http\Controllers\Frontend\LanguageController;
@@ -110,6 +112,9 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
 
     // all user
 
+    Route::get('all/user', [ProfileController::class, 'AllUser'])->name('all.user');
+    Route::get('/user/banned/{id}', [ProfileController::class, 'userbanned']);
+    Route::get('/user/unbanned/{id}', [ProfileController::class, 'unbanned']);
     Route::get('all/user', [ProfileController::class, 'AllUser'])->name('all.user');
 
 
@@ -299,6 +304,19 @@ Route::post('/ipn', [SslCommerzPaymentController::class, 'ipn']);
 Route::get('english/language',[LanguageController::class, 'enalish'])->name('english.language');
 Route::get('bangla/language',[LanguageController::class, 'bangla'])->name('bangla.language');
 
+
+// socialite
+
+Route::get('login/google',[LoginController::class, 'LoginGoogle'])->name('login.google');
+Route::get('login/google/callback',[LoginController::class, 'handleGoogleCallback']);
+
+Route::get('login/facebook',[LoginController::class, 'LoginFacebook'])->name('login.facebook');
+Route::get('login/facebook/callback',[LoginController::class, 'handleFacebookCallback']);
+
+
+// order track
+
+ Route::post('order/track',[TrackController::class, 'OrderTrack'])->name('order.track');
 
 
 
