@@ -39,6 +39,22 @@
     <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
     <script src="https://js.stripe.com/v3/"></script>
 
+        <style>
+            .search-area{
+                position: relative;
+            }
+            #suggestProduct {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                background: #fff;
+                z-index: 999;
+                border-radius: 4px;
+                margin-top: 2px;
+            }
+            </style>
+
 
 </head>
 
@@ -116,31 +132,19 @@
                         <!-- /.contact-row -->
                         <!-- ============================================================= SEARCH AREA ============================================================= -->
                         <div class="search-area">
-                            <form>
+                            <form action="{{ route('search.product') }}" method="GET">
+                                @csrf
                                 <div class="control-group">
 
-                                    <ul class="categories-filter animate-dropdown">
-                                        <li class="dropdown">
+                                    <input name="search" id="search" class="search-field" onfocus="showsearchresult()" onblur="hidesearchresult()" placeholder="Search here..." />
 
-                                            <a class="dropdown-toggle" data-toggle="dropdown" href="category.html">Categories <b class="caret"></b></a>
-
-                                            <ul class="dropdown-menu" role="menu">
-                                                <li class="menu-header">Computer</li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Clothing</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Electronics</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Shoes</a></li>
-                                                <li role="presentation"><a role="menuitem" tabindex="-1" href="category.html">- Watches</a></li>
-
-                                            </ul>
-                                        </li>
-                                    </ul>
-
-                                    <input class="search-field" placeholder="Search here..." />
-
-                                    <a class="search-button" href="#"></a>
+                                    <button  type="submit" class="search-button"></button>
 
                                 </div>
                             </form>
+                            <div id="suggestProduct">
+                                
+                            </div>
                         </div><!-- /.search-area -->
                         <!-- ========================== SEARCH AREA : END =================== -->
                     </div>
@@ -1298,6 +1302,38 @@
         })(window, document);
 
     </script>
+
+    <script>
+    $("body").on("keyup","#search",function () {
+        let searchData = $("#search").val();
+        if (searchData.length > 0) {
+            $.ajax({
+            type:'POST',
+            url: "{{ url('/find-products') }}",
+            data:{search:searchData},
+            success:function(result){
+                $('#suggestProduct').html(result)
+            }
+            });
+        }
+
+        if(searchData.length < 1) $('#suggestProduct').html("");
+    })
+</script>
+
+
+<script>
+
+    function showsearchresult() {
+        $("#suggestProduct").slideDown();
+    }
+    
+
+    function hidesearchresult() {
+        $("#suggestProduct").slideUp();
+    }
+    
+</script>
 
 
 </body>

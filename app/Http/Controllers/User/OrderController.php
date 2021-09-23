@@ -20,7 +20,7 @@ class OrderController extends Controller
 
     public function orderview($id)
     {
-        $order = Order::with('division','district','state','user')->where('id',$id)->where('user_id',Auth::id())->first();
+        $order = Order::with('division','district','state','user')->where('id',$id)->first();
         $orderItems = Orderitem::where('order_id',$id)->orderBy('id','DESC')->get();
          return view('order.orderview',compact('order','orderItems'));
     }

@@ -14,6 +14,7 @@ use App\Models\Blog;
 use App\Models\Contact;
 use App\Models\Faq;
 use App\Models\Cinformation;
+use App\Models\Rating;
 use carbon\carbon;
 use Auth;
 
@@ -48,7 +49,10 @@ class IndexController extends Controller
         $categories  =  Category::latest()->get();
         $hot_dealss    = Product::where('hot_deals',1)->where('status',1)->where('discount_price','!=',Null)->orderBy('id','DESC')->get();
         $testimonials = Testimonial::where('status',1)->orderBy('id','DESC')->get();
-        return view('frontend.productdetails',compact('categories','product','subcategories','hot_dealss','testimonials','raleted_products','product_color','product_size'));
+        $productreview = Rating::with('user')->where('product_id',$id)->latest()->get();
+        $rating = Rating::where('product_id',$id)->avg('rating');
+        $avgrating = number_format($rating,1);
+        return view('frontend.productdetails',compact('categories','product','subcategories','hot_dealss','testimonials','raleted_products','product_color','product_size','productreview','avgrating'));
     } 
 
     public function subsubcategoryproduct($id,$slug)

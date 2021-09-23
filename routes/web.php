@@ -22,6 +22,7 @@ Use App\Http\Controllers\User\WishlistController;
 Use App\Http\Controllers\User\CheckoutController;
 Use App\Http\Controllers\User\OrderController;
 Use App\Http\Controllers\User\StripeController;
+Use App\Http\Controllers\User\RatingController;
 Use App\Http\Controllers\SslCommerzPaymentController;
 Use App\Http\Controllers\TrackController;
 use App\Http\Controllers\Auth\LoginController;
@@ -29,6 +30,7 @@ Use App\Http\Controllers\Frontend\IndexController;
 Use App\Http\Controllers\Frontend\ProfileController;
 Use App\Http\Controllers\Frontend\LanguageController;
 Use App\Http\Controllers\Frontend\CartController;
+Use App\Http\Controllers\Frontend\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -280,6 +282,10 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
    Route::get('return/order/submit', [OrderController::class, 'ReturnOrderSubmit'])->name('return-order-submit');
    Route::get('cancel/order', [OrderController::class, 'CancelOrder'])->name('cancel-order');
 
+   // 
+   Route::get('/review/create/{product_id}',[RatingController::class, 'ReviewCreate']);
+   Route::post('/reviwe/strore',[RatingController::class, 'ReviweStrore'])->name('reviwe.strore');
+
  
 });
 
@@ -319,5 +325,8 @@ Route::get('login/facebook/callback',[LoginController::class, 'handleFacebookCal
  Route::post('order/track',[TrackController::class, 'OrderTrack'])->name('order.track');
 
 
+// search 
 
+ Route::get('search/product',[SearchController::class, 'SearchProduct'])->name('search.product');
+ Route::post('/find-products',[SearchController::class,'findProducts']);
 
