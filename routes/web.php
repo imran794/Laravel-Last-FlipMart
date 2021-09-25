@@ -18,6 +18,7 @@ Use App\Http\Controllers\Admin\CouponController;
 Use App\Http\Controllers\Admin\ShipingAreaController;
 Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\Admin\ReportController;
+Use App\Http\Controllers\Admin\ReviweController;
 Use App\Http\Controllers\User\WishlistController;
 Use App\Http\Controllers\User\CheckoutController;
 Use App\Http\Controllers\User\OrderController;
@@ -244,6 +245,12 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
   Route::post('search/by/date',[ReportController::class, 'SearchByDate'])->name('search.by.date');
   Route::post('search/by/month',[ReportController::class, 'SearchByMonth'])->name('search.by.month');
   Route::post('search/by/year',[ReportController::class, 'SearchByYear'])->name('search.by.year');
+
+  // review
+
+  Route::get('review',[ReviweController::class, 'Review'])->name('review');
+  Route::get('/review/approve/{id}',[ReviweController::class, 'ReviewApprove']);
+  Route::get('/review/delete/{id}',[ReviweController::class, 'ReviewDelete']);
 
 
  

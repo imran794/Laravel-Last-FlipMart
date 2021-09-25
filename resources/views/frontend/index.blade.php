@@ -140,7 +140,25 @@ Index
 
                                                 <div class="product-info text-left">
                                                     <h3 class="name"><a href="">{{ $product->product_name }}</a></h3>
-                                                    <div class="rating rateit-small"></div>
+                                                   @if ( $productreview = App\Models\Rating::where('product_id',$product->id)->first())
+                                                    @php
+
+                                                    $productreview = App\Models\Rating::with('user')->where('product_id',$product->id)->where('status','approve')->latest()->get();
+                                                    $rating = App\Models\Rating::where('product_id',$product->id)->avg('rating');
+                                                    $avgrating = number_format($rating,1);
+
+                                                    @endphp
+                                                   @for($i=1; $i<= 5; $i++) <span>
+                                                <i style="color: red;" class="glyphicon glyphicon-star{{ ($i <= $avgrating)? '' : '-empty' }}"></i>
+
+                                                </span>
+                                                @endfor
+                                                  ({{ count($productreview) }})
+                                                       
+                                                   @else
+                                                  <span class="text-danger">No Review</span>
+                                                       
+                                                   @endif
                                                     <div class="description"></div>
 
                                                     <div class="product-price">
@@ -227,7 +245,25 @@ Index
 
                                                 <div class="product-info text-left">
                                                     <h3 class="name"><a href="">{{ $catwiseProduct->product_name }}</a></h3>
-                                                    <div class="rating rateit-small"></div>
+                                                      @if ( $productreview = App\Models\Rating::where('product_id',$product->id)->first())
+                                                    @php
+
+                                                    $productreview = App\Models\Rating::where('product_id',$product->id)->where('status','approve')->latest()->get();
+                                                    $rating = App\Models\Rating::where('product_id',$product->id)->avg('rating');
+                                                    $avgrating = number_format($rating,1);
+
+                                                    @endphp
+                                                   @for($i=1; $i<= 5; $i++) <span>
+                                                <i style="color: red;" class="glyphicon glyphicon-star{{ ($i <= $avgrating)? '' : '-empty' }}"></i>
+
+                                                </span>
+                                                @endfor
+                                                  ({{ count($productreview) }})
+                                                       
+                                                   @else
+                                                  <span class="text-danger">No Review</span>
+                                                       
+                                                   @endif
                                                     <div class="description"></div>
                                                
 
