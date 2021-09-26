@@ -19,6 +19,7 @@ Use App\Http\Controllers\Admin\ShipingAreaController;
 Use App\Http\Controllers\Admin\ProductController;
 Use App\Http\Controllers\Admin\ReportController;
 Use App\Http\Controllers\Admin\ReviweController;
+Use App\Http\Controllers\Admin\StockController;
 Use App\Http\Controllers\User\WishlistController;
 Use App\Http\Controllers\User\CheckoutController;
 Use App\Http\Controllers\User\OrderController;
@@ -251,6 +252,12 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
   Route::get('review',[ReviweController::class, 'Review'])->name('review');
   Route::get('/review/approve/{id}',[ReviweController::class, 'ReviewApprove']);
   Route::get('/review/delete/{id}',[ReviweController::class, 'ReviewDelete']);
+
+  // stock management
+
+  Route::get('stock/management',[StockController::class, 'Index'])->name('stock.management');
+  Route::get('stock/edit/{id}',[StockController::class, 'StockEdit']);
+  Route::post('stock/update/{id}',[StockController::class, 'StockUpdate'])->name('stock.update');
 
 
  

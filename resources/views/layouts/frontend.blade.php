@@ -609,6 +609,8 @@
 
         // product view with model start
 
+
+
         function productView(id) {
             $.ajax({
                 type: 'GET',
@@ -744,6 +746,8 @@
         // add to cart  end
 
     </script>
+
+       @yield('shortby')
 
     <script>
         function minicart() {

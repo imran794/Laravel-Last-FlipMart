@@ -143,6 +143,14 @@
             <i class="icon ion-arrow-right-a"></i>
             <span class="menu-item-label">Review</span>
           </div><!-- menu-item -->
+        </a><!-- sl-menu-link -->
+
+
+         <a href="{{ route('stock.management') }}" class="sl-menu-link @yield('Stock Management')">
+          <div class="sl-menu-item">
+            <i class="icon ion-arrow-right-a"></i>
+            <span class="menu-item-label">Stock Management</span>
+          </div><!-- menu-item -->
         </a><!-- sl-menu-link -->  
 
 

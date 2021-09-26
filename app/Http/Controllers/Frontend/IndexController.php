@@ -55,12 +55,43 @@ class IndexController extends Controller
         return view('frontend.productdetails',compact('categories','product','subcategories','hot_dealss','testimonials','raleted_products','product_color','product_size','productreview','avgrating'));
     } 
 
-    public function subsubcategoryproduct($id,$slug)
+    public function subsubcategoryproduct(Request $request, $subcatid,$slug)
     {
         $testimonials = Testimonial::where('status',1)->latest()->get();
         $categories = Category::latest()->get();
-        $products = Product::where('status',1)->where('subsubcategory_id',$id)->paginate(1);
-        return view('frontend.subsubcategoryproduct',compact('products','categories','testimonials'));
+
+
+        $sort = '';
+        if ($request->sort != null) {
+             $sort = $request->sort;
+        }
+
+        if ($subcatid == null) {
+            return view('error.404');
+        }
+        else{
+            if ($sort == 'priceLowtoHigh') {
+               $products = Product::where(['status' => 1,'subsubcategory_id' => $subcatid])->orderBy('selling_price','ASC')->paginate(10);
+            }
+            elseif($sort == 'priceHightoLow'){
+              $products = Product::where(['status' => 1,'subsubcategory_id' => $subcatid])->orderBy('selling_price','DESC')->paginate(10);
+            }
+            elseif($sort == 'nameAtoZ'){
+                $products = Product::where(['status' => 1,'subsubcategory_id' => $subcatid])->orderBy('product_name','ASC')->paginate(10);
+            }
+            elseif($sort == 'nameZtoA'){
+                $products = Product::where(['status' => 1,'subsubcategory_id' => $subcatid])->orderBy('product_name','DESC')->paginate(10);
+            }
+            else{
+                $products = Product::where('status',1)->where('subsubcategory_id',$subcatid)->paginate(10);
+            }
+        }
+
+        $route = 'subsubcategory/product';
+         $subcatid = $subcatid;
+         $slug = $slug;
+
+        return view('frontend.subsubcategoryproduct',compact('products','categories','testimonials','route','subcatid','slug','sort'));
     }
 
     public function producttag($tag)

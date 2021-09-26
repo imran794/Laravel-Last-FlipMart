@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 use App\Models\Order;
 use App\Mail\orderMail;
+use App\Models\Product;
 use App\Models\Orderitem;
 use Auth;
 use Cart;
@@ -89,6 +90,13 @@ class StripeController extends Controller
                 'qty'          => $cart->qty,
                 'price'          => $cart->price,
             ]);
+        }
+
+        // product stock 
+
+        foreach($carts as $procart){
+            Product::where('id',$procart->id)->decrement('product_qty',$procart->qty);
+
         }
 
         if (Session::has('coupon')) {
