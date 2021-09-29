@@ -33,6 +33,7 @@ Use App\Http\Controllers\Frontend\ProfileController;
 Use App\Http\Controllers\Frontend\LanguageController;
 Use App\Http\Controllers\Frontend\CartController;
 Use App\Http\Controllers\Frontend\SearchController;
+Use App\Http\Controllers\Frontend\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -344,3 +345,9 @@ Route::get('login/facebook/callback',[LoginController::class, 'handleFacebookCal
  Route::get('search/product',[SearchController::class, 'SearchProduct'])->name('search.product');
  Route::post('/find-products',[SearchController::class,'findProducts']);
 
+
+// shop pages
+
+
+ Route::get('shop',[ShopController::class, 'Index'])->name('shop');
+ Route::post('shop/filter',[ShopController::class, 'ShopFilter'])->name('shop.filter');

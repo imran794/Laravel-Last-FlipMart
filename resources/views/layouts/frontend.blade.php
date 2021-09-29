@@ -282,6 +282,7 @@
                                                             <ul class="links">
                                                                 <li><a href="{{ url('/') }}">Home</a></li>
                                                                 <li><a href="#">Category</a></li>
+                                                                <li><a href="{{ route('shop') }}">Shop</a></li>
                                                                 <li><a href="detail.html">Detail</a></li>
                                                                 <li><a href="shopping-cart.html">Shopping Cart Summary</a></li>
                                                                 <li><a href="checkout.html">Checkout</a></li>
