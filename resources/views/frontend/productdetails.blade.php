@@ -43,18 +43,19 @@
                     </div>
 
                     @include('frontend/inc/hotdeals')
-      
-
-                    @include('frontend/inc/test')
+                 
                 </div>
+                   @include('frontend/inc/test')
             </div><!-- /.sidebar -->
+
+
             <div class='col-md-9'>
                 <div class="detail-block">
                     <div class="row  wow fadeInUp">
                         <div class="col-xs-12 col-sm-6 col-md-5 gallery-holder">
                             <div class="product-item-holder size-big single-product-gallery small-gallery">
 
-                                <div id="owl-single-product">
+                             {{--    <div id="owl-single-product">
                                     @foreach ($product->get_latest_multiple as $image)
                                     <div class="single-product-gallery-item" id="slide{{ $image->id }}">
                                         <a data-lightbox="image-1" data-title="Gallery" href="{{ asset($image->mulitple_images) }}">
@@ -62,9 +63,9 @@
                                         </a>
                                     </div><!-- /.single-product-gallery-item -->
                                     @endforeach
-                                </div><!-- /.single-product-slider -->
-                                <div class="single-product-gallery-thumbs gallery-thumbs">
+                                </div><!-- /.single-product-slider --> --}}
 
+                              {{--   <div class="single-product-gallery-thumbs gallery-thumbs">
                                     <div id="owl-single-product-thumbnails">
                                         @foreach ($product->get_latest_multiple as $image)
                                         <div class="item">
@@ -74,10 +75,12 @@
                                         </div>
                                         @endforeach
                                     </div><!-- /#owl-single-product-thumbnails -->
-                                </div><!-- /.gallery-thumbs -->
+                                </div><!-- /.gallery-thumbs --> --}}
 
                             </div><!-- /.single-product-gallery -->
                         </div><!-- /.gallery-holder -->
+
+
                         <div class='col-sm-6 col-md-7 product-info-block'>
                             <div class="product-info">
                                 <h1 class="name" id="pname">{{ $product->product_name }}</h1>
@@ -263,13 +266,11 @@
                     </div><!-- /.row -->
                 </div><!-- /.product-tabs -->
 
-                <!-- ============================================== UPSELL PRODUCTS ============================================== -->
+                <!-- ====================== Raleted PRODUCTS ============================= -->
                 <section class="section featured-product wow fadeInUp">
                     <h3 class="section-title">Raleted products</h3>
                     <div class="owl-carousel home-owl-carousel upsell-product custom-carousel owl-theme outer-top-xs">
-
                         @foreach ($raleted_products as $raletedproduct)
-
                         <div class="item item-carousel">
                             <div class="products">
 
@@ -291,8 +292,6 @@
 
                                         </div>
                                     </div><!-- /.product-image -->
-
-
                                     <div class="product-info text-left">
                                         <h3 class="name"><a href="detail.html">{{ $raletedproduct->product_name }}</a></h3>
                                         <div class="rating rateit-small"></div>
@@ -307,10 +306,7 @@
                                             <span class="price-before-discount">${{ $raletedproduct->selling_price }}</span>
                                             @endif
 
-
-
                                         </div><!-- /.product-price -->
-
                                     </div><!-- /.product-info -->
                                     <div class="cart clearfix animate-effect">
                                         <div class="action">
@@ -344,7 +340,7 @@
                         @endforeach
                     </div><!-- /.home-owl-carousel -->
                 </section><!-- /.section -->
-                <!-- ============================================== UPSELL PRODUCTS : END ============================================== -->
+                <!-- =================== UPSELL PRODUCTS : END =============== -->
             </div><!-- /.col -->
             <div class="clearfix"></div>
         </div><!-- /.row -->

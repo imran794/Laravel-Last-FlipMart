@@ -1,12 +1,9 @@
 @extends('layouts.frontend')
-
 @section('title')
-Search  Product
+Search Product
 @endsection
-
 @section('content')
 <!-- ============================== breadcrumb : start =================================== -->
-
 <div class="breadcrumb">
     <div class="container">
         <div class="breadcrumb-inner">
@@ -25,16 +22,13 @@ Search  Product
                 @include('frontend/inc/category')
                 <!-- ================================== TOP NAVIGATION : END ================================== -->
                 <div class="sidebar-module-container">
-
                     <div class="sidebar-filter">
                         <!-- ============================================== SIDEBAR CATEGORY ============================================== -->
-                     {{--    <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
+                        {{-- <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
                             <h3 class="section-title">Category</h3>
                             <div class="sidebar-widget-body m-t-10">
                                 <div class="accordion">
-
                                     @foreach ($categories as $category)
-
                                     <div class="accordion-group">
                                         <div class="accordion-heading">
                                             <a href="#collapseOne{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed">
@@ -55,20 +49,15 @@ Search  Product
                                         </div><!-- /.accordion-body -->
                                     </div><!-- /.accordion-group -->
                                     @endforeach
-
                                 </div><!-- /.accordion -->
                             </div><!-- /.sidebar-widget-body -->
                         </div><!-- /.sidebar-widget --> --}}
                         <!-- ============================================== SIDEBAR CATEGORY : END ============================================== -->
-
-                      
                         <!-- ============================================== PRODUCT TAGS ============================================== -->
                         @include('frontend/inc/tags')
-
                         <div class="home-banner">
                             <img src="assets/images/banners/LHS-banner.jpg" alt="Image">
                         </div>
-
                     </div><!-- /.sidebar-filter -->
                 </div><!-- /.sidebar-module-container -->
             </div><!-- /.sidebar -->
@@ -83,14 +72,12 @@ Search  Product
                                 <div class="big-text">
                                     Big Sale
                                 </div>
-
                                 <div class="excerpt hidden-sm hidden-md">
                                     Save up to 49% off
                                 </div>
                                 <div class="excerpt-normal hidden-sm hidden-md">
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit
                                 </div>
-
                             </div><!-- /.caption -->
                         </div><!-- /.container-fluid -->
                     </div>
@@ -116,7 +103,6 @@ Search  Product
                                             <button data-toggle="dropdown" type="button" class="btn dropdown-toggle">
                                                 Position <span class="caret"></span>
                                             </button>
-
                                             <ul role="menu" class="dropdown-menu">
                                                 <li role="presentation"><a href="#">position</a></li>
                                                 <li role="presentation"><a href="#">Price:Lowest first</a></li>
@@ -135,7 +121,6 @@ Search  Product
                                             <button data-toggle="dropdown" type="button" class="btn dropdown-toggle">
                                                 1 <span class="caret"></span>
                                             </button>
-
                                             <ul role="menu" class="dropdown-menu">
                                                 <li role="presentation"><a href="#">1</a></li>
                                                 <li role="presentation"><a href="#">2</a></li>
@@ -175,7 +160,6 @@ Search  Product
                                     @foreach ($products as $product)
                                     <div class="col-sm-6 col-md-4 wow fadeInUp">
                                         <div class="products">
-
                                             <div class="product">
                                                 <div class="product-image">
                                                     <div class="image">
@@ -191,16 +175,12 @@ Search  Product
                                                         @else
                                                         <span class="tag new">{{ round($discount) }}%</span>
                                                         @endif
-
                                                     </div>
                                                 </div><!-- /.product-image -->
-
-
                                                 <div class="product-info text-left">
                                                     <h3 class="name"><a href="{{ 'product.details',$product->product_slug }}">{{ $product->product_name }}</a></h3>
                                                     <div class="rating rateit-small"></div>
                                                     <div class="description"></div>
-
                                                     <div class="product-price">
                                                         @if ($product->discount_price == NULL)
                                                         <span class="price">${{ $product->selling_price }}</span>
@@ -208,11 +188,7 @@ Search  Product
                                                         <span class="price">${{ $product->discount_price }}</span>
                                                         <span class="price-before-discount">${{ $product->selling_price }}</span>
                                                         @endif
-
-
-
                                                     </div><!-- /.product-price -->
-
                                                 </div><!-- /.product-info -->
                                                 <div class="cart clearfix animate-effect">
                                                     <div class="action">
@@ -222,15 +198,12 @@ Search  Product
                                                                     <i class="fa fa-shopping-cart"></i>
                                                                 </button>
                                                                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-
                                                             </li>
-
                                                             <li class="lnk wishlist">
                                                                 <a class="add-to-cart" href="detail.html" title="Wishlist">
                                                                     <i class="icon fa fa-heart"></i>
                                                                 </a>
                                                             </li>
-
                                                             <li class="lnk">
                                                                 <a class="add-to-cart" href="detail.html" title="Compare">
                                                                     <i class="fa fa-signal"></i>
@@ -240,19 +213,15 @@ Search  Product
                                                     </div><!-- /.action -->
                                                 </div><!-- /.cart -->
                                             </div><!-- /.product -->
-
                                         </div><!-- /.products -->
                                     </div><!-- /.item -->
                                     @endforeach
                                 </div><!-- /.row -->
                             </div><!-- /.category-product -->
-
                         </div><!-- /.tab-pane -->
-
                         <div class="tab-pane " id="list-container">
                             <div class="category-product">
                                 @foreach ($products as $product)
-
                                 <div class="category-product-inner wow fadeInUp">
                                     <div class="products">
                                         <div class="product-list product">
@@ -285,15 +254,12 @@ Search  Product
                                                                             <i class="fa fa-shopping-cart"></i>
                                                                         </button>
                                                                         <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
-
                                                                     </li>
-
                                                                     <li class="lnk wishlist">
                                                                         <a class="add-to-cart" href="detail.html" title="Wishlist">
                                                                             <i class="icon fa fa-heart"></i>
                                                                         </a>
                                                                     </li>
-
                                                                     <li class="lnk">
                                                                         <a class="add-to-cart" href="detail.html" title="Compare">
                                                                             <i class="fa fa-signal"></i>
@@ -302,7 +268,6 @@ Search  Product
                                                                 </ul>
                                                             </div><!-- /.action -->
                                                         </div><!-- /.cart -->
-
                                                     </div><!-- /.product-info -->
                                                 </div><!-- /.col -->
                                             </div><!-- /.product-list-row -->
@@ -313,7 +278,7 @@ Search  Product
                                                 <span class="tag new">{{ round($discount) }}%</span>
                                                 @endif
                                             </div>
-                                     </div><!-- /.product-list -->
+                                        </div><!-- /.product-list -->
                                     </div><!-- /.products -->
                                 </div><!-- /.category-product-inner -->
                                 @endforeach
@@ -321,37 +286,24 @@ Search  Product
                         </div><!-- /.tab-pane #list-container -->
                     </div><!-- /.tab-content -->
                     <div class="clearfix filters-container">
-
                         <div class="text-right">
                             <div class="pagination-container">
                                 <ul class="list-inline list-unstyled">
                                     {{ $products->links() }}
-                                  
                                 </ul><!-- /.list-inline -->
                             </div><!-- /.pagination-container -->
                         </div><!-- /.text-right -->
-
                     </div><!-- /.filters-container -->
-
                 </div><!-- /.search-result-container -->
-
             </div><!-- /.col -->
         </div><!-- /.row -->
         <!-- ============================================== BRANDS CAROUSEL ============================================== -->
         @include('frontend/inc/brands')
         <!-- ============================================== BRANDS CAROUSEL : END ============================================== -->
     </div><!-- /.container -->
-
 </div><!-- /.body-content -->
-
-
-
-
 </div>
 </div>
 </div>
 </div>
-
-
-
 @endsection

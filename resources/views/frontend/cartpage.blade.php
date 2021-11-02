@@ -51,7 +51,7 @@ Cart Page
                                     </td>
                                 </tr>
                             </tfoot>
-                            <tbody id="cart">
+                            <tbody id="cartPage">
 
                             </tbody><!-- /tbody -->
                         </table><!-- /table -->

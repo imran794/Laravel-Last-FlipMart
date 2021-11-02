@@ -187,6 +187,11 @@ Checkout Page
                                         <li>
                                             <input type="radio" name="payment_method" value="sslEasy">
                                             <label for="">SSL EasyPayment</label>
+                                        </li> 
+
+                                         <li>
+                                            <input type="radio" name="payment_method" value="handcash">
+                                            <label for="">Hand Cash</label>
                                         </li>
                                         <button type="submit" class="btn-upper btn btn-primary checkout-page-button pull-right">Payment Step</button>
                                     </ul>

@@ -110,9 +110,11 @@ class CartController extends Controller
          return response()->json(array(
             'carts'        => $carts,
             'cartsqty'     => $cartsqty,
-            'cartstotal'  => round($cartstotal)
+            'cartstotal'  => $cartstotal
         ));
     }
+
+
 
     public function Cartremove($rowId)
     {
@@ -169,7 +171,7 @@ class CartController extends Controller
 
     public function couponapply(Request  $request)
     {
-        $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->where('status',1)->first();
+        $coupon = Coupon::where('coupon_name',$request->coupon_name)->where('coupon_validity','>=',Carbon::now()->format('Y-m-d'))->first();
 
         if ($coupon) {
             Session::put('coupon',[
@@ -189,6 +191,7 @@ class CartController extends Controller
         
     }
 
+    
     public function couponcalculation()
     {
         if (Session::has('coupon')) {

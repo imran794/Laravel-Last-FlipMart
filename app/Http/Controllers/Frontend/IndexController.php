@@ -23,6 +23,7 @@ class IndexController extends Controller
     public function Index()
     {
             $products    =     Product::latest()->get();
+            $fproducts    =     Product::orderby('id','asc')->get();
             $categories  =     Category::latest()->get();
             $banners      =    Banner::latest()->get();
             $special_deals =   Product::where('special_deals',1)->where('status',1)->orderBy('id','DESC')->get();
@@ -32,7 +33,7 @@ class IndexController extends Controller
             $blogs   =         Blog::where('status',1)->orderBy('id','DESC')->get();
             $skip_category_0 = Category::skip(1)->first();
             $skip_product_0 =  Product::where('status',1)->where('category_id',$skip_category_0->id)->orderby('id','DESC')->get();
-            return view('frontend.index',compact('products','categories','banners','special_deals','special_offer','hot_dealss','testimonials','blogs','skip_category_0','skip_product_0'));
+            return view('frontend.index',compact('products','categories','banners','special_deals','special_offer','hot_dealss','testimonials','blogs','skip_category_0','skip_product_0','fproducts'));
     }
 
  
@@ -52,7 +53,7 @@ class IndexController extends Controller
         $productreview = Rating::with('user')->where('product_id',$id)->where('status','approve')->latest()->get();
         $rating = Rating::where('product_id',$id)->avg('rating');
         $avgrating = number_format($rating,1);
-        return view('frontend.productdetails',compact('categories','product','subcategories','hot_dealss','testimonials','raleted_products','product_color','product_size','productreview','avgrating'));
+        return view('frontend.product_detalis',compact('categories','product','subcategories','hot_dealss','testimonials','raleted_products','product_color','product_size','productreview','avgrating'));
     } 
 
     public function subsubcategoryproduct(Request $request, $subcatid,$slug)
