@@ -32,8 +32,8 @@ class IndexController extends Controller
             $testimonials =    Testimonial::where('status',1)->orderBy('id','DESC')->get();
             $blogs   =         Blog::where('status',1)->orderBy('id','DESC')->get();
             $skip_category_0 = Category::skip(1)->first();
-            $skip_product_0 =  Product::where('status',1)->where('category_id',$skip_category_0->id)->orderby('id','DESC')->get();
-            return view('frontend.index',compact('products','categories','banners','special_deals','special_offer','hot_dealss','testimonials','blogs','skip_category_0','skip_product_0','fproducts'));
+            // $skip_product_0 =  Product::where('status',1)->where('category_id',$skip_category_0->id)->orderby('id','DESC')->get();
+            return view('frontend.index',compact('products','categories','banners','special_deals','special_offer','hot_dealss','testimonials','blogs','skip_category_0','fproducts'));
     }
 
  
