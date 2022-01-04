@@ -62,13 +62,13 @@ Tages Wise Product
                         <!-- ============================================== SIDEBAR CATEGORY : END ========================== -->
 
                         <!-- ============================================== PRICE SILDER============================= -->
-                      
+
                         <!-- ============================================== MANUFACTURES: END ========================= ->
                             <!- ============================================== COLOR===================== -->
-                   
+
                         <!-- ============================================== COLOR: END ============================================== -->
                         <!-- ============================================== COMPARE============================================== -->
-                     
+
                         <!-- ============================================== COMPARE: END ============================================== -->
                         <!-- ============================================== PRODUCT TAGS ============================================== -->
                         @include('frontend/inc/tags')
@@ -126,20 +126,20 @@ Tages Wise Product
                                     <span class="lbl">Sort by</span>
                                     <div class="fld inline">
                                         <div class="dropdown dropdown-small dropdown-med dropdown-white inline">
-                                           <select class="form-control" name="" id="sortBy">
-                                            <option>Sort By Products</option>
-                                            <option value="priceLowtoHigh" {{ ($sort == 'priceLowtoHigh') ? 'selected' : "" }}>Price:Lower to Higher</option>
-                                            <option value="priceHightoLow" {{ ($sort == 'priceHightoLow') ? 'selected' : "" }}>Price:Higher to Lower</option>
-                                            <option value="nameAtoZ" {{ ($sort == 'nameAtoZ') ? 'selected' : '' }}>Product Name:A to Z</option>
-                                            <option value="nameZtoA" {{ $sort == 'nameZtoA' ? 'selected' : '' }}>Product Name:Z to A</option>
-                                         </select>
+                                            <select class="form-control" name="" id="sortBy">
+                                                <option>Sort By Products</option>
+                                                <option value="priceLowtoHigh" {{ ($sort=='priceLowtoHigh' ) ? 'selected' : "" }}>Price:Lower to Higher</option>
+                                                <option value="priceHightoLow" {{ ($sort=='priceHightoLow' ) ? 'selected' : "" }}>Price:Higher to Lower</option>
+                                                <option value="nameAtoZ" {{ ($sort=='nameAtoZ' ) ? 'selected' : '' }}>Product Name:A to Z</option>
+                                                <option value="nameZtoA" {{ $sort=='nameZtoA' ? 'selected' : '' }}>Product Name:Z to A</option>
+                                            </select>
                                         </div>
                                     </div><!-- /.fld -->
                                 </div><!-- /.lbl-cnt -->
                             </div><!-- /.col -->
-                     
+
                         </div><!-- /.col -->
-                    
+
                     </div><!-- /.row -->
                 </div>
                 <div class="search-result-container ">
@@ -340,10 +340,10 @@ Tages Wise Product
     $('#sortBy').change(function(e) {
         e.preventDefault();
         let sortBy = $('#sortBy').val();
-        window.location = '{{ url("".$route."") }}/{{ $subcatid }}/{{ $slug }}?sort='+sortBy;
+        window.location = '{{ url("".$route."") }}/{{ $subcatid }}/{{ $slug }}?sort=' + sortBy;
     });
+
 </script>
 
 
 @endsection
-

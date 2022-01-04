@@ -142,6 +142,7 @@
                                             <span class="sign">$</span><span class="value" id="cartsubtotal"></span>
                                         </span>
                                     </div>
+                                           
                                 </div>
                             </a>
                             <ul class="dropdown-menu">
@@ -153,7 +154,7 @@
                                             <span class="text">Sub Total :</span><span class='price' id="cartsubtotal"></span>
                                         </div>
                                         <div class="clearfix"></div>
-                                        <a href="checkout.html" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
+                                        <a href="{{ route('checkout') }}" class="btn btn-upper btn-primary btn-block m-t-20">Checkout</a>
                                     </div><!-- /.cart-total-->
                                 </li>
                             </ul><!-- /.dropdown-menu-->
@@ -846,19 +847,19 @@
                 var rows = ""
                $.each(response.carts, function(key,value){
                    rows += `<tr>
-                    <td class="col-md-2"><img src="/${value.options.image}" alt="imga" style="height:60px; width:60px;"></td>
-                    <td class="col-md-2">
-                        <div class="product-name"><strong>${value.name}</strong></div>
+     <td class="col-md-2"><img src="/${value.options.image}" alt="imga" style="height:60px; width:60px;"></td>
+     <td class="col-md-2">
+      <div class="product-name"><strong>${value.name}</strong></div>
 
-                        <strong>
+      <strong>
                         $${value.price}
-                        </strong>
-                    </td>
+      </strong>
+     </td>
 
                     <td class="col-md-2">
 
                         <strong>${value.options.color}</strong>
-                    </td>
+     </td>
                     <td class="col-md-2">
                         ${value.options.size == null
                             ? `<span >......</span>`
@@ -882,14 +883,14 @@
                         <strong>$${value.subtotal}</strong>
                     </td>
 
-                    <td class="col-md-1 close-btn">
-                        <button type="submit" class="" id="${value.rowId}" onclick="CartRemove(this.id)" ><i class="fa fa-times"></i></button>
-                    </td>
-                </tr>`
+     <td class="col-md-1 close-btn">
+      <button type="submit" class="" id="${value.rowId}" onclick="CartRemove(this.id)" ><i class="fa fa-times"></i></button>
+     </td>
+    </tr>`
 
-               });
+                    });
 
-               $('#cartPage').html(rows);
+                    $('#cartPage').html(rows);
 
             }
         })

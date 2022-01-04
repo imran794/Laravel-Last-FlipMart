@@ -36,6 +36,10 @@ class IndexController extends Controller
             return view('frontend.index',compact('products','categories','banners','special_deals','special_offer','hot_dealss','testimonials','blogs','skip_category_0','fproducts'));
     }
 
+   
+
+   
+
  
     public function productdetails($id,$slug)
     {

@@ -8,7 +8,7 @@
                             <div class="products">
                                 <div class="hot-deal-wrapper">
                                     <div class="image">
-                                        <img src="{{ asset($hotdeals->product_thambnail) }}" alt="">
+                                        <img src="{{ asset($hotdeals->product_thambnail) }}" alt="$hotdeals->product_thambnail">
                                     </div>
                                     @php
                                     $amount = $hotdeals->selling_price - $hotdeals->discount_price;
@@ -54,7 +54,7 @@
                                 </div><!-- /.hot-deal-wrapper -->
 
                                 <div class="product-info text-left m-t-20">
-                                    <h3 class="name"><a href="{{ url('product.details'.$hotdeals->id.'/'.$hotdeals->product_slug) }}">{{ $hotdeals->product_name }}</a></h3>
+                                    <h3 id="pname" class="name"><a href="{{ url('product.details'.$hotdeals->id.'/'.$hotdeals->product_slug) }}">{{ $hotdeals->product_name }}</a></h3>
                                     <div class="rating rateit-small"></div>
 
                                     <div class="product-price">
@@ -74,10 +74,11 @@
                                     <div class="action">
 
                                         <div class="add-cart-button btn-group">
-                                            <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
-                                                <i class="fa fa-shopping-cart"></i>
-                                            </button>
-                                            <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
+                                            <input type="hidden" id="product_id" value="{{ $hotdeals->id }}">
+                                        <div class="col-sm-7">
+                                            <button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
+                                            
+                                        </div>
 
                                         </div>
 

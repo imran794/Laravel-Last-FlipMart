@@ -7,7 +7,6 @@ $tags = App\Models\Product::groupby('product_tags')->select('product_tags')->get
 
 
 
-<div class="sidebar-widget product-tag wow fadeInUp">
                     <h3 class="section-title">Product tags</h3>
                     <div class="sidebar-widget-body outer-top-xs">
                         <div class="tag-list">
@@ -16,4 +15,4 @@ $tags = App\Models\Product::groupby('product_tags')->select('product_tags')->get
                             @endforeach
                         </div><!-- /.tag-list -->
                     </div><!-- /.sidebar-widget-body -->
-                </div><!-- /.sidebar-widget -->
+               

@@ -22,33 +22,19 @@ Shop Page
                     @include('frontend/inc/category')
                     <div class="sidebar-module-container">
                         <div class="sidebar-filter">
+
                             <div class="sidebar-widget wow fadeInUp">
                                 <h3 class="section-title">Shop By Category</h3>
-                                <div class="sidebar-widget-body">
-                                    <div class="accordion">
-                                        @if (!empty($_GET['category']))
-                                        @php
-                                        $filtercat = explode(',',$_GET['category'])
-                                        @endphp
-                                        @else
-                                        @endif
-                                        @foreach ($categories as $category)
-                                        <div class="accordion-group">
-                                            <div class="accordion-heading">
-                                                <div class="form-group">
-                                                    <label for="form-check-lavel">
-                                                        <input type="checkbox" class="form-check-input" name="category[]" value="{{ $category->slug }}" @if(!empty($filtercat) && in_array($category->slug, $filtercat)) checked @endif onchange="this.form.submit();">
-                                                        {{ $category->category_name }}
-                                                    </label>
-                                                </div>
-                                            </div><!-- /.accordion-heading -->
-                                        </div><!-- /.accordion-group -->
-                                        @endforeach
-                                    </div><!-- /.accordion -->
-                                </div><!-- /.sidebar-widget-body -->
+                              @include('frontend/inc/shopbycategory')
                             </div><!-- /.sidebar-widget -->
+
+
+                      <div class="sidebar-widget product-tag wow fadeInUp">
                             @include('frontend/inc/tags')
+                        </div>
+
                             @include('frontend/inc/test')
+
                             <div class="home-banner">
                                 <img src="assets/images/banners/LHS-banner.jpg" alt="Image">
                             </div>
@@ -90,6 +76,7 @@ Shop Page
                             </div><!-- /.col -->
                             <div class="col col-sm-12 col-md-6">
                                 <div class="col col-sm-3 col-md-12 no-padding">
+                                    
                                     <div class="lbl-cnt">
                                         <span class="lbl">Sort by</span>
                                         <div class="fld inline">
@@ -97,6 +84,7 @@ Shop Page
                                             </div>
                                         </div><!-- /.fld -->
                                     </div><!-- /.lbl-cnt -->
+
                                 </div><!-- /.col -->
                             </div><!-- /.col -->
                         </div><!-- /.row -->

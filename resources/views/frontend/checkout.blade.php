@@ -105,7 +105,7 @@ Checkout Page
                                                     @enderror
                                                 </div>
                                                 <div class="form-group">
-                                                    <label class="info-title" for="exampleInputEmail1">Select State <span>*</span></label>
+                                                    <label class="info-title" for="exampleInputEmail1">Messages <span>*</span></label>
                                                     <textarea rows="4" class="form-control" name="notes" data-validation="required"></textarea>
                                                     @error('notes')
                                                     <span class="text-danger">{{ $message }}</span>
@@ -212,59 +212,72 @@ Checkout Page
 
 <script src="{{asset('backend')}}/lib/jquery-2.2.4.min.js"></script>
 
-<script type="text/javascript">
-    $(document).ready(function() {
-        $('select[name="division_id"]').on('change', function() {
-            var division_id = $(this).val();
-            if (division_id) {
-                $.ajax({
-                    url: "{{  url('/user/district-get/ajax') }}/" + division_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        $('select[name="state_id"]').empty();
-                        $('select[name="district_id"]').empty();
-                        $.each(data, function(key, value) {
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('select[name="division_id"]').on('change', function() {
+                var division_id = $(this).val();
+                if (division_id) {
+                    $.ajax({
+                        url: "{{ url('/user/district-get/ajax') }}/" + division_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="state_id"]').empty();
+                            $('select[name="district_id"]').empty();
 
-                            $('select[name="district_id"]').append('<option value="' + value.id + '">' + value.district_name + '</option>');
+                            //append option choose one in district and state
+                            $('select[name="district_id"]').append(
+                                '<option value="" selected disabled>Choose one</option>');
+                            $('select[name="state_id"]').append(
+                                '<option value="" selected disabled>Choose one</option>');
 
-                        });
+                            $.each(data, function(key, value) {
+                                $('select[name="district_id"]').append(
+                                    '<option value="' + value.id + '">' + value
+                                    .district_name + '</option>');
 
-                    },
+                            });
 
-                });
-            } else {
-                alert('danger');
-            }
+                        },
+
+                    });
+                } else {
+                    alert('danger');
+                }
+
+            });
+
+            $('select[name="district_id"]').on('change', function() {
+                var district_id = $(this).val();
+                if (district_id) {
+                    $.ajax({
+                        url: "{{ url('/user/state-get/ajax') }}/" + district_id,
+                        type: "GET",
+                        dataType: "json",
+                        success: function(data) {
+                            $('select[name="state_id"]').empty();
+
+                            //append option choose one in state
+                            $('select[name="state_id"]').append(
+                                '<option value="" disabled selected>Choose one</option>');
+                            $.each(data, function(key, value) {
+                                $('select[name="state_id"]').append('<option value="' +
+                                    value.id + '">' + value.state_name + '</option>'
+                                    );
+                            });
+
+                        },
+
+                    });
+                } else {
+                    alert('danger');
+                }
+
+            });
 
         });
 
-        $('select[name="district_id"]').on('change', function() {
-            var district_id = $(this).val();
-            if (district_id) {
-                $.ajax({
-                    url: "{{  url('user/state-get/ajax/') }}/" + district_id,
-                    type: "GET",
-                    dataType: "json",
-                    success: function(data) {
-                        $('select[name="state_id"]').empty();
-                        $.each(data, function(key, value) {
-
-                            $('select[name="state_id"]').append('<option value="' + value.id + '">' + value.state_name + '</option>');
-                        });
-
-                    },
-
-                });
-            } else {
-                alert('danger');
-            }
-
-        });
-
-    });
-
-</script>
+    </script>
 
 
 @endsection

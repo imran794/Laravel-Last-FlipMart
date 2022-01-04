@@ -19,3 +19,6 @@ class SubSubCategory extends Model
         return $this->belongsTo('App\Models\SubCategory','subcategory_id');
     }
 }
+ // public function category(){
+ //        return $this->belongsTo('App\Models\Category','category_id');
+ //    }

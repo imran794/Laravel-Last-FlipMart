@@ -211,7 +211,7 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
 
 
    Route::get('state/index',[ShipingAreaController::class, 'stateindex'])->name('state.index'); 
-   Route::get('district-get/ajax/{division_id}',[ShipingAreaController::class, 'getajax']); 
+   Route::get('/district-get/ajax/{division_id}',[ShipingAreaController::class, 'getajax']); 
    Route::post('state/store',[ShipingAreaController::class, 'statestore'])->name('state.store'); 
    Route::get('state/edit/{id}',[ShipingAreaController::class, 'stateedit'])->name('state.edit'); 
    Route::post('state/update/{id}',[ShipingAreaController::class, 'stateupdate'])->name('state.update'); 
@@ -277,8 +277,8 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
     Route::post('password/store', [ProfileController::class, 'PasswordStore'])->name('password.store');
 
     // checkout 
-      Route::get('district-get/ajax/{division_id}',[CheckoutController::class, 'getajax']); 
-      Route::get('state-get/ajax/{district_id}',[CheckoutController::class, 'getajaxjstate']); 
+      Route::get('/district-get/ajax/{division_id}',[CheckoutController::class, 'usergetajax']); 
+      Route::get('/state-get/ajax/{district_id}',[CheckoutController::class, 'getajaxjstate']); 
       Route::post('checkout/store',[CheckoutController::class, 'checkoutstore'])->name('checkout.store'); 
 
     // stripe 

@@ -75,7 +75,7 @@ class CartController extends Controller
     public function addtowishlist(Request $request,$product_id)
     {
        if (Auth::check()) {
-         $exisit = Wishlist::where('user_id',Auth::id())->where('product_id',$product_id)->first();
+          $exisit = Wishlist::where('user_id', Auth::id())->where('product_id',$product_id)->first();
           if (!$exisit) {
               Wishlist::insert([
             'user_id'          => Auth::id(),

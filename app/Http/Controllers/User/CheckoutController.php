@@ -12,7 +12,7 @@ use Session;
 
 class CheckoutController extends Controller
 {
-    public function getajax($division_id)
+    public function usergetajax($division_id)
     {
           $ship = ship_district::where('division_id',$division_id)->orderBy('district_name','ASC')->get();
            return json_encode($ship);

@@ -5,7 +5,7 @@
 @endsection
 
 
-@section('meta')
+{{-- @section('meta')
 <meta property="og:title" content="{{ $product->product_name }}" />
 <meta property="og:url" content="{{ Request::fullUrl() }}" />
 
@@ -13,7 +13,7 @@
 <meta property="og:description" content="{{ $product->short_des }}" />
 <meta property="og:site_name" content="Dui Moni" />
 
-@endsection
+@endsection --}}
 
 @section('content')
 
@@ -84,7 +84,7 @@
                         </div><!-- /.gallery-holder -->
                         <div class='col-sm-6 col-md-7 product-info-block'>
                             <div class="product-info">
-                                <h1 class="name">{{ $product->product_name }}</h1>
+                                <h1 id="pname" class="name">{{ $product->product_name }}</h1>
 
                                 <div class="rating-reviews m-t-20">
                                     <div class="row">
@@ -124,7 +124,7 @@
                                     </div><!-- /.row -->
                                 </div><!-- /.stock-container -->
                                 <div class="description-container m-t-20">
-                                    {!! $product->short_des !!}
+                                    <p>{!! $product->short_des !!}</p>
                                 </div><!-- /.description-container -->
                                 <div class="price-container info-container m-t-20">
                                     <div class="row">
@@ -202,6 +202,7 @@
                                         <input type="hidden" id="product_id" value="{{ $product->id }}">
                                         <div class="col-sm-7">
                                             <button type="submit" onclick="addToCart()" class="btn btn-primary"><i class="fa fa-shopping-cart inner-right-vs"></i> ADD TO CART</button>
+
                                         </div>
                                     </div><!-- /.row -->
                                 </div><!-- /.quantity-container -->
@@ -434,15 +435,11 @@
 <!-- /.container -->
 </div><!-- /.body-content -->
 
-<script async defer crossorigin="anonymous"
-    src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=157782379562934&autoLogAppEvents=1"
-    nonce="WhS30MCS"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=157782379562934&autoLogAppEvents=1" nonce="WhS30MCS"></script>
 
 {{-- // share products --}}
-<script type="text/javascript"
-    src="https://platform-api.sharethis.com/js/sharethis.js#property=609aecbaf811a40018fa1e32&product=inline-share-buttons"
-    data-href="{{ Request::url() }}" async="async"></script>
+<script type="text/javascript" src="https://platform-api.sharethis.com/js/sharethis.js#property=609aecbaf811a40018fa1e32&product=inline-share-buttons" data-href="{{ Request::url() }}" async="async"></script>
 
 
 
-    @endsection
+@endsection
