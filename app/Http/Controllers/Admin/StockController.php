@@ -30,4 +30,15 @@ class StockController extends Controller
         );
         return Redirect()->route('stock.management')->with($notification);
     }
+
+    public function StockDelete($id)
+    {
+        Product::findOrFail($id)->delete();
+        
+        $notification=array(
+            'message'=>'Stock Deleted Success',
+            'alert-type'=>'success'
+        );
+        return Redirect()->back()->with($notification);
+    }
 }

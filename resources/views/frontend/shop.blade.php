@@ -22,19 +22,14 @@ Shop Page
                     @include('frontend/inc/category')
                     <div class="sidebar-module-container">
                         <div class="sidebar-filter">
-
                             <div class="sidebar-widget wow fadeInUp">
                                 <h3 class="section-title">Shop By Category</h3>
-                              @include('frontend/inc/shopbycategory')
+                                @include('frontend/inc/shopbycategory')
                             </div><!-- /.sidebar-widget -->
-
-
-                      <div class="sidebar-widget product-tag wow fadeInUp">
-                            @include('frontend/inc/tags')
-                        </div>
-
+                            <div class="sidebar-widget product-tag wow fadeInUp">
+                                @include('frontend/inc/tags')
+                            </div>
                             @include('frontend/inc/test')
-
                             <div class="home-banner">
                                 <img src="assets/images/banners/LHS-banner.jpg" alt="Image">
                             </div>
@@ -76,7 +71,7 @@ Shop Page
                             </div><!-- /.col -->
                             <div class="col col-sm-12 col-md-6">
                                 <div class="col col-sm-3 col-md-12 no-padding">
-                                    
+
                                     <div class="lbl-cnt">
                                         <span class="lbl">Sort by</span>
                                         <div class="fld inline">

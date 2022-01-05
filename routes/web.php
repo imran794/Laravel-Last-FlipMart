@@ -259,6 +259,7 @@ Route::group(['prefix'=>'admin','middleware' =>['admin','auth']], function(){
   Route::get('stock/management',[StockController::class, 'Index'])->name('stock.management');
   Route::get('stock/edit/{id}',[StockController::class, 'StockEdit']);
   Route::post('stock/update/{id}',[StockController::class, 'StockUpdate'])->name('stock.update');
+  Route::get('stock/delete/{id}',[StockController::class, 'StockDelete'])->name('stock.delete');
 
 
  

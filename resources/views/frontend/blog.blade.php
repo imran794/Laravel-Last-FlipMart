@@ -73,9 +73,9 @@ Blog Page
                             <h3 class="section-title">Category</h3>
                             <div class="sidebar-widget-body m-t-10">
                                 <div class="accordion">
-                              
+
                                     @foreach ($categories as $category)
-                                
+
                                     <div class="accordion-group">
                                         <div class="accordion-heading">
                                             <a href="#collapseOne{{ $category->id }}" data-toggle="collapse" class="accordion-toggle collapsed">
@@ -83,14 +83,14 @@ Blog Page
                                             </a>
                                         </div><!-- /.accordion-heading -->
                                         <div class="accordion-body collapse" id="collapseOne{{  $category->id }}" style="height: 0px;">
-                                              @php
+                                            @php
                                             $subcategories = App\Models\SubCategory::where('category_id',$category->id)->orderby('sub_category_name','ASC')->get();
                                             @endphp
                                             <div class="accordion-inner">
                                                 <ul>
                                                     @foreach ($subcategories as $subcategory)
                                                     <li><a href="#">{{ $subcategory->sub_category_name }}</a></li>
-                                                     @endforeach
+                                                    @endforeach
                                                 </ul>
                                             </div><!-- /.accordion-inner -->
                                         </div><!-- /.accordion-body -->

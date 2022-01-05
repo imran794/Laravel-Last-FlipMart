@@ -22,50 +22,48 @@ Faq Page
 
 <!-- ============================== breadcrumb : end =================================== -->
 
-    <div class="body-content">
-        <div class="container">
-            <div class="checkout-box faq-page">
-                <div class="row">
-                    <div class="col-md-12">
-                        <h2 class="heading-title">Frequently Asked Questions</h2>
-                        <span class="title-tag">Last Updated on November 02, 2014</span>
-                        <div class="panel-group checkout-steps" id="accordion">
-                            <!-- checkout-step-01  -->
-                            @foreach ($faqs as $faq)
-                                
-                          
-                            <div class="panel panel-default checkout-step-01">
+<div class="body-content">
+    <div class="container">
+        <div class="checkout-box faq-page">
+            <div class="row">
+                <div class="col-md-12">
+                    <h2 class="heading-title">Frequently Asked Questions</h2>
+                    <span class="title-tag">Last Updated on November 02, 2014</span>
+                    <div class="panel-group checkout-steps" id="accordion">
+                        <!-- checkout-step-01  -->
+                        @foreach ($faqs as $faq)
+                        <div class="panel panel-default checkout-step-01">
 
-                                <!-- panel-heading -->
-                                <div class="panel-heading">
-                                    <h4 class="unicase-checkout-title">
-                                        <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapseOne">
-                                            <span>1</span>{{ $faq->faq_qu }}
-                                        </a>
-                                    </h4>
-                                </div>
-                                <!-- panel-heading -->
-
-                                <div id="collapseOne" class="panel-collapse collapse in">
-
-                                    <!-- panel-body  -->
-                                    <div class="panel-body">
-                                        {{ $faq->faq_ans }}
-                                    </div>
-                                    <!-- panel-body  -->
-
-                                </div><!-- row -->
+                            <!-- panel-heading -->
+                            <div class="panel-heading">
+                                <h4 class="unicase-checkout-title">
+                                    <a data-toggle="collapse" class="" data-parent="#accordion" href="#collapseOne">
+                                        <span>1</span>{{ $faq->faq_qu }}
+                                    </a>
+                                </h4>
                             </div>
-                            <!-- checkout-step-01  -->
-                            @endforeach
+                            <!-- panel-heading -->
 
-                        </div><!-- /.checkout-steps -->
-                    </div>
-                </div><!-- /.row -->
-            </div><!-- /.checkout-box -->
+                            <div id="collapseOne" class="panel-collapse collapse in">
+
+                                <!-- panel-body  -->
+                                <div class="panel-body">
+                                    {{ $faq->faq_ans }}
+                                </div>
+                                <!-- panel-body  -->
+
+                            </div><!-- row -->
+                        </div>
+                        <!-- checkout-step-01  -->
+                        @endforeach
+
+                    </div><!-- /.checkout-steps -->
+                </div>
+            </div><!-- /.row -->
+        </div><!-- /.checkout-box -->
 
 
-                 @include('frontend/inc/brands')
+        @include('frontend/inc/brands')
 
 
-@endsection
+        @endsection

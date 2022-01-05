@@ -58,7 +58,7 @@
                               <div class="btn-group" role="group" aria-label="Basic example">
                                 <a href="{{ url('admin/stock/edit',$item->id) }}" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
 
-                                <a href="{{ url('shipingarea.edit',$item->id) }}" class="btn btn-success btn-sm" title="Edit"><i class="fa fa-edit"></i></a>
+                                <a href="{{ url('admin/stock/delete',$item->id) }}" class="btn btn-danger btn-sm" title="delete"><i class="fa fa-trash"></i></a>
                             
                                 </form>
                               </div>

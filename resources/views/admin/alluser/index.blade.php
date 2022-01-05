@@ -62,7 +62,7 @@
                                          @if ($item->userIsOnline())
                                     <span class="badge badge-pill badge-success">Active Now</span>
                                         @else
-                                           <span class="badge badge-pill badge-danger">{{ \Carbon\Carbon::parse($item->last_seen)->diffForHumans() }}</span>
+                                             <span class="badge badge-pill badge-danger">{{ Carbon\Carbon::parse($user->last_seen)->diffForHumans() }}</span>
                                           @endif
                                         </td>
                                         <td>

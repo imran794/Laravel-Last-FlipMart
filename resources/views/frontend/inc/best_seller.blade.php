@@ -12,48 +12,48 @@
                                         <a href="#">
                                             <img src="{{ asset('frontend_assets') }}/assets/images/products/p20.jpg" alt="">
                                         </a>
-                                        </div><!-- /.image -->
-                                        </div><!-- /.product-image -->
-                                        </div><!-- /.col -->
-                                        <div class="col2 col-xs-7">
-                                            <div class="product-info">
-                                                <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                <div class="rating rateit-small"></div>
-                                                <div class="product-price">
-                                                    <span class="price">
-                                                    $450.99 </span>
-                                                    </div><!-- /.product-price -->
-                                                </div>
-                                                </div><!-- /.col -->
-                                                </div><!-- /.product-micro-row -->
-                                                </div><!-- /.product-micro -->
-                                            </div>
-                                            <div class="product">
-                                                <div class="product-micro">
-                                                    <div class="row product-micro-row">
-                                                        <div class="col col-xs-5">
-                                                            <div class="product-image">
-                                                                <div class="image">
-                                                                    <a href="#">
-                                                                        <img src="{{ asset('frontend_assets') }}/assets/images/products/p21.jpg" alt="">
-                                                                    </a>
-                                                                    </div><!-- /.image -->
-                                                                    </div><!-- /.product-image -->
-                                                                    </div><!-- /.col -->
-                                                                    <div class="col2 col-xs-7">
-                                                                        <div class="product-info">
-                                                                            <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
-                                                                            <div class="rating rateit-small"></div>
-                                                                            <div class="product-price">
-                                                                                <span class="price">
-                                                                                $450.99 </span>
-                                                                                </div><!-- /.product-price -->
-                                                                            </div>
-                                                                            </div><!-- /.col -->
-                                                                            </div><!-- /.product-micro-row -->
-                                                                            </div><!-- /.product-micro -->
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                            </div><!-- /.sidebar-widget-body -->
+                                    </div><!-- /.image -->
+                                </div><!-- /.product-image -->
+                            </div><!-- /.col -->
+                            <div class="col2 col-xs-7">
+                                <div class="product-info">
+                                    <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
+                                    <div class="rating rateit-small"></div>
+                                    <div class="product-price">
+                                        <span class="price">
+                                            $450.99 </span>
+                                    </div><!-- /.product-price -->
+                                </div>
+                            </div><!-- /.col -->
+                        </div><!-- /.product-micro-row -->
+                    </div><!-- /.product-micro -->
+                </div>
+                <div class="product">
+                    <div class="product-micro">
+                        <div class="row product-micro-row">
+                            <div class="col col-xs-5">
+                                <div class="product-image">
+                                    <div class="image">
+                                        <a href="#">
+                                            <img src="{{ asset('frontend_assets') }}/assets/images/products/p21.jpg" alt="">
+                                        </a>
+                                    </div><!-- /.image -->
+                                </div><!-- /.product-image -->
+                            </div><!-- /.col -->
+                            <div class="col2 col-xs-7">
+                                <div class="product-info">
+                                    <h3 class="name"><a href="#">Floral Print Buttoned</a></h3>
+                                    <div class="rating rateit-small"></div>
+                                    <div class="product-price">
+                                        <span class="price">
+                                            $450.99 </span>
+                                    </div><!-- /.product-price -->
+                                </div>
+                            </div><!-- /.col -->
+                        </div><!-- /.product-micro-row -->
+                    </div><!-- /.product-micro -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div><!-- /.sidebar-widget-body -->

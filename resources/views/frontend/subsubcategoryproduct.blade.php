@@ -1,7 +1,7 @@
 @extends('layouts.frontend')
 
 @section('title')
-Tages Wise Product
+Sub Sub Category Product
 @endsection
 
 @section('content')
@@ -11,8 +11,8 @@ Tages Wise Product
     <div class="container">
         <div class="breadcrumb-inner">
             <ul class="list-inline list-unstyled">
-                <li><a href="#">Home</a></li>
-                <li class='active'>Handbags</li>
+                <li><a href="{{ url('/') }}">Home</a></li>
+                <li class='active'>Sub Sub Category</li>
             </ul>
         </div><!-- /.breadcrumb-inner -->
     </div><!-- /.container -->
@@ -59,18 +59,7 @@ Tages Wise Product
                                 </div><!-- /.accordion -->
                             </div><!-- /.sidebar-widget-body -->
                         </div><!-- /.sidebar-widget -->
-                        <!-- ============================================== SIDEBAR CATEGORY : END ========================== -->
-
-                        <!-- ============================================== PRICE SILDER============================= -->
-
-                        <!-- ============================================== MANUFACTURES: END ========================= ->
-                            <!- ============================================== COLOR===================== -->
-
-                        <!-- ============================================== COLOR: END ============================================== -->
-                        <!-- ============================================== COMPARE============================================== -->
-
-                        <!-- ============================================== COMPARE: END ============================================== -->
-                        <!-- ============================================== PRODUCT TAGS ============================================== -->
+                    
                         @include('frontend/inc/tags')
                         <!-- ============================================== PRODUCT TAGS : END ============================================== -->
 
@@ -79,7 +68,7 @@ Tages Wise Product
                         <!-- ============================================== Testimonials: END ============================================== -->
 
                         <div class="home-banner">
-                            <img src="assets/images/banners/LHS-banner.jpg" alt="Image">
+                            <img src="{{ asset('frontend_assets') }}/assets/images/banners/LHS-banner.jpg" alt="Image">
                         </div>
 
                     </div><!-- /.sidebar-filter -->
@@ -191,27 +180,29 @@ Tages Wise Product
                                                 </div><!-- /.product-info -->
                                                 <div class="cart clearfix animate-effect">
                                                     <div class="action">
-                                                        <ul class="list-unstyled">
+                                                           <ul class="list-unstyled">
                                                             <li class="add-cart-button btn-group">
-                                                                <button class="btn btn-primary icon" data-toggle="dropdown" type="button">
+                                                                <button class="btn btn-primary icon"  type="button" data-toggle="modal" data-target="#cartModal" id="{{ $product->id }}" onclick="productView(this.id)">
+                                                                    
                                                                     <i class="fa fa-shopping-cart"></i>
                                                                 </button>
                                                                 <button class="btn btn-primary cart-btn" type="button">Add to cart</button>
 
                                                             </li>
 
-                                                            <li class="lnk wishlist">
-                                                                <a class="add-to-cart" href="detail.html" title="Wishlist">
+                                                       
+                                                                 <button class="btn btn-primary icon"  type="button" data-toggle="modal" id="{{ $product->id }}" onclick="addtowishlist(this.id)">
+                                                                    
                                                                     <i class="icon fa fa-heart"></i>
-                                                                </a>
-                                                            </li>
+                                                                </button>
+                                                        
 
                                                             <li class="lnk">
                                                                 <a class="add-to-cart" href="detail.html" title="Compare">
-                                                                    <i class="fa fa-signal"></i>
+                                                                    <i class="fa fa-signal" aria-hidden="true"></i>
                                                                 </a>
                                                             </li>
-                                                        </ul>
+                                                        </ul>  
                                                     </div><!-- /.action -->
                                                 </div><!-- /.cart -->
                                             </div><!-- /.product -->
