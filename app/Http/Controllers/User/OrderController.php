@@ -62,4 +62,10 @@ class OrderController extends Controller
         $orders = Order::where('status','Cancel')->orderBy('id','DESC')->get();
         return view('order.cancelorder',compact('orders'));
     }
+
+    // public function CancelOrder()
+    // {
+    //     $orders = Order::where('status','Cancel')->orderBy('id','DESC')->get();
+    //     return view('order.cancelorder',compact('orders'));
+    // }
 }

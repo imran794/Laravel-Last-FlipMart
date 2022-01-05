@@ -38,15 +38,15 @@
                     </li>
                     <li class="list-group-item">
                         <strong>Division:</strong>
-                        {{ $order->division->division_name }}
+                        {{ $order->division_name }}
                     </li>
                     <li class="list-group-item">
                         <strong>District:</strong>
-                        {{ $order->district->district_name }}
+                        {{ $order->district_name }}
                     </li>
                     <li class="list-group-item">
                         <strong>State:</strong>
-                        {{ $order->state->state_name }}
+                        {{ $order->state_name }}
                     </li>
 
                         <li class="list-group-item">
@@ -94,7 +94,7 @@
                     </li>
 
                     <li class="list-group-item">
-                        @if ($order->status == 'pedding')
+                        @if ($order->status == 'Pending')
                         <a href="{{ url('admin/penddingToconfirm') }}/{{ $order->id }}" class="btn btn-block btn-success" id="confirm">Confirm Order</a>  
                           <a href="{{ url('admin/pendingTocancel/'.$order->id) }}" class="btn btn-block btn-danger" id="cancel">Cancel Order</a>
                         @elseif($order->status == 'Confirm')

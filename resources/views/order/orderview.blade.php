@@ -68,15 +68,15 @@ Customer Order
                         </li>
                         <li class="list-group-item">
                             <strong>Division:</strong>
-                            {{ $order->division->division_name }}
+                            {{ $order->division_name }}
                         </li>
                         <li class="list-group-item">
                             <strong>District:</strong>
-                            {{ $order->district->district_name }}
+                            {{ $order->district_name }}
                         </li>
                         <li class="list-group-item">
                             <strong>State:</strong>
-                            {{ $order->state->state_name }}
+                            {{ $order->state_name }}
                         </li>
 
                         <li class="list-group-item">

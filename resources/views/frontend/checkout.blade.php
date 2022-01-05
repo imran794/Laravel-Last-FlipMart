@@ -73,34 +73,24 @@ Checkout Page
                                         <div class="col-md-6 col-sm-6 already-registered-login">
                                             <h4 class="checkout-subtitle"></h4>
                                             <form class="register-form" role="form">
-                                                <div class="form-group">
-                                                    <label class="info-title" for="exampleInputEmail1">Select Division <span>*</span></label>
-                                                    <select name="division_id" class="form-control" data-validation="required">
-                                                        <option value="">Select Option</option>}
-                                                        @foreach ($divisions as $division)
-                                                        <option value="{{ $division->id }}">{{ ucwords($division->division_name) }}</option>
-                                                        @endforeach
-                                                    </select>
-                                                    @error('division_id')
+                                                 <div class="form-group">
+                                                    <label class="info-title" for="exampleInputEmail1">Division Name <span>*</span></label>
+                                                    <input type="text" name="division_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+                                                    @error('division_name')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror
-                                                </div>
+                                                </div> 
                                                 <div class="form-group">
-                                                    <label class="info-title" for="exampleInputEmail1">Select District <span>*</span></label>
-                                                    <select name="district_id" class="form-control" data-validation="required">
-                                                        <option value="">Select One</option>
-                                                    </select>
-                                                    @error('district_id')
+                                                    <label class="info-title" for="exampleInputEmail1">District Name <span>*</span></label>
+                                                    <input type="text" name="district_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+                                                    @error('division_name')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror
-                                                </div>
+                                                </div> 
                                                 <div class="form-group">
-                                                    <label class="info-title" for="exampleInputEmail1">Select State <span>*</span></label>
-                                                    <select name="state_id" class="form-control" data-validation="required">
-                                                        <option value="">Select One</option>
-
-                                                    </select>
-                                                    @error('state_id')
+                                                    <label class="info-title" for="exampleInputEmail1">State Name <span>*</span></label>
+                                                    <input type="text" name="state_name" class="form-control unicase-form-control text-input" id="exampleInputEmail1">
+                                                    @error('state_name')
                                                     <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
@@ -210,74 +200,41 @@ Checkout Page
 
 
 
-<script src="{{asset('backend')}}/lib/jquery-2.2.4.min.js"></script>
+
+   {{--  <script src="{{asset('backend')}}/lib/jquery-2.2.4.min.js"></script>
 
     <script type="text/javascript">
-        $(document).ready(function() {
-            $('select[name="division_id"]').on('change', function() {
-                var division_id = $(this).val();
-                if (division_id) {
-                    $.ajax({
-                        url: "{{ url('/user/district-get/ajax') }}/" + division_id,
-                        type: "GET",
-                        dataType: "json",
-                        success: function(data) {
-                            $('select[name="state_id"]').empty();
-                            $('select[name="district_id"]').empty();
+      $(document).ready(function() {
+        $('select[name="division_id"]').on('change', function(){
+            var division_id = $(this).val();
+            if(division_id) {
+                $.ajax({
+                    url: "{{  url('/user/district/get/ajax') }}/"+division_id,
+                    type:"GET",
+                    dataType:"json",
+                    success:function(data) {
+                        console.log('dasf');
+                       let d =$('select[name="district_id"]').empty();
+                          $.each(data, function(key, value){
 
-                            //append option choose one in district and state
-                            $('select[name="district_id"]').append(
-                                '<option value="" selected disabled>Choose one</option>');
-                            $('select[name="state_id"]').append(
-                                '<option value="" selected disabled>Choose one</option>');
+                              $('select[name="district_id"]').append('<option value="'+ value.id +'">' + value.district_name + '</option>');
 
-                            $.each(data, function(key, value) {
-                                $('select[name="district_id"]').append(
-                                    '<option value="' + value.id + '">' + value
-                                    .district_name + '</option>');
+                          });
 
-                            });
+                    },
 
-                        },
-
-                    });
-                } else {
-                    alert('danger');
-                }
-
-            });
-
-            $('select[name="district_id"]').on('change', function() {
-                var district_id = $(this).val();
-                if (district_id) {
-                    $.ajax({
-                        url: "{{ url('/user/state-get/ajax') }}/" + district_id,
-                        type: "GET",
-                        dataType: "json",
-                        success: function(data) {
-                            $('select[name="state_id"]').empty();
-
-                            //append option choose one in state
-                            $('select[name="state_id"]').append(
-                                '<option value="" disabled selected>Choose one</option>');
-                            $.each(data, function(key, value) {
-                                $('select[name="state_id"]').append('<option value="' +
-                                    value.id + '">' + value.state_name + '</option>'
-                                    );
-                            });
-
-                        },
-
-                    });
-                } else {
-                    alert('danger');
-                }
-
-            });
+                });
+            } else {
+                alert('danger');
+            }
 
         });
 
+    });
+
     </script>
+ --}}
+
 
 
 @endsection

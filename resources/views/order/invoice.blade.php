@@ -84,9 +84,9 @@
                     <strong>Email:</strong> {{ $order->email }} <br>
                     <strong>Phone:</strong> {{ $order->phone }} <br>
                     @php
-                    $div = $order->division->division_name;
-                    $dis = $order->district->district_name;
-                    $state = $order->state->state_name;
+                    $div = $order->division_name;
+                    $dis = $order->district_name;
+                    $state = $order->state_name;
                     @endphp
                     <strong>Address:</strong> {{ $state }}, {{ $dis }}, {{ $div }} <br>
                     <strong>Post Code:</strong> {{ $order->post_code }}

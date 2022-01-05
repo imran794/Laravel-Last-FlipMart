@@ -277,9 +277,13 @@ Route::group(['prefix'=>'user','middleware' =>['user','auth']], function(){
     Route::post('password/store', [ProfileController::class, 'PasswordStore'])->name('password.store');
 
     // checkout 
-      Route::get('/district-get/ajax/{division_id}',[CheckoutController::class, 'usergetajax']); 
-      Route::get('/state-get/ajax/{district_id}',[CheckoutController::class, 'getajaxjstate']); 
-      Route::post('checkout/store',[CheckoutController::class, 'checkoutstore'])->name('checkout.store'); 
+
+
+    route::get('/district/get/ajax/{division_id}',[CheckoutController::class, 'DistrictGet']);
+     
+   Route::post('checkout/store',[CheckoutController::class, 'checkoutstore'])->name('checkout.store'); 
+
+   
 
     // stripe 
 
@@ -351,3 +355,9 @@ Route::get('login/facebook/callback',[LoginController::class, 'handleFacebookCal
 
  Route::get('shop',[ShopController::class, 'Index'])->name('shop');
  Route::post('shop/filter',[ShopController::class, 'ShopFilter'])->name('shop.filter');
+
+
+
+
+
+

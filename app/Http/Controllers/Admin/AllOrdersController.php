@@ -14,14 +14,14 @@ class AllOrdersController extends Controller
 {
     public function penddingorder()
     {
-        $orders = Order::where('status','pedding')->orderBy('id','DESC')->get();
+        $orders = Order::where('status','Pending')->orderBy('id','DESC')->get();
         return view('order.pendding',compact('orders'));
     }
 
     public function OrderView($order_id)
     {
          $order = Order::with('division','district','state','user')->where('id',$order_id)->first();
-         $orderItems = OrderItem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
+         $orderItems = Orderitem::with('product')->where('order_id',$order_id)->orderBy('id','DESC')->get();
          return view('order.addorderview',compact('order','orderItems'));
     }
 

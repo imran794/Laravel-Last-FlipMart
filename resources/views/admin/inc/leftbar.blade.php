@@ -47,9 +47,9 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link @yield('Add-Category')">Add-Category</a></li>
-          <li class="nav-item"><a href="{{ route('subcategory.index') }}" class="nav-link @yield('Add-Sub-Category')">Add-SubCategory</a></li>
-          <li class="nav-item"><a href="{{ route('subsubcategory.index') }}" class="nav-link @yield('Add-Sub-Sub-Category')">Add-Sub-Sub-Category</a></li>
+          <li class="nav-item"><a href="{{ route('category.index') }}" class="nav-link @yield('Add-Category')">Add Category</a></li>
+          <li class="nav-item"><a href="{{ route('subcategory.index') }}" class="nav-link @yield('Add-Sub-Category')">Add SubCategory</a></li>
+          <li class="nav-item"><a href="{{ route('subsubcategory.index') }}" class="nav-link @yield('Add-Sub-Sub-Category')">Add Sub Sub Category</a></li>
         </ul>
         <a href="" class="sl-menu-link @yield('Manage Products')">
           <div class="sl-menu-item">
@@ -59,7 +59,7 @@
           </div><!-- menu-item -->
         </a><!-- sl-menu-link -->
         <ul class="sl-menu-sub nav flex-column">
-          <li class="nav-item"><a href="{{ route('product.index') }}" class="nav-link @yield('All Peoducts')">All Peoducts</a></li>
+          <li class="nav-item"><a href="{{ route('product.index') }}" class="nav-link @yield('All Peoducts')">All Products</a></li>
           <li class="nav-item"><a href="{{ route('product.create') }}" class="nav-link @yield('Add Products')">Add Products</a></li>
         </ul>
 
