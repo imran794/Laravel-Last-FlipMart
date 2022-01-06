@@ -84,7 +84,7 @@
                                 <a href="#" class="dropdown-toggle" data-hover="dropdown" data-toggle="dropdown"><span class="value">
                                         @if (session()->get('language') == 'bangla') ভাষা পরিবর্তন করুন @else Language @endif </span><b class="caret"></b></a>
                                 <ul class="dropdown-menu">
-                                    @if (Session::get('language') == 'bangla');
+                                    @if (Session::get('language') == 'bangla')
                                     <li><a href="{{ route('english.language') }}">English</a></li>
                                     @else
                                     <li><a href="{{ route('bangla.language') }}">Bangla</a></li>
@@ -230,7 +230,6 @@
                                                                 <li><a href="{{ url('/') }}">Home</a></li>
                                                                 <li><a href="{{ route('shop') }}">Shop</a></li>
                                                                 <li><a href="{{ route('blog.page') }}">Blog</a></li>
-                                                                <li><a href="blog-details.html">Blog Detail</a></li>
                                                                 <li><a href="{{ route('contact.us') }}">Contact</a></li>
                                                                 <li><a href="{{ route('faq.page') }}">FAQ</a></li>
                                                             </ul>

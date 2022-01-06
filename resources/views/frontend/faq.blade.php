@@ -28,7 +28,7 @@ Faq Page
             <div class="row">
                 <div class="col-md-12">
                     <h2 class="heading-title">Frequently Asked Questions</h2>
-                    <span class="title-tag">Last Updated on November 02, 2014</span>
+                    <span class="title-tag">Last Updated on November 02, 2022</span>
                     <div class="panel-group checkout-steps" id="accordion">
                         <!-- checkout-step-01  -->
                         @foreach ($faqs as $faq)

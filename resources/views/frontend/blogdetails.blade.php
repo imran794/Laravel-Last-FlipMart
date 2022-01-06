@@ -48,7 +48,7 @@ Blog Details
                     <div class="blog-post-author-details wow fadeInUp">
                         <div class="row">
                             <div class="col-md-2">
-                                <img src="assets/images/testimonials/member3.png" alt="Responsive image" class="img-circle img-responsive">
+                                <img src="{{ asset('frontend_assets/assets/images/testimonials/member3.png') }}" alt="Responsive image" class="img-circle img-responsive">
                             </div>
                             <div class="col-md-10">
                                 <h4>John Doe</h4>
@@ -76,7 +76,7 @@ Blog Details
                                 <h3 class="title-review-comments">16 comments</h3>
                             </div>
                             <div class="col-md-2 col-sm-2">
-                                <img src="assets/images/testimonials/member1.png" alt="Responsive image" class="img-rounded img-responsive">
+                                <img src="{{ asset('frontend_assets/assets/images/testimonials/member1.png') }}" alt="Responsive image" class="img-rounded img-responsive">
                             </div>
                             <div class="col-md-10 col-sm-10 blog-comments outer-bottom-xs">
                                 <div class="blog-comments inner-bottom-xs">
@@ -91,7 +91,7 @@ Blog Details
                                 <div class="blog-comments-responce outer-top-xs ">
                                     <div class="row">
                                         <div class="col-md-2 col-sm-2">
-                                            <img src="assets/images/testimonials/member2.png" alt="Responsive image" class="img-rounded img-responsive">
+                                            <img src="{{ asset('frontend_assets/assets/images/testimonials/member2.png') }}" alt="Responsive image" class="img-rounded img-responsive">
                                         </div>
                                         <div class="col-md-10 col-sm-10 outer-bottom-xs">
                                             <div class="blog-sub-comments inner-bottom-xs">
@@ -105,7 +105,7 @@ Blog Details
                                             </div>
                                         </div>
                                         <div class="col-md-2 col-sm-2">
-                                            <img src="assets/images/testimonials/member3.png" alt="Responsive image" class="img-rounded img-responsive">
+                                            <img src="{{ asset('frontend_assets/assets/images/testimonials/member3.png') }}" alt="Responsive image" class="img-rounded img-responsive">
                                         </div>
                                         <div class="col-md-10 col-sm-10">
                                             <div class=" inner-bottom-xs">
@@ -121,35 +121,6 @@ Blog Details
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-md-2 col-sm-2">
-                                <img src="assets/images/testimonials/member4.png" alt="Responsive image" class="img-rounded img-responsive">
-                            </div>
-                            <div class="col-md-10 col-sm-10">
-                                <div class="blog-comments inner-bottom-xs outer-bottom-xs">
-                                    <h4>Saraha Smith</h4>
-                                    <span class="review-action pull-right">
-                                        03 Day ago &sol;
-                                        <a href="#"> Repost</a> &sol;
-                                        <a href="#"> Reply</a>
-                                    </span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                </div>
-                            </div>
-                            <div class="col-md-2 col-sm-2">
-                                <img src="assets/images/testimonials/member1.png" alt="Responsive image" class="img-rounded img-responsive">
-                            </div>
-                            <div class="col-md-10 col-sm-10">
-                                <div class="blog-comment inner-bottom-xs">
-                                    <h4>Mark Doe</h4>
-                                    <span class="review-action pull-right">
-                                        03 Day ago &sol;
-                                        <a href="#"> Repost</a> &sol;
-                                        <a href="#"> Reply</a>
-                                    </span>
-                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam</p>
-                                </div>
-                            </div>
-                            <div class="post-load-more col-md-12"><a class="btn btn-upper btn-primary" href="#">Load more</a></div>
                         </div>
                     </div>
                     <div class="blog-write-comment outer-bottom-xs outer-top-xs">
@@ -200,17 +171,9 @@ Blog Details
 
 
                     <div class="sidebar-module-container">
-                        <div class="search-area outer-bottom-small">
-                            <form>
-                                <div class="control-group">
-                                    <input placeholder="Type to search" class="search-field">
-                                    <a href="#" class="search-button"></a>
-                                </div>
-                            </form>
-                        </div>
 
                         <div class="home-banner outer-top-n outer-bottom-xs">
-                            <img src="assets/images/banners/LHS-banner.jpg" alt="Image">
+                            <img src="{{ asset('frontend_assets/assets/images/banners/LHS-banner.jpg') }}" alt="Image">
                         </div>
                         <!-- ==============================================CATEGORY============================================== -->
                         <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
@@ -244,8 +207,8 @@ Blog Details
                                 </div><!-- /.accordion -->
                             </div><!-- /.sidebar-widget-body -->
                         </div><!-- /.sidebar-widget -->
-                        <!-- ============================================== CATEGORY : END ============================================== -->
-                        <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
+                        <!-- ============================================== CATEGORY : END =============== -->
+                        {{-- <div class="sidebar-widget outer-bottom-xs wow fadeInUp">
                             <h3 class="section-title">tab widget</h3>
                             <ul class="nav nav-tabs">
                                 <li class="active"><a href="#popular" data-toggle="tab">popular post</a></li>
@@ -290,24 +253,9 @@ Blog Details
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                         <!-- ============================================== PRODUCT TAGS ============================================== -->
-                        <div class="sidebar-widget product-tag wow fadeInUp">
-                            <h3 class="section-title">Product tags</h3>
-                            <div class="sidebar-widget-body outer-top-xs">
-                                <div class="tag-list">
-                                    <a class="item" title="Phone" href="category.html">Phone</a>
-                                    <a class="item active" title="Vest" href="category.html">Vest</a>
-                                    <a class="item" title="Smartphone" href="category.html">Smartphone</a>
-                                    <a class="item" title="Furniture" href="category.html">Furniture</a>
-                                    <a class="item" title="T-shirt" href="category.html">T-shirt</a>
-                                    <a class="item" title="Sweatpants" href="category.html">Sweatpants</a>
-                                    <a class="item" title="Sneaker" href="category.html">Sneaker</a>
-                                    <a class="item" title="Toys" href="category.html">Toys</a>
-                                    <a class="item" title="Rose" href="category.html">Rose</a>
-                                </div><!-- /.tag-list -->
-                            </div><!-- /.sidebar-widget-body -->
-                        </div><!-- /.sidebar-widget -->
+                         @include('frontend/inc/tags')
                         <!-- ============================================== PRODUCT TAGS : END ============================================== -->
                     </div>
                 </div>
