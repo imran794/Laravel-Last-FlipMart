@@ -21,7 +21,7 @@
                                       <h2 class="title">{{ $subcategory->sub_category_name }}</h2>
                                       <ul class="links">
                                           @php
-                                          $subsucategories = App\Models\Subsubcategory::where('subcategory_id',$subcategory->id)->orderBy('sub_sub_category_name','ASC')->get();
+                                          $subsucategories = App\Models\SubSubCategory::where('subcategory_id',$subcategory->id)->orderBy('sub_sub_category_name','ASC')->get();
                                           @endphp
                                           @foreach ($subsucategories as $subsucategory)
 

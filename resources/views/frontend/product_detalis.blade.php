@@ -19,6 +19,7 @@
 
 
 <!-- ============================== breadcrumb : start =================================== -->
+<div id="app">
 <div class="breadcrumb">
     <div class="container">
         <div class="breadcrumb-inner">
@@ -129,6 +130,7 @@
                                 <div class="price-container info-container m-t-20">
                                     <div class="row">
                                         <div class="col-sm-6">
+                                            <send-message></send-message>
                                             <div class="price-box">
                                                 @if ($product->discount_price == NULL)
                                                 <span class="price">${{ $product->selling_price }}</span>
@@ -146,7 +148,7 @@
                                     </div><!-- /.row -->
                                     <div class="row mt-3">
 
-
+                                            
                                         <div class="col-sm-6">
                                             @if ($product->product_color == null)
                                             @else
@@ -434,7 +436,8 @@
 </div>
 <!-- /.container -->
 </div><!-- /.body-content -->
-
+</div>
+    <script src="{{ asset('js/app.js') }}" defer></script>
 <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v10.0&appId=157782379562934&autoLogAppEvents=1" nonce="WhS30MCS"></script>
 
 {{-- // share products --}}
